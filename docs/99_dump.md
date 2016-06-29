@@ -1,3 +1,6 @@
+
+
+
 ## Zusammenhänge und Grundlagen
 
 ![konzept](resources/concept_simple.svg)
@@ -13,6 +16,10 @@
 
 ## Implementierung
 
+### Verzeichnisstruktur
+
+
+
 ### Programmaufbau
 
 Bitween ist logisch in verschiedene Module aufgeteilt.
@@ -22,6 +29,7 @@ Bitween ist logisch in verschiedene Module aufgeteilt.
 1. JsonRPC
 1. Sentinel
 1. PubSub
+1. Logging
 
 
 # python
@@ -65,3 +73,14 @@ Bitween ist logisch in verschiedene Module aufgeteilt.
 ## rst / sphinx / pydoc...
 
 ## logging
+
+## tests
+
+### unittests
+
+### integrationtests
+
+### end-to-end tests
+
+auch travis:
+- boot docker container with prosody
