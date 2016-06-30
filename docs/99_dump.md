@@ -1,16 +1,6 @@
 
 
 
-## Zusammenhänge und Grundlagen
-
-![konzept](resources/concept_simple.svg)
-
-
-### XMPP
-
-#### Dateiübertragungen
-
-#### PEP
 
 
 
