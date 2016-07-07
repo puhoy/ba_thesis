@@ -272,7 +272,6 @@ latex_elements = {
 \usepackage[ngerman]{babel} % für die deutsche Sprache
 \usepackage{caption} % Für schönere Bildunterschriften
 \usepackage[T1]{fontenc} % Schriftkodierung (Für Sonderzeichen u.a.)
-\usepackage[utf8]{inputenc} % Für die direkte Eingabe von Umlauten im Editor u.a.
 \usepackage{fancyhdr} % Für Kopf- und Fußzeilen
 %\usepackage{lscape} % Für Querformat
 \usepackage{color}
@@ -291,15 +290,6 @@ latex_elements = {
 
 \lstset
 {
-	%Umlaute:
-	literate=%
-	{Ö}{{\"O}}1
-	{Ä}{{\"A}}1
-	{Ü}{{\"U}}1
-	{ß}{{\ss}}1
-	{ü}{{\"u}}1
-	{ä}{{\"a}}1
-	{ö}{{\"o}}1,
 	numbers=left,
 	numberstyle=\tiny,
 	numbersep=5pt,
