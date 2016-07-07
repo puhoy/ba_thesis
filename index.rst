@@ -11,10 +11,10 @@ BA Thesis
     Preamble
     --------
 
-
 .. toctree::
 
    docs/01_abstract
+
 
 .. only:: not singlehtml
 

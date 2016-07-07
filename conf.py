@@ -35,8 +35,8 @@ sys.path.insert(0, os.path.abspath('.'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinxcontrib.bibtex',
     'sphinx_numfig',
+    'sphinxcontrib.bibtex',
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
@@ -93,14 +93,8 @@ language = 'en'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env/*']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env/*', '.*/*', '.*', 'website_snapshots', '*.py']
 
-if tags.has('latex'):
-    master_doc = 'index_tex'
-    exclude_patterns.append('index.rst')
-else:
-    master_doc = 'index'
-    exclude_patterns.append('index_tex.rst')
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
