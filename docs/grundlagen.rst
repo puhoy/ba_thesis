@@ -6,6 +6,7 @@ XMPP
 ****
 
 
+
 TODO:
   normaler login:
     service disco, pubsub, entity caps

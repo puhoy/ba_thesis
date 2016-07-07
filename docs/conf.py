@@ -265,8 +265,13 @@ latex_elements = {
 
      # Additional stuff for the LaTeX preamble.
      #
-     'preamble': ''
-                 '',
+     'preamble': '''
+\usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=1cm,
+textheight=245mm,textwidth=160mm,includeheadfoot,headsep=1cm,
+footskip=1cm,headheight=14.599pt]{geometry}
+
+\usepackage{graphicx}
+'''
 
      # Latex figure (float) alignment
      #
@@ -278,7 +283,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ba.tex', 'BA',
-     'Author', 'manual'),
+     'Author', 'article'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
