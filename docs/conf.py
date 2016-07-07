@@ -269,11 +269,12 @@ latex_elements = {
 \documentclass[a4paper,12pt,oneside]{article}
 
 %% Verwendete Pakete:
-\usepackage[ngerman]{babel} % für die deutsche Sprache
-\usepackage{caption} % Für schönere Bildunterschriften
-\usepackage[T1]{fontenc} % Schriftkodierung (Für Sonderzeichen u.a.)
-\usepackage{fancyhdr} % Für Kopf- und Fußzeilen
-%\usepackage{lscape} % Für Querformat
+\usepackage[ngerman]{babel}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+%\usepackage{lscape}
 \usepackage{color}
 
 \definecolor{mygray}{rgb}{0.9,0.9,0.9}
@@ -281,12 +282,12 @@ latex_elements = {
 \definecolor{keywords}{rgb}{0.37, 0.08, 0.25}
 \definecolor{strings}{rgb}{0.06, 0.10, 0.98}
 \definecolor{purple}{RGB}{128,0,128}
-\usepackage{tikz}	% für Farbmischungen
+\usepackage{tikz}
 \usepackage{listings}
 \usepackage{float}
-\usepackage[scaled]{uarial} % serifenfreue Schrift auf arial
-\usepackage[font={footnotesize,sf}]{caption} %Für formatierbare Unterschriften in Bildern und Quellcode (kleineere Größe und Arial)
-\usepackage{courier} %Für Courier-Schriftart in Programmcode
+\usepackage[scaled]{uarial}
+\usepackage[font={footnotesize,sf}]{caption}
+\usepackage{courier}
 
 \lstset
 {
@@ -308,7 +309,7 @@ latex_elements = {
 	commentstyle=\color{comments}\itshape
 }
 
-\onehalfspacing % Zeilenabstand auf 1,5-zeilig setzen
+\onehalfspacing
 
 \usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=1cm,
 textheight=245mm,textwidth=160mm,includeheadfoot,headsep=1cm,
