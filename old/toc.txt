@@ -1,8 +1,0 @@
-.. toctree::
-   :numbered:
-
-   02_einleitung
-   concept
-   grundlagen
-   implementation
-   zzreferences
