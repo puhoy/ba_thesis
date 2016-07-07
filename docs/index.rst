@@ -1,9 +1,6 @@
 
+
 .. include:: 01_abstract.rst
-
-
-ba thesis
-=========
 
 
 .. toctree::

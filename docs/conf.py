@@ -257,7 +257,7 @@ htmlhelp_basename = 'toolsdoc'
 latex_elements = {
      # The paper size ('letterpaper' or 'a4paper').
      #
-     'papersize': 'letterpaper',
+     'papersize': 'article',
 
      # The font size ('10pt', '11pt' or '12pt').
      #
