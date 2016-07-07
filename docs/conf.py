@@ -252,75 +252,108 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'toolsdoc'
 
-# -- Options for LaTeX output ---------------------------------------------
+# -- Options for LaTeX output --------------------------------------------------
+
+ADDITIONAL_PREAMBLE = """
+\\usepackage{sphinx}
+
+\\makeatletter
+\\makeatother
+"""
+
+ADDITIONAL_FOOTER = """
+\\input{footer._tex}
+\\input{affidavit._tex}
+"""
 
 latex_elements = {
-     # The paper size ('letterpaper' or 'a4paper').
-     #
-     'papersize': 'a4paper',
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'letterpaper',
 
-     # The font size ('10pt', '11pt' or '12pt').
-     #
-     'pointsize': '12pt',
+    # * gets passed to \documentclass
+    # * default options are single sided, double spaced
+    #   you can change them with these options:
+    #   * twoside
+    #   * singlespace
+    # * you might want to omit the list of tables (lot)
+    #   if you use figtable without the :nofig: option
+    'classoptions': ',ngerman,parskip,a4paper,BCOR=5mm,lof,twoside',
 
-     # Additional stuff for the LaTeX preamble.
-     #
-     'preamble': '''
+    # The font size ('10pt', '11pt' or '12pt').
+    'pointsize': '11pt',
 
-%% Verwendete Pakete:
-\usepackage[ngerman]{babel}
-\usepackage{caption}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-%\usepackage{lscape}
-\usepackage{color}
+    # Additional stuff for the LaTeX preamble.
+    'preamble': ADDITIONAL_PREAMBLE,
 
-\definecolor{mygray}{rgb}{0.9,0.9,0.9}
-\definecolor{comments}{rgb}{0.12, 0.38, 0.18 }
-\definecolor{keywords}{rgb}{0.37, 0.08, 0.25}
-\definecolor{strings}{rgb}{0.06, 0.10, 0.98}
-\definecolor{purple}{RGB}{128,0,128}
-\usepackage{tikz}
-\usepackage{listings}
-\usepackage{float}
-\usepackage[font={footnotesize,sf}]{caption}
-\usepackage{courier}
+    # Additional footer
+    'footer': ADDITIONAL_FOOTER,
 
-\lstset
-{
-	numbers=left,
-	numberstyle=\tiny,
-	numbersep=5pt,
-	rulesepcolor=\color{black},
-	captionpos=b,
-	frame=shadowbox,
-	backgroundcolor=\color{mygray},
-	showstringspaces=false,
-	breaklines=true,
-	tabsize=3,
-	language=Java,
-	basicstyle=\scriptsize\ttfamily,
-	keywordstyle=\bfseries\color{keywords},
-	%identifierstyle=\color{blue},
-	stringstyle=\color{strings},
-	commentstyle=\color{comments}\itshape
+    # disable font inclusion
+    'fontpkg': '',
+    'fontenc': '',
+
+    # disable fancychp
+    'fncychap': '',
+
+    # get rid of the sphinx wrapper class file
+    'wrapperclass': 'puthesis',
+
+    # Input encoding, eXtended.
+    'inputenc': '\\usepackage[utf8]{inputenc}',
+
+    # Use ,,Kapitel'' instead of chapter
+    'babel': '\\usepackage[ngerman]{babel}',
+
+    # override maketitle
+    'maketitle': '\\makefrontmatter',
+    'tableofcontents': '',
+
+    # disable index printing
+    'printindex': '',
 }
 
-\onehalfspacing
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title, author, documentclass [howto/manual]).
 
-\usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=1cm,
-textheight=245mm,textwidth=160mm,includeheadfoot,headsep=1cm,
-footskip=1cm,headheight=14.599pt]{geometry}
+latex_additional_files = [
+    'tex/puthesis.cls',
+    'tex/preamble._tex',
+    'tex/footer._tex',
+    'tex/sphinx.sty',
+    'tex/Makefile',
+    'tex/refstyle.bst',
+    'refs.bib',
+    'tex/ccicons.sty',
+]
 
-\usepackage{graphicx}
+latex_docclass = {
+    'manual': 'puthesis',
+}
 
-'''
+# The name of an image file (relative to this directory) to place at the top of
+# the title page.
+#latex_logo = None
+
+# For "manual" documents, if this is true, then toplevel headings are parts,
+# not chapters.
+latex_use_parts = False
+
+# If true, show page references after internal links.
+#latex_show_pagerefs = False
+
+# If true, show URL addresses after external links.
+#latex_show_urls = False
+
+# Documents to append as an appendix to all manuals.
+#latex_appendices = []
+
+# If false, no module index is generated.
+latex_domain_indices = False
 
      # Latex figure (float) alignment
      #
      # 'figure_align': 'htbp',
-}
+
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
@@ -330,31 +363,7 @@ latex_documents = [
      'Author', 'article'),
 ]
 
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-#
-# latex_logo = None
 
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-#
-latex_use_parts = True
-
-# If true, show page references after internal links.
-#
-# latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-#
-# latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-#
-# latex_appendices = []
-
-# If false, no module index is generated.
-#
-# latex_domain_indices = True
 
 
 # -- Options for manual page output ---------------------------------------
