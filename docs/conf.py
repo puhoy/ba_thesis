@@ -257,7 +257,7 @@ htmlhelp_basename = 'toolsdoc'
 latex_elements = {
      # The paper size ('letterpaper' or 'a4paper').
      #
-     'papersize': 'article',
+     'papersize': 'a4paper',
 
      # The font size ('10pt', '11pt' or '12pt').
      #
@@ -266,7 +266,6 @@ latex_elements = {
      # Additional stuff for the LaTeX preamble.
      #
      'preamble': '''
-\documentclass[a4paper,12pt,oneside]{article}
 
 %% Verwendete Pakete:
 \usepackage[ngerman]{babel}
@@ -285,7 +284,6 @@ latex_elements = {
 \usepackage{tikz}
 \usepackage{listings}
 \usepackage{float}
-\usepackage[scaled]{uarial}
 \usepackage[font={footnotesize,sf}]{caption}
 \usepackage{courier}
 
