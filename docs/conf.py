@@ -266,11 +266,66 @@ latex_elements = {
      # Additional stuff for the LaTeX preamble.
      #
      'preamble': '''
+\documentclass[a4paper,12pt,oneside]{article}
+
+%% Verwendete Pakete:
+\usepackage[ngerman]{babel} % für die deutsche Sprache
+\usepackage{caption} % Für schönere Bildunterschriften
+\usepackage[T1]{fontenc} % Schriftkodierung (Für Sonderzeichen u.a.)
+\usepackage[utf8]{inputenc} % Für die direkte Eingabe von Umlauten im Editor u.a.
+\usepackage{fancyhdr} % Für Kopf- und Fußzeilen
+%\usepackage{lscape} % Für Querformat
+\usepackage{color}
+
+\definecolor{mygray}{rgb}{0.9,0.9,0.9}
+\definecolor{comments}{rgb}{0.12, 0.38, 0.18 }
+\definecolor{keywords}{rgb}{0.37, 0.08, 0.25}
+\definecolor{strings}{rgb}{0.06, 0.10, 0.98}
+\definecolor{purple}{RGB}{128,0,128}
+\usepackage{tikz}	% für Farbmischungen
+\usepackage{listings}
+\usepackage{float}
+\usepackage[scaled]{uarial} % serifenfreue Schrift auf arial
+\usepackage[font={footnotesize,sf}]{caption} %Für formatierbare Unterschriften in Bildern und Quellcode (kleineere Größe und Arial)
+\usepackage{courier} %Für Courier-Schriftart in Programmcode
+
+\lstset
+{
+	%Umlaute:
+	literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}1
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	rulesepcolor=\color{black},
+	captionpos=b,
+	frame=shadowbox,
+	backgroundcolor=\color{mygray},
+	showstringspaces=false,
+	breaklines=true,
+	tabsize=3,
+	language=Java,
+	basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\bfseries\color{keywords},
+	%identifierstyle=\color{blue},
+	stringstyle=\color{strings},
+	commentstyle=\color{comments}\itshape
+}
+
+\onehalfspacing % Zeilenabstand auf 1,5-zeilig setzen
+
 \usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=1cm,
 textheight=245mm,textwidth=160mm,includeheadfoot,headsep=1cm,
 footskip=1cm,headheight=14.599pt]{geometry}
 
 \usepackage{graphicx}
+
 '''
 
      # Latex figure (float) alignment
