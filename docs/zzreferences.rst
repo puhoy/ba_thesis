@@ -1,6 +1,8 @@
 Literaturverzeichnis
 ====================
 
+.. rubric:: References
+
+
 .. bibliography:: refs.bib
    :all:
-   :list: enumerated
