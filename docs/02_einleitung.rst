@@ -1,9 +1,8 @@
-**********
 Einleitung
-**********
+----------
 
 Das eXtensible Messaging and Presence Protocol (XMPP), umgangssprachlich Jabber, ist ein XML basiertes, offenes Kommunikationsprotokoll das sich seit seiner Veröffentlichung 1999 :cite:`XMPP|91:online` stark verbreitet hat.
-Beispielsweise arbeiten der Facebook-Chat, WhatsApp und GoogleTalk mit XMPP. Ausserdem verwenden Apple, Cisco, IBM, Nokia und Sun XMPP in eingigen ihrer Produkte. (Vgl. :cite:`saintandre2009definitive`)
+Beispielsweise arbeiten der Facebook-Chat, WhatsApp und GoogleTalk mit XMPP. Ausserdem verwenden Apple, Cisco, IBM, Nokia und Sun XMPP in eingigen ihrer Produkte. (Vgl. :cite:`9780596521264`)
 
 
 Durch die Möglichkeit, XMPP Server ähnlich wie Email Server in einem Netzwerk  zu betreiben, ist aber auch ein Netzwerk von vielen öffentlichen, privat betriebenen XMPP Servern gewachsen. Listen einiger öffentlicher Server finden sich beispielsweise unter jabberes.org/servers :cite:`jabberes|Jabbe36:online` oder xmpp.net/directory :cite:`imobs|IMObs44:online`.
