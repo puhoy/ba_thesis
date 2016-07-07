@@ -36,10 +36,10 @@ sys.path.insert(0, os.path.abspath('.'))
 # ones.
 extensions = [
     'sphinxcontrib.bibtex',
+    'sphinx_numfig',
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
-    'sphinx_numfig',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -257,7 +257,7 @@ htmlhelp_basename = 'toolsdoc'
 latex_elements = {
      # The paper size ('letterpaper' or 'a4paper').
      #
-     'papersize': 'a4paper',
+     'papersize': 'letterpaper',
 
      # The font size ('10pt', '11pt' or '12pt').
      #
@@ -265,7 +265,8 @@ latex_elements = {
 
      # Additional stuff for the LaTeX preamble.
      #
-     # 'preamble': '',
+     'preamble': ''
+                 '',
 
      # Latex figure (float) alignment
      #
@@ -276,7 +277,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'tools.tex', 'tools Documentation',
+    (master_doc, 'ba.tex', 'BA',
      'Author', 'manual'),
 ]
 
@@ -288,7 +289,7 @@ latex_documents = [
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
 #
-# latex_use_parts = False
+latex_use_parts = True
 
 # If true, show page references after internal links.
 #
