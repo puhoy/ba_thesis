@@ -1,3 +1,5 @@
+
+
 # IPv4 / v6
 
 Da für die Datenübertragungen kein Server als Brücke zwischen IPv4 und IPv6 zur verfügung steht, müssen die Clients direkte Verbindungen untereinander aufbauen. Das hat zur Folge, dass sich Teilnehmer mit verschiedenen Protokollstacks nicht in jedem Fall verstehen.
