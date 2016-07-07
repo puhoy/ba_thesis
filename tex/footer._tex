@@ -1,14 +1,13 @@
 % Make the bibliography single spaced
 \singlespacing
+
+% Use refstyle.bst
 \bibliographystyle{refstyle}
 
 % add the Bibliography to the Table of Contents
-\cleardoublepage
+% \cleardoublepage
 \ifdefined\phantomsection
   \phantomsection  % makes hyperref recognize this section properly for pdf link
 \else
 \fi
-\addcontentsline{toc}{chapter}{Bibliography}
-
-% include your .bib file
-\bibliography{refs}
+\addcontentsline{toc}{chapter}{D.~~Literaturverzeichnis}

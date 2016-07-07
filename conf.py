@@ -1,32 +1,40 @@
-import sys, os
+import os
+import sys
 
 # directory relative to this conf file
 CURDIR = os.path.abspath(os.path.dirname(__file__))
+
 # add custom extensions directory to python path
-sys.path.append(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'extensions'))
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(__file__)), 'extensions'))
+sys.path.insert(0, os.path.abspath('./'))
 
 # import the custom html and latex builders/translators/writers
+# The import already sets them up
 import html_mods
 import latex_mods
+
+# Use a nice theme:
+import sphinx_rtd_theme
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
 # import order is important here
 extensions = [
-              'sphinxcontrib.bibtex',
-              'fix_equation_ref',
-              'sphinx.ext.mathjax',
-              'sphinx.ext.ifconfig',
-              'subfig',
-              #'numfig',
-              'sphinx_numfig',
-              'numsec',
-              'natbib',
-              'figtable',
-              'singlehtml_toc',
-              'singletext',
-              ]
+    'fix_equation_ref',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.graphviz',
+    'sphinxcontrib.bibtex',
+    'subfig',
+    'numfig',
+    'numsec',
+    'latex_sign',
+    'dropcaps',
+    'figtable',
+    'singlehtml_toc',
+    'singletext',
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['templates']
@@ -35,60 +43,57 @@ templates_path = ['templates']
 source_suffix = '.rst'
 
 # The encoding of source files.
-source_encoding = 'utf-8-sig'
+source_encoding = 'utf-8'
 
 # General information about the project.
-project = u'The Sphinx Thesis Resource (sphinxtr)'
-author = u'Jeff Terrace'
-copyright = u'by %s, 2012.' % author
+project = u'Bachelorarbeit'
+author = u'Christopher Pahl'
+copyright = u'by %s, 2013-2014.' % author
 version = '0.1'
 release = '0.1'
 
 # Turns on numbered figures for HTML output
 number_figures = True
 
-# configures bibliography
-# see http://wnielson.bitbucket.org/projects/sphinx-natbib/
-natbib = {
-    'file': 'refs.bib',
-    'brackets': '[]',
-    'separator': ',',
-    'style': 'numbers',
-    'sort': True,
-}
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = [
-                    '_build',
-                    'tex',
-                    'epilog.rst',
-                    'README.rst',
-                    ]
+    '_build',
+    'tex',
+    'rst/epilog.rst',
+    'rst/toc.rst',
+    '*venv*',
+    'README.rst',
+]
 
 # The master toctree document.
 # Ideally, we wouldn't have to do this, but sphinx seems to have trouble with
 # directives inside only directives
 if tags.has('latex'):
-    master_doc = 'index_tex'
-    exclude_patterns.append('index.rst')
+    master_doc = 'rst/index_tex'
+    exclude_patterns.append('rst/index.rst')
 else:
-    master_doc = 'index'
-    exclude_patterns.append('index_tex.rst')
+    master_doc = 'rst/index'
+    exclude_patterns.append('rst/index_tex.rst')
 
 # A string of reStructuredText that will be included at the end of
 # every source file that is read.
-rst_epilog = open(os.path.join(CURDIR, 'epilog.rst'),'r').read().decode('utf8')
+with open(os.path.join(CURDIR, 'rst/epilog.rst'), 'r') as f:
+    rst_epilog = f.read()
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'flask_theme_support.FlaskyStyle'
+# pygments_style = 'monokai'
 
 
 # -- Options for HTML output ---------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+# html_theme = 'sphinxdoc'
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -103,7 +108,7 @@ html_theme = 'sphinx_rtd_theme'
 html_title = "%s" % project
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = "Someone's PhD Thesis"
+html_short_title = "Bachelorarbeit- libmunin: a music recommendation system"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -117,7 +122,7 @@ html_short_title = "Someone's PhD Thesis"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['static']
+html_static_path = ['rst/_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -132,6 +137,7 @@ template_files = ['localtoc.html', 'relations.html', 'sourcelink.html']
 if not tags.has('singlehtml'):
     # only include search box for regular html, not single page html
     template_files.append('searchbox.html')
+
 html_sidebars = {
    '**': template_files,
 }
@@ -150,7 +156,7 @@ html_use_index = False
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #html_show_sphinx = True
@@ -178,23 +184,24 @@ htmlhelp_basename = 'htmlhelpoutput'
 # mathjax_path = 'MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 
 
-
-
 # -- Options for LaTeX output --------------------------------------------------
 
 ADDITIONAL_PREAMBLE = """
-\input{preamble._tex}
-\usepackage{sphinx}
+\\usepackage{sphinx}
+
+\\makeatletter
+\\makeatother
 """
 
 ADDITIONAL_FOOTER = """
-\input{footer._tex}
+\\input{footer._tex}
+\\input{affidavit._tex}
 """
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'letterpaper',
-    
+
     # * gets passed to \documentclass
     # * default options are single sided, double spaced
     #   you can change them with these options:
@@ -202,45 +209,51 @@ latex_elements = {
     #   * singlespace
     # * you might want to omit the list of tables (lot)
     #   if you use figtable without the :nofig: option
-    'classoptions': ',english,lof,lot',
-    
+    'classoptions': ',ngerman,parskip,a4paper,BCOR=5mm,lof,twoside',
+
     # The font size ('10pt', '11pt' or '12pt').
-    'pointsize': '12pt',
-    
+    'pointsize': '11pt',
+
     # Additional stuff for the LaTeX preamble.
     'preamble': ADDITIONAL_PREAMBLE,
-    
+
     # Additional footer
     'footer': ADDITIONAL_FOOTER,
-    
+
     # disable font inclusion
     'fontpkg': '',
     'fontenc': '',
-    
+
     # disable fancychp
     'fncychap': '',
-    
+
     # get rid of the sphinx wrapper class file
     'wrapperclass': 'puthesis',
-    
+
+    # Input encoding, eXtended.
+    'inputenc': '\\usepackage[utf8]{inputenc}',
+
+    # Use ,,Kapitel'' instead of chapter
+    'babel': '\\usepackage[ngerman]{babel}',
+
     # override maketitle
-    'maketitle': '\makefrontmatter',
+    'maketitle': '\\makefrontmatter',
     'tableofcontents': '',
-    
+
     # disable index printing
     'printindex': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-    ('index_tex',
-     'thesis.tex',
-     project,
-     author,
-     'manual',
-     True),
-]
+latex_documents = [(
+    'rst/index_tex',
+    'thesis.tex',
+    project,
+    author,
+    'manual',
+    True,
+)]
 
 latex_docclass = {
     'manual': 'puthesis',
@@ -248,12 +261,15 @@ latex_docclass = {
 
 latex_additional_files = [
     'tex/puthesis.cls',
-    'tex/preamble._tex',
     'tex/footer._tex',
+    'tex/meta._tex',
+    'tex/fh_hof_logo.pdf',
+    'tex/affidavit._tex',
     'tex/sphinx.sty',
     'tex/Makefile',
     'tex/refstyle.bst',
     'refs.bib',
+    'urls.bib',
     'tex/ccicons.sty',
 ]
 
