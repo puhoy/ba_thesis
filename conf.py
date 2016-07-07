@@ -247,7 +247,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [(
-    'rst/index_tex',
+    'rst/index_tex.rst',
     'thesis.tex',
     project,
     author,
