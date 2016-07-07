@@ -1,10 +1,13 @@
+***************
+Implementierung
+***************
 
+Kernkomponenten des Programms:
+ - der BitTorrent Client
+ - der/die XMPP Client/s
+ - ein Modul zur IPC (PubSub)
+ - eine Nutzerschnittstelle zur Bedienung (JsonRPC)
 
-
-
-
-
-## Implementierung
 
 ### Verzeichnisstruktur
 

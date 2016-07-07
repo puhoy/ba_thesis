@@ -11,8 +11,11 @@ Topics
 
    01_abstract
    02_einleitung
+   concept
    grundlagen
-   99_dump
+   implementation
+   citations
+
 
 Indices and tables
 ==================

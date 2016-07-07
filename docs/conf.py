@@ -38,6 +38,8 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
+    'sphinx_numfig',
+    'sphinxcontrib.bibtex',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -136,7 +138,10 @@ html_theme = 'sphinx_rtd_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    'sticky_navigation': True  # Set to False to disable the sticky nav while scrolling.
+    # 'logo_only': True,  # if we have a html_logo below, this shows /only/ the logo with no title text
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
