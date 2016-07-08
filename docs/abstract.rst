@@ -9,6 +9,6 @@ Dies ermöglicht verteilte Downloads sowie dauerhafte Freigaben.
 Um die Möglichkeiten und Limitierungen dieser Methode auf zu zeigen wird ein XMPP- und BitTorrent Client implementiert.
 
 
-<!-- TODO: ergebnis mit rein
-https://studi-lektor.de/tipps/bachelor-thesis/abstract-schreiben.html
--->
+.. todo::
+    ergebnis mit rein (https://studi-lektor.de/tipps/bachelor-thesis/abstract-schreiben.html)
+

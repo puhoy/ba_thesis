@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sphinx-autobuild ./docs ./docs/_build
+sphinx-autobuild docs/ _build/

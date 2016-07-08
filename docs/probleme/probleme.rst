@@ -1,6 +1,15 @@
+.. probleme:
 
 
-# IPv4 / v6
+Probleme
+========
+
+notizen
+-------
+
+
+IPv4 / v6
+*********
 
 Da für die Datenübertragungen kein Server als Brücke zwischen IPv4 und IPv6 zur verfügung steht, müssen die Clients direkte Verbindungen untereinander aufbauen. Das hat zur Folge, dass sich Teilnehmer mit verschiedenen Protokollstacks nicht in jedem Fall verstehen.
 
@@ -14,7 +23,8 @@ Grundlegend kann man sagen, dass
 
 
 
-# ipv6 issues
+ipv6 issues
+***********
 
     meatpuppet@sprach ~> ip -6 address show
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536
@@ -41,6 +51,8 @@ https://bitbucket.org/al45tair/netifaces/issues/7/ipv6-deprecated-autoconf-tempo
 
 noch lesen: https://tools.ietf.org/html/rfc6724#section-10.1
 
+vorschläge
+**********
 
 mögl. fix für connection probleme: wenn ipv4 funktioniert, ipv4 nutzen -> jeder hat (normalerweise) ipv4. ipv6 einzeln aktivieren im falle von DSlite oder reinem ipv6. 
 

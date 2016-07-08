@@ -6,5 +6,5 @@ Literaturverzeichnis
 .. rubric:: References
 
 
-.. bibliography:: ../refs.bib
+.. bibliography:: refs.bib
    :all:

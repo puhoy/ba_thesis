@@ -13,7 +13,7 @@ BA Thesis
 
 .. toctree::
 
-   docs/01_abstract
+   abstract
 
 
 .. only:: not singlehtml
