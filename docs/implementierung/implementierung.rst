@@ -30,14 +30,6 @@ Programmaufbau
 
 Bitween ist logisch in verschiedene Module aufgeteilt.
 
-1. BitTorrentClient
-1. XmppClient
-1. JsonRPC
-1. Sentinel
-1. PubSub
-1. Logging
-
-
 
 .. toctree::
 

@@ -2,7 +2,7 @@
 libtorrent
 ==========
 
+.. todo::
 
-## den weg frei machen
-
-### upnp / natpmp
+    ports öffnen:
+     upnp / natpmp
