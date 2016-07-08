@@ -37,7 +37,7 @@ XMPP dient hierbei nurnoch dazu, die für BitTorrent relevaten Daten weiter zu l
     - (warum BitTorrent diese Lücke füllen würde)
     - BT ein bisschen erklären
     - was ich in welchem Kapitel beschreibe
-    
+
 .. raw:: latex
 
     \clearpage
