@@ -4,6 +4,9 @@
 Implementierung
 ***************
 
+Übersicht
+---------
+
 Kernkomponenten des Programms:
  - der BitTorrent Client
  - der/die XMPP Client/s
@@ -11,11 +14,19 @@ Kernkomponenten des Programms:
  - eine Nutzerschnittstelle zur Bedienung (JsonRPC)
 
 
-### Verzeichnisstruktur
+
+.. todo::
+
+    # python (skriptsprache, gut für prototyping undso.)
+
+    ## messaging zwischen threads (https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)
+
+    Verzeichnisstruktur eines Python Moduls (http://docs.python-guide.org/en/latest/writing/structure/#structure-of-the-repository)
 
 
 
-### Programmaufbau
+Programmaufbau
+--------------
 
 Bitween ist logisch in verschiedene Module aufgeteilt.
 
@@ -27,55 +38,30 @@ Bitween ist logisch in verschiedene Module aufgeteilt.
 1. Logging
 
 
-# python
 
-## messaging zwischen threads
+.. toctree::
 
-
-# xmpp
-
-## erweiterungen
-
-### pep (bsp: user tune)
-
-### eigene pep erweiterung
+    implementierung_xmpp
+    implementierung_bt
+    implementierung_jsonrpc
+    implementierung_ipc
+    implementierung_tests
 
 
-### entity caps
+logging
+*******
+
+.. todo::
+
+    logging modul, lesen aus yml...
+
+
+dokumentation
+*************
+
+.. todo::
+
+    rst / sphinx / pydoc / readthedocs...
 
 
 
-
-
-## sleekxmpp
-
-
-
-### plugins
-
-
-# bittorrent
-
-## den weg frei machen
-
-### upnp / natpmp
-
-
-# JsonRPC
-
-# dokumentation
-
-## rst / sphinx / pydoc...
-
-## logging
-
-## tests
-
-### unittests
-
-### integrationtests
-
-### end-to-end tests
-
-auch travis:
-- boot docker container with prosody
