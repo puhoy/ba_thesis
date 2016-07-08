@@ -38,6 +38,10 @@ XMPP dient hierbei nurnoch dazu, die für BitTorrent relevaten Daten weiter zu l
     - BT ein bisschen erklären
     - was ich in welchem Kapitel beschreibe
 
+
+    "kurze Erörterung der Randbedingungen, die insbesondere darlegt, was vorgegeben und daher "nur" genutzt und was eigenständig entwickelt wurde. Außerdem soll in der Einleitung der weitere Aufbau der Arbeit beschrieben werden"
+
+
 .. raw:: latex
 
     \clearpage
