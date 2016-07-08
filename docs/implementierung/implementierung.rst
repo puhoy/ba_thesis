@@ -48,7 +48,7 @@ Bitween ist logisch in verschiedene Module aufgeteilt.
     implementierung_tests
 
 
-logging
+Logging
 *******
 
 .. todo::
@@ -56,7 +56,7 @@ logging
     logging modul, lesen aus yml...
 
 
-dokumentation
+Dokumentation
 *************
 
 .. todo::

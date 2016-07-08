@@ -12,3 +12,7 @@ Um die Möglichkeiten und Limitierungen dieser Methode auf zu zeigen wird ein XM
 .. todo::
     ergebnis mit rein (https://studi-lektor.de/tipps/bachelor-thesis/abstract-schreiben.html)
 
+
+.. raw:: latex
+
+    \clearpage

@@ -1,5 +1,6 @@
 
-## tests
+Tests
+=====
 
 ### unittests
 

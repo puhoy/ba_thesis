@@ -2,8 +2,13 @@
 BitTorrent
 ----------
 
-BitTorrent ist auch zum Teil Zentral -> BT Tracker (zumindest als Einsprungpunkt ins BT Netz)
+
+.. todo::
+
+    BitTorrent ist auch zum Teil Zentral
+     -> BT Tracker als Einsprungpunkt benötigt
 
 
-
-Prüfsummen -> SHA-1
+    Torrentfiles / Magnetlinks
+     Prüfsummen
+      -> SHA-1 als Hashalgorithmus
