@@ -283,8 +283,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ba.tex', 'BA',
-     'Jan Hartmann\n', 'BA Thesis'),
+    (master_doc, 'ba.tex', 'BA Thesis',
+     'Jan Hartmann\n', 'article'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
