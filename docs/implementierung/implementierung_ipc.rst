@@ -87,18 +87,11 @@ In einer Python Shell sieht das ganze wie folgt aus:
 ::
 
     >>> s = AutoSub()
-    >>>
-    >>> publish = pubsub.publish
-    >>>
-    >>>
     >>> publish('some_topic', 'teststring')
     True
     >>> s.process_messages()
     some_string is teststring
     some_int is 1
-    >>>
-
-
 
 **********
 
