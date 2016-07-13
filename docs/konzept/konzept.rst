@@ -7,7 +7,7 @@ Konzept
 
 .. _fig-concept:
 
-.. figure:: resources/concept_simple.svg
+.. figure:: resources/concept_simple.png
    :align: center
    :alt: Konzept
 
@@ -21,7 +21,7 @@ Freigabeinformationen umfassen Prüfsummen der freigegebenen Daten, die zur eind
 
 .. _fig-usecases:
 
-.. figure:: resources/usecases.svg
+.. figure:: resources/usecases.png
    :align: center
    :alt: Usecases
 

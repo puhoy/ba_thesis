@@ -16,7 +16,7 @@ Implementierung
    Modulübersicht
 
 
-Das Programm gliedert sich in verschiedene Kernkomponenten, die in den folgenden Kapiteln besprochen werden:
+Das Programm :num:`modules` gliedert sich in verschiedene Kernkomponenten, die in den folgenden Kapiteln besprochen werden:
 
  - der XMPP Client (XmppClient)
 
