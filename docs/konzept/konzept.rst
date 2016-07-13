@@ -19,4 +19,17 @@ Diagramm :num:`fig-concept` zeigt die Grundfunktionalität der Anwendung. Erreic
 Freigabeinformationen umfassen Prüfsummen der freigegebenen Daten, die zur eindeutigen Identifikation der Daten dienen, dazu einen Dateinamen und -Größe, der den Anwendern hilft den Inhalt einzuschätzen, sowie Adresse und Port unter der die Freigaben zu finden sind.
 
 
-TODO:
+.. _fig-usecases:
+
+.. figure:: resources/usecases.svg
+   :align: center
+   :alt: Usecases
+
+   Anwendungsfälle
+
+Das Anwendungsfalldiagramm :num:`fig-usecases` zeigt die geplanten Anwendungsfälle die implementiert werden sollen, um die Anwendung sinnvoll Nutzen zu können.
+So sollen eigene Freigaben erstellt und entfernt werden können (AF/10/ und AF/20/) sowie Freigaben anderer Nutzer aufgelistet und durchsucht werden können, als auch Downloads angestoßen werden können. (AF/30/ bis AF/40/)
+
+.. todo::
+
+   AF: accounts hinzufügen geht bis jetzt nur in der json...

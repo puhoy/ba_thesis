@@ -1,0 +1,51 @@
+digraph "packages_bitween_small" {
+charset="utf-8"
+rankdir=BT
+"0" [label="components", shape="box"];
+"1" [label="components.bt", shape="box"];
+"2" [label="components.bt.client", shape="box"];
+"3" [label="components.jsonrpc_api", shape="box"];
+"4" [label="components.jsonrpc_api.bt", shape="box"];
+"5" [label="components.jsonrpc_api.jsonrpc", shape="box"];
+"6" [label="components.jsonrpc_api.xmpp", shape="box"];
+"7" [label="components.models", shape="box"];
+"8" [label="components.models.addresses", shape="box"];
+"9" [label="components.models.config", shape="box"];
+"10" [label="components.models.contact_shares", shape="box"];
+"11" [label="components.models.helpers", shape="box"];
+"12" [label="components.models.helpers.helpers", shape="box"];
+"13" [label="components.models.torrent_handles", shape="box"];
+"14" [label="components.pubsub", shape="box"];
+"15" [label="components.pubsub.pubsub", shape="box"];
+"16" [label="components.xmpp", shape="box"];
+"17" [label="components.xmpp.client", shape="box"];
+"18" [label="components.xmpp.share_plugin", shape="box"];
+"19" [label="components.xmpp.share_plugin.address_stanza", shape="box"];
+"20" [label="components.xmpp.share_plugin.resource_stanza", shape="box"];
+"21" [label="components.xmpp.share_plugin.share_item_stanza", shape="box"];
+"22" [label="components.xmpp.share_plugin.stanza", shape="box"];
+"23" [label="components.xmpp.share_plugin.user_share", shape="box"];
+"0" -> "1" [arrowhead="open", arrowtail="none"];
+"0" -> "3" [arrowhead="open", arrowtail="none"];
+"0" -> "7" [arrowhead="open", arrowtail="none"];
+"0" -> "14" [arrowhead="open", arrowtail="none"];
+"0" -> "16" [arrowhead="open", arrowtail="none"];
+"1" -> "2" [arrowhead="open", arrowtail="none"];
+"1" -> "7" [arrowhead="open", arrowtail="none"];
+"3" -> "4" [arrowhead="open", arrowtail="none"];
+"3" -> "6" [arrowhead="open", arrowtail="none"];
+"7" -> "8" [arrowhead="open", arrowtail="none"];
+"7" -> "10" [arrowhead="open", arrowtail="none"];
+"7" -> "13" [arrowhead="open", arrowtail="none"];
+"8" -> "9" [arrowhead="open", arrowtail="none"];
+"8" -> "11" [arrowhead="open", arrowtail="none"];
+"10" -> "11" [arrowhead="open", arrowtail="none"];
+"11" -> "11" [arrowhead="open", arrowtail="none"];
+"14" -> "14" [arrowhead="open", arrowtail="none"];
+"16" -> "17" [arrowhead="open", arrowtail="none"];
+"18" -> "19" [arrowhead="open", arrowtail="none"];
+"18" -> "20" [arrowhead="open", arrowtail="none"];
+"18" -> "21" [arrowhead="open", arrowtail="none"];
+"18" -> "22" [arrowhead="open", arrowtail="none"];
+"18" -> "23" [arrowhead="open", arrowtail="none"];
+}

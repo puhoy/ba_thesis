@@ -1,0 +1,17 @@
+digraph "classes_bitween_small" {
+charset="utf-8"
+rankdir=BT
+"1" [label="Addresses", shape="record"];
+"2" [label="BitTorrentClient", shape="record"];
+"3" [label="ContactShares", shape="record"];
+"4" [label="Handles", shape="record"];
+"5" [label="JsonRpcAPI", shape="record"];
+"8" [label="Subscriber", shape="record"];
+"11" [label="XmppClient", shape="record"];
+"2" -> "8" [arrowhead="empty", arrowtail="none"];
+"11" -> "8" [arrowhead="empty", arrowtail="none"];
+"1" -> "11" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="addresses", style="solid"];
+"2" -> "11" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="bt_client", style="solid"];
+"4" -> "2" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="handles", style="solid"];
+"5" -> "11" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="api", style="solid"];
+}

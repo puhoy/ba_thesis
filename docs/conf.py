@@ -268,53 +268,9 @@ latex_elements = {
      #
      'preamble': '''
 
-%% Verwendete Pakete:
-\usepackage[ngerman]{babel}
-\usepackage{caption}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage{fancyhdr}
-%\usepackage{lscape}
-\usepackage{color}
-
-\definecolor{mygray}{rgb}{0.9,0.9,0.9}
-\definecolor{comments}{rgb}{0.12, 0.38, 0.18 }
-\definecolor{keywords}{rgb}{0.37, 0.08, 0.25}
-\definecolor{strings}{rgb}{0.06, 0.10, 0.98}
-\definecolor{purple}{RGB}{128,0,128}
-\usepackage{tikz}
-\usepackage{listings}
-\usepackage{float}
-\usepackage[font={footnotesize,sf}]{caption}
-\usepackage{courier}
-
-\lstset
-{
-	numbers=left,
-	numberstyle=\tiny,
-	numbersep=5pt,
-	rulesepcolor=\color{black},
-	captionpos=b,
-	frame=shadowbox,
-	backgroundcolor=\color{mygray},
-	showstringspaces=false,
-	breaklines=true,
-	tabsize=3,
-	language=Java,
-	basicstyle=\scriptsize\ttfamily,
-	keywordstyle=\bfseries\color{keywords},
-	%identifierstyle=\color{blue},
-	stringstyle=\color{strings},
-	commentstyle=\color{comments}\itshape
-}
-
-\onehalfspacing
-
-\usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=1cm,
-textheight=245mm,textwidth=160mm,includeheadfoot,headsep=1cm,
-footskip=1cm,headheight=14.599pt]{geometry}
-
-\usepackage{graphicx}
+\pagestyle{fancy}
+\usepackage[ngerman]{babel}
 
 '''
 
