@@ -284,7 +284,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ba.tex', 'BA',
-     'Author', 'article'),
+     'Jan Hartmann\n', 'BA Thesis'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
