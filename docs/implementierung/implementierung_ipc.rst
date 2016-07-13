@@ -1,7 +1,7 @@
 .. implementierung:
 
 IPC
-===
+***
 
 Die Kommunikation zwischen den Threads wurde durch eine PublishSubscribe Pattern gelöst.
 Wie bei XMPP-PubSub können Teilnehmer (in diesem Fall Objekte der jeweiligen Klassen) Nachrichten zu bestimmten Topics abonnieren ("subscriben"). Außerdem steht eine "publish" Methode zur Verfügung, mit der Nachrichten auf bestimmten Topics veröffentlicht werden können.
