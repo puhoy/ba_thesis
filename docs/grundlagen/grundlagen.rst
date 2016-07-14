@@ -4,7 +4,14 @@
 Zusammenhänge und Grundlagen
 ****************************
 
-Um zu verstehen eine sinnvolle Verteilung der (Meta)-Daten stattfinden kann, werden einige theoretische Grundlagen über die genutzten Protokolle benötigt. Diese werden in den folgenden Kapiteln beschrieben.
+Um das in der Einleitung beschriebene Konzept umzusetzen werden einige Grundlagen über die Funktionsweise von XMPP und einigen der gängigen Erweiterungen benötigt.
+
+Erläuterungen zum BitTorrent Protokoll fallen übersichtlicher aus, da nur eine sehr eingeschränke Funktionalität benötigt wird.
+
+.. todo::
+
+    kapitelnamen + kurzfassen was ich wo beschrieben habe
+
 
 
 .. toctree::
