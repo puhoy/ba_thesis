@@ -1,9 +1,7 @@
-.. konzept:
 
 
-*******
 Konzept
-*******
+=======
 
 .. _fig-concept:
 
@@ -24,17 +22,3 @@ Sobald ein Teil der Daten von einer Gegenstelle heruntergeladen wurde, wird dies
 Auf diese Art kann in relativ kleinem Kreis ein verteiltes Filesharing stattfinden.
 
 
-.. _fig-usecases:
-
-.. figure:: resources/usecases.png
-   :align: center
-   :alt: Usecases
-
-   Anwendungsfälle
-
-Das Anwendungsfalldiagramm :num:`fig-usecases` zeigt die geplanten Anwendungsfälle die implementiert werden sollen, um die Anwendung sinnvoll Nutzen zu können.
-So sollen eigene Freigaben erstellt und entfernt werden können (AF/10/ und AF/20/) sowie Freigaben anderer Nutzer aufgelistet und durchsucht werden können, als auch Downloads angestoßen werden können. (AF/30/ bis AF/40/)
-
-.. todo::
-
-   AF: accounts hinzufügen geht bis jetzt nur in der json...

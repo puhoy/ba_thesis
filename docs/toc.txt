@@ -1,10 +1,15 @@
 .. toctree::
 
-   einleitung/einleitung
-   konzept/konzept
-   grundlagen/grundlagen
-   implementierung/implementierung
+   02_einleitung/einleitung
+   03_planung/planung
+   04_grundlagen/grundlagen
+   05_implementierung/implementierung
 
    probleme/probleme
+
+   zukunft/zukunft
+
+   zusammenfassung/beurteilung
+   zusammenfassung/zusammenfassung
 
    zzreferences

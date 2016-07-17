@@ -1,4 +1,4 @@
-.. grundlagen:
+.. 04_grundlagen:
 
 ****************************
 Zusammenhänge und Grundlagen

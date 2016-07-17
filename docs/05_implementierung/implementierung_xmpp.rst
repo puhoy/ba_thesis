@@ -1,5 +1,9 @@
-SleekXMPP
-=========
+XMPP
+====
+
+.. todo::
+
+    sleekxmpp
 
 
 

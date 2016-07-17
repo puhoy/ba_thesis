@@ -1,4 +1,3 @@
-.. implementierung:
 
 IPC
 ***
@@ -8,7 +7,9 @@ Wie bei XMPP-PubSub können Teilnehmer (in diesem Fall Objekte der jeweiligen Kl
 
 .. todo::
 
-    link xmpp pubsub
+   https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern
+
+   link xmpp pubsub
 
 Hierzu wurde eine Klasse "Subscriber" implementiert die als Basisklasse für alle anderen Klassen dient, die Nachrichten empfangen.
 Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachrichten enthält, eine subscribe-Methode um Nachrichten zu Topics zu "Abonnieren" sowie eine has_messages- und get_messages-Methode um den Zustand der Queue abzufragen und Nachrichten zu entnehmen.
@@ -46,7 +47,7 @@ Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachri
 
 Im einfachsten Fall wird ein Subscriber Objekt ohne Parameter erstellt. Dann wird nur eine Nachrichtenqueue angelegt (Zeile 4) und es können Topics mit subscribe('topicname') abonniert werden.
 
-::
+.. code-block:: python
 
     s = Subscriber()
     s.subscribe('some_topic')
@@ -59,7 +60,7 @@ Damit besteht die Möglichkeit, Methoden der Klassen direkt als Topics zu abonni
 
 Als Beispiel hierzu dient die folgende Klasse AutoSub, die sich von Subscriber ableitet.
 
-::
+.. code-block:: python
 
     class AutoSub(Subscriber):
         def __init__(self):
@@ -84,7 +85,7 @@ Wird dann eine Nachricht in diesem Topic abgelegt, würde während des Schedulin
 
 In einer Python Shell sieht das ganze wie folgt aus:
 
-::
+.. code-block:: python
 
     >>> s = AutoSub()
     >>> publish('some_topic', 'teststring')

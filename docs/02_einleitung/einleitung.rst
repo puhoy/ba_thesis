@@ -1,4 +1,4 @@
-.. einleitung:
+.. 02_einleitung:
 
 Einleitung
 ----------
@@ -28,9 +28,13 @@ Deshalb stellen In-Band Übertragungen in den meisten Fällen nur den Fallback M
 
 Dies bedeutet, dass eine separate Client-zu-Client Verbindung hergestellt wird, über die die Datenübertragung stattfinden soll. Da hier aber mehrere Erweiterungen existieren, die wiederum von beteiligten Clients sowie Servern unterstützt werden müssen, schlagen diese Übertragungen häufig fehl, sodass in vielen Fällen die Clients auf In-Band Übertragung zurückfallen oder die Übertragung gar nicht zustande kommt.
 
-Diese Thesis stellt eine Methode vor, diese Out-of-Band Übertragungen serverlos abzuwickeln: über das BitTorrent Protokoll (BT).
 
-XMPP dient hierbei nurnoch dazu, die für BitTorrent relevaten Daten weiter zu leiten. Das Herstellen der Verbindung zwischen den Clients sowie die Datenübertragung finden komplett über BitTorrent statt.
+Diese Thesis untersucht eine andere Methode, die Dateiübertragungen abzuwickeln: über das Peer-to-Peer Protokoll BitTorrent (BT).
+
+XMPP dient hierbei nurnoch dazu, die Daten weiter zu leiten, die für das starten einer Datenübertragung per BitTorrent nötig sind.
+Das Herstellen der Verbindung zwischen den Clients sowie die eigentliche Datenübertragung finden komplett über BitTorrent statt.
+
+Dazu wird ein minimaler XMPP- und BitTorrent Client implementiert, der dazu dient die für den Datenaustausch wichtigen Informationen unter den Teilnehmern zu verteilen, und gegebenenfalls die Datenübertragungen abzuwickeln.
 
 .. todo::
 
