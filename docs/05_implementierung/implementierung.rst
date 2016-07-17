@@ -19,10 +19,12 @@ Implementierung
 
 .. toctree::
 
+    implementierung_entwurf
     implementierung_xmpp
     implementierung_bt
     implementierung_jsonrpc
     implementierung_ipc
+    implementierung_tests
 
 
 Dokumentation

@@ -13,7 +13,7 @@ Entwurf
    Modulübersicht
 
 
-Das Programm :num:`modules` gliedert sich in verschiedene Kernkomponenten, die in den folgenden Kapiteln besprochen werden:
+Das Programm gliedert sich in verschiedene Kernkomponenten (:num:`modules`), die in den folgenden Kapiteln besprochen werden:
 
  - der XMPP Client (XmppClient)
 
