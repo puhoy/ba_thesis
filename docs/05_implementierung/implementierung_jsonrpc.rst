@@ -12,7 +12,7 @@ Aufbau der Komponente
         bt.py
         jsonrpc.py
         xmpp.py
-        
+
 
 .. todo::
 
