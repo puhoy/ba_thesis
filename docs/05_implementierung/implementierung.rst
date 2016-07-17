@@ -22,7 +22,7 @@ Allgemeines zur Implementierung
 Als Programmiersprache zur Implementierung des Prototypen wurde aufgrund der bisherigen Programmiererfahrungen des Autors und des vorhandenseins aller nötigen Bibliotheken Python gewählt.
 
 
-Die Verzeichnisstruktur ist dabei angelehnt an die Empfehlungen des "Hitchhikers Guide To Python" :cite:`` TODO.
+Die Verzeichnisstruktur ist dabei angelehnt an die Empfehlungen des "Hitchhikers Guide To Python" :cite:`hitchhikers_structure:online`.
 Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie folgt aus:
 
 
@@ -58,6 +58,12 @@ Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie fo
 3: component/
    Zur Vereinfachung hier nur eine Komponente namens "component".
    Die Datei __init__.py signalisiert hierbei, dass es sich bei dem Verzeichnis um ein importierbares Python Modul handelt.
+
+7: bitweend.py
+   Der Einstiegspunkt für das Programm, zum starten des daemons. (Bitweend ist hier kurz für Bitween Daemon)
+
+8: bitweenc.py
+   Client für die JsonRPC API des Programms.
 
 9: docs/
    Verzeichnis das alle benötigten Dateien zum generieren der Dokumentation enthält. Im einfachsten Fall die von Sphinx benötigte Konfigurationsdatei conf.py und eine reStructuredText-Datei index.rst die als Einstiegspunkt für die Dokumentation dient.
