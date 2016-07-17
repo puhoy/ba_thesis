@@ -1,7 +1,8 @@
 .. 02_einleitung:
 
+==========
 Einleitung
-----------
+==========
 
 Das eXtensible Messaging and Presence Protocol (XMPP), umgangssprachlich "Jabber", ist ein offenes
 Kommunikationsprotokoll das im wesentlichen eine Technologie darstellt, in XML eingebettete Daten zu streamen, und dass sich seit seiner Veröffentlichung 1999 :cite:`XMPP|91:online` stark verbreitet hat.

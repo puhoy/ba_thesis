@@ -1,11 +1,11 @@
 .. zukunft:
 
-******************
+==================
 Fazit und Ausblick
-******************
+==================
 
 mögliche Erweiterungen
-**********************
+======================
 
 
  - grafischer (Browser)-Client

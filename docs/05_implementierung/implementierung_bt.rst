@@ -1,6 +1,16 @@
 
-libtorrent
+BitTorrent
 ==========
+
+Aufbau der Komponente
+---------------------
+
+::
+
+    bt/
+        __init__.py
+        client.py
+
 
 .. todo::
 

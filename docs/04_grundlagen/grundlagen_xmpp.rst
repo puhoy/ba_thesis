@@ -1,12 +1,12 @@
 
 XMPP
-----
+====
 
 - Technologie zum XML streamen :cite:`XMPPTheDefinitiveGuide:streamingxml`
 
 
 Erweiterungen
-*************
+-------------
 
 
 .. note::
@@ -40,7 +40,7 @@ Instead of extending <presence> stanzas directly, it is a best practice to make 
 
 
 PEP
-***
+---
 
 .. todo::
 

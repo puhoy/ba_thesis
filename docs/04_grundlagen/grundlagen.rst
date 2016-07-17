@@ -1,8 +1,8 @@
 .. 04_grundlagen:
 
-****************************
+============================
 Zusammenhänge und Grundlagen
-****************************
+============================
 
 Um das in der Einleitung beschriebene Konzept umzusetzen werden einige Grundlagen über die Funktionsweise von XMPP und einigen der gängigen Erweiterungen benötigt.
 
@@ -17,3 +17,8 @@ Erläuterungen zum BitTorrent Protokoll fallen übersichtlicher aus, da nur eine
 .. toctree::
     grundlagen_xmpp
     grundlagen_bt
+
+
+.. raw:: latex
+
+\clearpage

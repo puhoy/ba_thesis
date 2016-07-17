@@ -12,10 +12,10 @@ Aufbau der Komponente
 
 ::
 
-  + xmpp
+    xmpp/
         __init__.py
         client.py
-      + share_plugin
+        share_plugin/
             __init__.py
             address_stanza.py
             resource_stanza.py
