@@ -8,4 +8,3 @@ Planung
 
     planung_anforderungen
     planung_konzept
-    planung_entwurf

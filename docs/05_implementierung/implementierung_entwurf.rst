@@ -46,3 +46,5 @@ Außerdem Klassen zur Abstrahierung der Daten zur Laufzeit:
     - Addresses für die eigenen IP-Adressen und BitTorrent Ports
     - Handles für die einzelnen Torrent Handles
     - ContactShares für alle empfangenen Shares
+
+

@@ -2,7 +2,7 @@ XMPP
 ====
 
 Die Hauptkomponente des Programms stellt die XMPP Komponente dar.
-Neben den XMPP bezogenen Funktionen wickelt die Komponente beim starten das heraufsinden der eigenen IP Adressen ab und startet die JSonRPC API (Kapitel TODO) und den BitTorrent Client (Kapitel TODO).
+Neben den XMPP bezogenen Funktionen wickelt die Komponente beim starten das heraufsinden der eigenen öffentlichen IP Adressen ab und startet die JSonRPC API (Kapitel TODO) und den BitTorrent Client (Kapitel TODO).
 
 Dieses Kapitel beschreibt den Aufbau der Komponente und der zugehörigen ContactShares-Models, in der die empfangenen Metadaten gehalten werden.
 
@@ -26,7 +26,9 @@ Aufbau der Komponente
 der Konstruktor: starten der anderen Komponenten
 
 .. code-block:: python
-
+   :linenos:
+   :caption: der Konstruktor: starten der anderen Komponenten
+   :name: xmpp-client-init
 
     class XmppClient(sleekxmpp.ClientXMPP, Subscriber):
         def __init__(self, jid, password, api_host='localhost', api_port=8080):
