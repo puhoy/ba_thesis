@@ -14,12 +14,13 @@ Implementierung
 
     Verzeichnisstruktur eines Python Moduls (http://docs.python-guide.org/en/latest/writing/structure/#structure-of-the-repository)
 
-
+    sequenzdiagramm bootprozess
 
 .. toctree::
 
-    implementierung_allgemeines
     implementierung_entwurf
+    implementierung_allgemeines
+
     implementierung_xmpp
     implementierung_bt
     implementierung_jsonrpc
