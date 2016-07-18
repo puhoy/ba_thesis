@@ -2,7 +2,7 @@ XMPP
 ====
 
 Die Hauptkomponente des Programms stellt die XMPP Komponente dar.
-Neben den XMPP bezogenen Funktionen wickelt die Komponente beim starten das heraufsinden der eigenen öffentlichen IP Adressen ab und startet die JsonRPC API (Kapitel TODO) und den BitTorrent Client (Kapitel TODO).
+Neben den XMPP bezogenen Funktionen wickelt die Komponente beim starten das herausfinden der eigenen öffentlichen IP Adressen ab und startet die JsonRPC API (Kapitel TODO) und den BitTorrent Client (Kapitel TODO).
 
 Außerdem wurde ein Plugin implementiert, das auf Basis der XMPP Erweiterung PEP :cite:`XEP-0163:online` Freigabelisten versendet und empfängt.
 
@@ -63,12 +63,16 @@ Der erste Teil des Konstruktors widmet sich dem Setup der Grundfunktionen der Ko
  Hinzufügen eines Eventhandlers für das "shares_publish" Event und verknüpfen mit der on_shares_publish Methode.
  (TODO siehe kapitel plugin..?)
 
-10-14:
+10-13:
  Registrieren der benötigten Plugins
 
-15:
+14:
  Registrieren des Share Plugins
  (TODO: das braucht unbedingt viel mehr erklärung)
+
+.. todo::
+
+    vielleicht ein eigenes Kapitel "starten der Anwendung"
 
 
 .. code-block:: python
@@ -94,12 +98,28 @@ Der erste Teil des Konstruktors widmet sich dem Setup der Grundfunktionen der Ko
 
 Der zweite Teil des Konstruktors widmet sich dem beschaffen der eigenen öffentlichen IP Adressen und der Initialisierung der weiteren Komponenten der Anwendung.
 
+Eigene Addressen finden
+~~~~~~~~~~~~~~~~~~~~~~~
+
+(Zeile 3 und 4, Zeile 14)
+self.addresses ist hier ein neues Objekt der Addresses Klasse die die eigenen IPv4 und v6 Adressen und die Ports enthält, die der BitTorrent Client nutzt.
+self.addresses.fetch_addresses() startet nun den den prozess, die eigene IPv4 Adresse herauszufinden. Dies geschieht mit Hilfe des Python Paketes "ipgetter". In diesem sind Services gelistet, die die IP Adresse zurück geben, von denen sie kontaktiert wurden. Auf diese Art ist es einfach möglich, auch hinter einem NAT-Router die eigene öffentliche IPv4 zu bestimmen.
+Als zweiten Schritt wird mithilfe des Python Paketes "netifaces" eine Liste der globalen IPv6 Adressen erstellt. Da es hier nicht möglich ist, die Flags für die temporären Adressen auszulesen, werden ganz einfach alle Adressen gelistet. Zu diesem Zeitpunkt existiert bereits ein Pull-Request für das netifaces Git-Repository auf BitBucket, der jedoch nur BSD und Mac-OS unterstützt und noch nicht in dem Hauptentwicklungszweig integriert wurde. :cite:`al45t61:online`
+
+Zum Schluss wird, nach dem starten des BitTorrent Clients (Zeile 14), noch der BitTorrent Port gesetzt.
+
+Starten der Json API
+~~~~~~~~~~~~~~~~~~~~
+
+(Zeile 8 und 9)
+Als nächstes wird der API Prozess gestartet. Hierzu wird ein neues JsonRpcAPI Objekt erstellt und dessen start-Methode aufgerufen, welche die API in einem neuen Thread startet. Näheres dazu im Kapitel JsonRpcAPI (TODO)
 
 
-.. todo::
+Starten des BitTorrent Clients
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    sleekxmpp
-
+(Zeile 11 und 12)
+Nach der API wird der BitTorrent Client in einem eigenen Prozess gestartet. Da auch diese Klasse von der Thread-Klasse abgeleitet ist, wird der Client mit der start-Methode in einem neuen Thread gestartet. Näheres zu dem Ablauf in Kapitel "Implementierung BitTorrent" (TODO)
 
 
 

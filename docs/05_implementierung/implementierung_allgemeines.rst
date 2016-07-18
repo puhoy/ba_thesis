@@ -16,46 +16,40 @@ Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie fo
 
     bitween/
         components/
-            module/
-                __init__.py
-            __init__.py
-        __init__.py
+            xmpp/
+            bt/
+            jsonrpc_api/
+            models/
+            pubsub/
         bitweend.py
         bitweenc.py
     docs/
         conf.py
         index.rst
     tests/
-        __init__.py
-        test_basic.py
     requirements.txt
     setup.py
 
 
-1: bitween/
-   Der Name des Programms und der Name des Verzeichnisses das den Programmcode enthält
+bitween/
+   Der Name des Programms und der Name des Verzeichnisses das den Programmcode enthält.
+   Im Unterverzeichnis "components" befinden sich die Module in denen die jeweiligen funktionen und Klassen implementiert wurden.
+    Ein Modul umfasst dabei jeweils eine Datei "__init__.py", die das Verzeichnis als Modul in Python importierbar macht und (je nach Modul) beliebige andere .py-Dateien. Da in Python keine privaten Methoden existieren, werden in der __init__.py werden alle alle Funktionen oder Klassen aus dem Modul importiert, die von anderen Modulen benötigt werden könnten. So wird eine logische Abgrenzung geschaffen zu Elementen die nur im Modul benötigt werden, und solchen die für die Nutzung von anderen Modulen gedacht sind.
 
-2: components/
-   Kernkomponenten des Programms, jedes Verzeichnis ist ein Python Modul. Zur Vereinfachung hier nur eines mit der Bezeichung "module".
-
-3: component/
-   Zur Vereinfachung hier nur eine Komponente namens "component".
-   Die Datei __init__.py signalisiert hierbei, dass es sich bei dem Verzeichnis um ein importierbares Python Modul handelt.
-
-7: bitweend.py
+bitweend.py
    Der Einstiegspunkt für das Programm, zum starten des daemons. (Bitweend ist hier kurz für Bitween Daemon)
 
-8: bitweenc.py
+bitweenc.py
    Client für die JsonRPC API des Programms.
 
-9: docs/
+docs/
    Verzeichnis das alle benötigten Dateien zum generieren der Dokumentation enthält. Im einfachsten Fall die von Sphinx benötigte Konfigurationsdatei conf.py und eine reStructuredText-Datei index.rst die als Einstiegspunkt für die Dokumentation dient.
 
-12: tests/
+tests/
    Das tests-Verzeichnis enthält alle Testläufe.
    Durch das hinzufügen der __init__.py wird hier eine Automatische Testdiscovery ermöglicht. "python setup.py test", ausgeführt im Wurzelverzeichnis des Projektes würde hier Automatisch alle hinterlegten Tests ausführen.
 
-15: requirements.txt
+requirements.txt
    Die requirements.txt einthält eine Liste der per pip installierbaren Abhängigkeiten des Projekts
 
 16: setup.py
