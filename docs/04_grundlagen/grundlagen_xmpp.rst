@@ -2,7 +2,59 @@
 XMPP
 ====
 
-- Technologie zum XML streamen :cite:`XMPPTheDefinitiveGuide:streamingxml`
+Das Extensible Messaging and Presence Protocol ist im Grunde eine Technologie zum XML streamen (vgl. :cite:`XMPPTheDefinitiveGuide:streamingxml`) und kann so benutzt werden um alle möglichen Arten Textbasierter Informationen zu versenden und zu empfangen.
+
+Ein Stream beginnt immer mit dem öffnen eines <stream> Tags und endet mit dem schließenden </stream> Tag.
+Innerhalb dieses Streams können eine beliebige Menge an XML Stanzas versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also wiederum ein XML Tag in den wiederum auch Tags eingebettet sein können.
+
+Für die Tiefe 1 des Streams also unmittelbar dem <stream> Stanza untergeordnet, sind 3 Basis-Stanzatypen definiert, die sich im default-Namespace "jabber:client" bzw. "jabber:server" befinden:
+
+    <message/> <presence/> <iq/>
+
+Jedes dieser Basisstanzas erfüllt unterschiedliche Funktionen.
+So ist mit <message> ein "Push" Mechanismus verbunden, um Nachrichten direkt an andere Teilnehmer zu verschicken, Beispielsweise::
+
+    <message to='jan@xmpp.kwoh.de' id='321' type='chat'>
+        <body>Ich bin eine Nachricht!</body>
+    </message>
+
+Das <presence> Stanza funktioniert als "Publish-Subscribe" Mechanismus. In der Basisfunktionalität ist dies der Verfügbarkeitsstatus: ist ein Kontakt Online oder nicht. Dies ist üblicherweise erweitert durch ein <show> und "<status>" Stanza, das eine nähere Beschreibung der Anwesenheit gibt::
+
+    <presence>
+        <show>away</show>
+        <status>Ein Buch lesen</status>
+    </presence>
+
+Um diese Nachrichten zu empfangen, wird aber eine Presence-Subscription benötigt, also ein Handshake, bei dem die Gegenstelle das "Abonnemont" des Kontakts akzeptiert.
+Da dies aber die für diese Thesis benötigten Grundlagen überschreitet, sei an dieser Stelle auf das Buch "XMPP - The definitive Guide" von Peter Saint-Andre, und Remko Tronçon :cite:`XMPPTheDefinitiveGuide:streamingxml` verwiesen.
+
+Dieses Stanza wird durch viele XMPP Extension Protocols (XEP) erweitert, insbesondere  XEP-0060 ("Publish-Subcribe") und XEP-0163 ("Personal Eventing Protocol"), auf die noch näher eingegangen wird.
+
+
+.. code-block:: none
+   :caption: streambeispiel aus der core-rfc :cite:`Exten90:online`
+
+    |--------------------|
+    | <stream>           |
+    |--------------------|
+    | <presence>         |
+    |   <show/>          |
+    | </presence>        |
+    |--------------------|
+    | <message to='foo'> |
+    |   <body/>          |
+    | </message>         |
+    |--------------------|
+    | <iq to='bar'>      |
+    |   <query/>         |
+    | </iq>              |
+    |--------------------|
+    | ...                |
+    |--------------------|
+    | </stream>          |
+    |--------------------|
+
+
 
 
 Erweiterungen

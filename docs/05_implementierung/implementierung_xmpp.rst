@@ -131,7 +131,32 @@ Plugins
     was sagt die sleekxmpp doku zu plugins? (da war iwas)
 
 
+SleekXMPP ist su aufgebaut, dass Funktion in Form von Plugins, die meiste spezifische XEP implementierungen darstellen, erweitert werden kann.
 
+Um die Funktionalität abzubilden, eine Liste mit Hashwerten und zugehörigen Eigenschaften wie Dateiname- und Größe an alle Kontakte des Rosters zu senden, wurde hier auf dem Personal Eventing Protocol (XEP-0163) aufgebaut. (TODO: cite.., erklären)
+
+
+.. code-block::
+
+        from . import stanza
+        from . import UserSharesStanza, ShareItemStanza, ResourceStanza, AddressStanza
+
+        class UserShares(BasePlugin):
+            name = 'shares'
+            description = 'UserShares'
+            dependencies = set(['xep_0163'])
+            stanza = stanza
+
+            def plugin_end(self)
+
+            def session_bind(self, jid)
+
+            def _update_own_shares(self, handle_infos, addresses)
+
+            def publish_shares(self, handle_infos=None, addresses=None, options=None,
+                               ifrom=None, block=True, callback=None, timeout=None)
+
+            def stop(self, ifrom=None, block=True, callback=None, timeout=None)
 
 SleexXMPP PEP Plugin
 --------------------
