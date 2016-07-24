@@ -12,27 +12,44 @@ Für die Tiefe 1 des Streams also unmittelbar dem <stream> Stanza untergeordnet,
     <message/> <presence/> <iq/>
 
 Jedes dieser Basisstanzas erfüllt unterschiedliche Funktionen.
+
 So ist mit <message> ein "Push" Mechanismus verbunden, um Nachrichten direkt an andere Teilnehmer zu verschicken, Beispielsweise::
 
     <message to='jan@xmpp.kwoh.de' id='321' type='chat'>
         <body>Ich bin eine Nachricht!</body>
     </message>
 
-Das <presence> Stanza funktioniert als "Publish-Subscribe" Mechanismus. In der Basisfunktionalität ist dies der Verfügbarkeitsstatus: ist ein Kontakt Online oder nicht. Dies ist üblicherweise erweitert durch ein <show> und "<status>" Stanza, das eine nähere Beschreibung der Anwesenheit gibt::
+Das <presence> Stanza funktioniert als "Publish-Subscribe" Mechanismus.
+In der Basisfunktionalität ist dies der Verfügbarkeitsstatus: ist ein Kontakt Online oder nicht. Es wird also jeder Kontakt, der die eigene Presence abonniert hat, automatisch über Statusänderungen benachrichtigt.
+Diese ist üblicherweise erweitert durch ein "<show>" und "<status>" Stanza, das eine nähere Beschreibung der Anwesenheit gibt::
 
     <presence>
         <show>away</show>
         <status>Ein Buch lesen</status>
     </presence>
 
-Um diese Nachrichten zu empfangen, wird aber eine Presence-Subscription benötigt, also ein Handshake, bei dem die Gegenstelle das "Abonnemont" des Kontakts akzeptiert.
-Da dies aber die für diese Thesis benötigten Grundlagen überschreitet, sei an dieser Stelle auf das Buch "XMPP - The definitive Guide" von Peter Saint-Andre, und Remko Tronçon :cite:`XMPPTheDefinitiveGuide:streamingxml` verwiesen.
+Um diese Nachrichten zu empfangen, wird eine Presence-Subscription benötigt, also ein Handshake, bei dem die Gegenstelle das "Abonnemont" des Kontakts akzeptiert. Dies wird üblicherweise von den Clients durchgeführt, wenn ein neuer Kontakt zum Roster hinzugefügt werden soll. [1]_
 
-Dieses Stanza wird durch viele XMPP Extension Protocols (XEP) erweitert, insbesondere  XEP-0060 ("Publish-Subcribe") und XEP-0163 ("Personal Eventing Protocol"), auf die noch näher eingegangen wird.
+.. [1] Der Handshake überschreitet die für diese Thesis benötigten Grundlagen, deshalb sei an dieser Stelle auf das Buch "XMPP - The definitive Guide" von Peter Saint-Andre, Kevin Smith und Remko Tronçon :cite:`XMPPTheDefinitiveGuide:streamingxml` verwiesen.
+
+Das Presence Stanza wird durch viele XMPP Extension Protocols (XEP) erweitert, insbesondere XEP-0060 ("Publish-Subcribe") und XEP-0163 ("Personal Eventing Protocol"), auf die noch näher eingegangen wird.
+
+
+Das Info/Query Stanza (IQ) implementiert einen Query-Response Mechanismus und ist vergleichbar mit der HTTP funktionalität.
+
+Ein IQ Stanza kann eins von vier type-Attributen haben:
+
+.. code-block:: none
+   :caption: 4 IQ Stanzatypes :cite:`Exten90:online`
+
+    get -- The stanza is a request for information or requirements.
+    set -- The stanza provides required data, sets new values, or replaces existing values.
+    result -- The stanza is a response to a successful get or set request.
+    error -- An error has occurred regarding processing or delivery of a previously-sent get or set (see Stanza Errors).
 
 
 .. code-block:: none
-   :caption: streambeispiel aus der core-rfc :cite:`Exten90:online`
+   :caption: vereinfachtes Streambeispiel aus der XMPP-Core RFC :cite:`Exten90:online`
 
     |--------------------|
     | <stream>           |
@@ -104,3 +121,4 @@ PEP
         - user bekommt alles was an rosterkontakten zu dem interest gepostet wird
 
       beispiel: user tune (XEP-0118)
+
