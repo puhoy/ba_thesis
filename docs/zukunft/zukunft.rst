@@ -1,8 +1,8 @@
 .. zukunft:
 
-==================
+
 Fazit und Ausblick
-==================
+~~~~~~~~~~~~~~~~~~
 
 mögliche Erweiterungen
 ======================

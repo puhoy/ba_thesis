@@ -136,7 +136,7 @@ SleekXMPP ist su aufgebaut, dass Funktion in Form von Plugins, die meiste spezif
 Um die Funktionalität abzubilden, eine Liste mit Hashwerten und zugehörigen Eigenschaften wie Dateiname- und Größe an alle Kontakte des Rosters zu senden, wurde hier auf dem Personal Eventing Protocol (XEP-0163) aufgebaut. (TODO: cite.., erklären)
 
 
-.. code-block::
+.. code-block:: Python
 
         from . import stanza
         from . import UserSharesStanza, ShareItemStanza, ResourceStanza, AddressStanza

@@ -5,7 +5,7 @@ XMPP
 Das Extensible Messaging and Presence Protocol ist im Grunde eine Technologie zum XML streamen (vgl. :cite:`XMPPTheDefinitiveGuide:streamingxml`) und kann so benutzt werden um alle möglichen Arten Textbasierter Informationen zu versenden und zu empfangen.
 
 Ein Stream beginnt immer mit dem öffnen eines <stream> Tags und endet mit dem schließenden </stream> Tag.
-Innerhalb dieses Streams können eine beliebige Menge an XML Stanzas versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also wiederum ein XML Tag in den wiederum auch Tags eingebettet sein können.
+Innerhalb dieses Streams können eine beliebige Menge an XML Stanzas versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also wiederum ein XML Tag in den wiederum auch Tags eingebettet sein können. (TODO: blöder satz)
 
 Für die Tiefe 1 des Streams also unmittelbar dem <stream> Stanza untergeordnet, sind 3 Basis-Stanzatypen definiert, die sich im default-Namespace "jabber:client" bzw. "jabber:server" befinden:
 

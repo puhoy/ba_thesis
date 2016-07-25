@@ -1,8 +1,8 @@
 .. 04_planung:
 
-=======
+
 Planung
-=======
+~~~~~~~
 
 .. toctree::
 

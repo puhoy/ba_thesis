@@ -1,8 +1,8 @@
 .. 04_grundlagen:
 
-============================
+
 Zusammenhänge und Grundlagen
-============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Um das in der Einleitung beschriebene Konzept umzusetzen werden einige Grundlagen über die Funktionsweise von XMPP und einigen der gängigen Erweiterungen benötigt.
 
