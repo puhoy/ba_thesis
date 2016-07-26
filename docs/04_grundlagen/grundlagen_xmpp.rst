@@ -48,10 +48,9 @@ Ein IQ Stanza kann eins von vier type-Attributen haben:
     error -- An error has occurred regarding processing or delivery of a previously-sent get or set (see Stanza Errors).
 
 
-
 Zur verdeutlichung wie diese unterschliedlichen Funktionen ineinander greifen, sei dieses Beispiel aus XMPP: The Definitive Guide :cite:`XMPPTheDefinitiveGuide` gegeben.
 
-.. code-block:: none
+.. code-block:: xml
    :caption: XML Beispielstream aus :cite:`XMPPTheDefinitiveGuide` (s.17)
 
 
@@ -86,6 +85,13 @@ Zur verdeutlichung wie diese unterschliedlichen Funktionen ineinander greifen, s
     C: </stream:stream>
 
 
+
+
+.. todo::
+
+    jid/resource
+
+
 Erweiterungen
 -------------
 
@@ -98,56 +104,51 @@ Einige der am häufigsten genutzten Erweiterungen sind Beispielsweise User Avata
 Als Beispiel, wie mit wenig Aufwand bestimmte Informationen an die eigenen Kontakte gesendet werden können, soll hier eine kurze Einführung in XEP-0118: User Tune, bzw. das zugrunde liegende Personal Eventing Protocol (XEP-0163) gegeben werden.
 
 
-
 PEP / User Tune
 ...............
-
 
  "Instead of extending <presence> stanzas directly, it is a best practice to make use of the Personal Eventing Protocol, or PEP, defined in XEP-0163, which allows users to subscribe to the extra data they are interested in. The PEP extension, along with Entity Capabilities (XEP-0114) and Service Discovery (XEP-0015), make providing extended presence-type information efficient and opt-in." :cite:`professionalxmpp:pep`
 
 
+Mit dem Personal Eventing Protocol existiert eine gute Möglichkeit, Nutzerbezogene Informationen zu teilen. Hier wird jedem Nutzeraccount eine PubSub Node zugeordnet, auf der er Informationen in die jeweiligen Namespaces publishen kann.
+
+Mithilfe von Entity Capabilities (XEP-0115) :cite:`XEP-0115:online` kann ein Kontakt dem Server mitteilen, welche Namespaces er unterstützt (PEP spricht hier von "interest"), und wird daraufhin nach diesen Namespaces gefilterte Listen mit Userinformationen bekommen. Außerdem wird der Server falls nötig Updates ausliefern.
+
+Eine zweite Möglichkeit, PEP Nachrichten zu erhalten ist das "auto-subscribe" Feature, bei dem die gesamte Presence eines Users abonniert wird. In diesem Fall bekommt der Client immer alle Nodes, es wird nicht gefiltert.
 
 
-
-.. todo::
-
-    service disco, pubsub, entity caps
-    pep:
-      https://oneminutedistraction.wordpress.com/2010/09/13/difference-between-pubsub-and-pep/
-
-      TL;DR:
-        - user postet "interest" in presence (bei der anmeldung)
-        - user bekommt alles was an rosterkontakten zu dem interest gepostet wird
-
-      beispiel: user tune (XEP-0118)
+Bereits in vielen Clients umgesetzt sind hier "User Geolocation" (XEP-0080), "User Mood" (XEP-0107), "User Activity" (XEP-0108) und "User Tune" (XEP-0118). All diese XEPs sind darauf ausgelegt, Informationen die sich auf den aktuellen Useraccount beziehen, an interessierte Kontakte auszuliefern.
 
 
+Ein übersichtliches Beispiel zur Anwendung von PEP ist in der User Tune Spezifikation gegeben.
+
+.. code-block:: xml
+   :caption: Beispiel: Publishing an event xep-0118 :cite:`XEP-0118:online`
+   :linenos:
+
+    <iq type='set'
+        from='stpeter@jabber.org/14793c64-0f94-11dc-9430-000bcd821bfb'
+        id='tunes123'>
+      <pubsub xmlns='http://jabber.org/protocol/pubsub'>
+        <publish node='http://jabber.org/protocol/tune'>
+          <item>
+            <tune xmlns='http://jabber.org/protocol/tune'>
+              <artist>Yes</artist>
+              <length>686</length>
+              <rating>8</rating>
+              <source>Yessongs</source>
+              <title>Heart of the Sunrise</title>
+              <track>3</track>
+              <uri>http://www.yesworld.com/lyrics/Fragile.html#9</uri>
+            </tune>
+          </item>
+        </publish>
+      </pubsub>
+    </iq>
+
+Hier sendet User 'stpeter@jabber.org' vom Endpunkt '14793c64-[...]' ein PEP Event Stanza auf die Node 'http://jabber.org/protocol/tune', was dem Namespace des eingebetteten Stanza "tune" entspricht und keine aufrufbare URL, sondern nur ein Name für Namespace und Node ist.
+
+Daraufhin werden alle User in seiner Kontaktliste, die die Presence oder den Namespace abonniert haben, das aktuelle pubsub Stanza bekommen.
 
 
-
-
-
-
-
-.. note::
-
-    The Jabber Software Foundation (JSF) was founded in 2001 to coordinate the efforts around the
-    Jabber protocol and its implementations. By late 2002, the JSF had submitted the core protocol specifications
-    to the IETF process, and an IETF working group was formed. In October 2004, this standards
-    process produced improved versions of the Jabber protocols, renamed XMPP, documented as
-    RFCs 3920, 3921, 3922, and 3923.
-
-    During the protocol’s early life, developers continued to expand its possibilities by submitting
-    protocol extensions to the JSF. These extensions were called Jabber Extension Proposals (JEPs).
-
-    Eventually the JSF and the extensions followed the naming change from Jabber to XMPP and
-    became the XMPP Standards Foundation (XSF) and XMPP Extension Proposals (XEPs).
-
-
-
-.. note::
-
-    auch interessant: definitive guide, p 117 ff
-
-
-
+Im Kapitel Implementierung/XMPP wird beschrieben, wie eine eigene PEP Erweiterung die für BitTorrent benötigten Informationen einbetten kann.

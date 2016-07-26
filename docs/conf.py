@@ -266,13 +266,13 @@ latex_elements = {
 
      # Additional stuff for the LaTeX preamble.
      #
-     'preamble': '''
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\usepackage[ngerman]{babel}
-
-'''
+#      'preamble': '''
+#
+# \usepackage{fancyhdr}
+# \pagestyle{fancy}
+# \usepackage[ngerman]{babel}
+#
+# '''
 
      # Latex figure (float) alignment
      #
