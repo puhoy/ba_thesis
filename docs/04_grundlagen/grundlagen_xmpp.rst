@@ -48,34 +48,85 @@ Ein IQ Stanza kann eins von vier type-Attributen haben:
     error -- An error has occurred regarding processing or delivery of a previously-sent get or set (see Stanza Errors).
 
 
+
+Zur verdeutlichung wie diese unterschliedlichen Funktionen ineinander greifen, sei dieses Beispiel aus XMPP: The Definitive Guide :cite:`XMPPTheDefinitiveGuide` gegeben.
+
 .. code-block:: none
-   :caption: vereinfachtes Streambeispiel aus der XMPP-Core RFC :cite:`Exten90:online`
-
-    |--------------------|
-    | <stream>           |
-    |--------------------|
-    | <presence>         |
-    |   <show/>          |
-    | </presence>        |
-    |--------------------|
-    | <message to='foo'> |
-    |   <body/>          |
-    | </message>         |
-    |--------------------|
-    | <iq to='bar'>      |
-    |   <query/>         |
-    | </iq>              |
-    |--------------------|
-    | ...                |
-    |--------------------|
-    | </stream>          |
-    |--------------------|
+   :caption: XML Beispielstream aus :cite:`XMPPTheDefinitiveGuide` (s.17)
 
 
+    C: <stream:stream>
+
+    C: <presence/>
+
+    C: <iq type="get">
+        <query xmlns="jabber:iq:roster"/>
+       </iq>
+
+    S: <iq type="result">
+         <query xmlns="jabber:iq:roster">
+           <item jid="alice@wonderland.lit"/>
+           <item jid="madhatter@wonderland.lit"/>
+           <item jid="whiterabbit@wonderland.lit"/>
+         </query>
+       </iq>
+
+    C: <message from="queen@wonderland.lit"
+                to="madhatter@wonderland.lit">
+         <body>Off with his head!</body>
+       </message>
+
+    S: <message from="king@wonderland.lit"
+                to="party@conference.wonderland.lit">
+         <body>You are all pardoned.</body>
+       </message>
+
+    C: <presence type="unavailable"/>
+
+    C: </stream:stream>
 
 
 Erweiterungen
 -------------
+
+ 'The “X” in XML and XMPP stands for “extensible,” so payload types are limited only by your imagination!' :cite:`XMPPTheDefinitiveGuide`
+
+Dadurch, dass XMPP auf der Extensible Markup Language aufbaut kann es relativ leicht um eigene Funktionen erweitert werden. Die XMPP Standards Foundation führt hierzu eine Liste der eingereichten Erweiterungen als XMPP Extension Protocols (XEP). Diese Umfassen zu diesem Zeitpunkt 379 Dokumente.
+
+Einige der am häufigsten genutzten Erweiterungen sind Beispielsweise User Avatars (XEP-0084), In-Band Registration (XEP-0077) und Service Discovery (XEP-0030). (TODO: im grunde unnötig, verwirrt nur. oder?)
+
+Als Beispiel, wie mit wenig Aufwand bestimmte Informationen an die eigenen Kontakte gesendet werden können, soll hier eine kurze Einführung in XEP-0118: User Tune, bzw. das zugrunde liegende Personal Eventing Protocol (XEP-0163) gegeben werden.
+
+
+
+PEP / User Tune
+...............
+
+
+ "Instead of extending <presence> stanzas directly, it is a best practice to make use of the Personal Eventing Protocol, or PEP, defined in XEP-0163, which allows users to subscribe to the extra data they are interested in. The PEP extension, along with Entity Capabilities (XEP-0114) and Service Discovery (XEP-0015), make providing extended presence-type information efficient and opt-in." :cite:`professionalxmpp:pep`
+
+
+
+
+
+.. todo::
+
+    service disco, pubsub, entity caps
+    pep:
+      https://oneminutedistraction.wordpress.com/2010/09/13/difference-between-pubsub-and-pep/
+
+      TL;DR:
+        - user postet "interest" in presence (bei der anmeldung)
+        - user bekommt alles was an rosterkontakten zu dem interest gepostet wird
+
+      beispiel: user tune (XEP-0118)
+
+
+
+
+
+
+
 
 
 .. note::
@@ -94,31 +145,9 @@ Erweiterungen
 
 
 
-Instead of extending <presence> stanzas directly, it is a best practice to make use of the Personal Eventing Protocol, or PEP, defined in XEP-0163, which allows users to subscribe to the extra data they are interested in. The PEP extension, along with Entity Capabilities (XEP-0114) and Service Discovery (XEP-0015), make providing extended presence-type information efficient and opt-in. :cite:`professionalxmpp:pep`
-
 .. note::
 
     auch interessant: definitive guide, p 117 ff
 
-.. todo::
 
-    beispielstream
-
-    service disco, pubsub, entity caps
-
-
-
-PEP
----
-
-.. todo::
-
-    pep:
-      https://oneminutedistraction.wordpress.com/2010/09/13/difference-between-pubsub-and-pep/
-
-      TL;DR:
-        - user postet "interest" in presence (bei der anmeldung)
-        - user bekommt alles was an rosterkontakten zu dem interest gepostet wird
-
-      beispiel: user tune (XEP-0118)
 
