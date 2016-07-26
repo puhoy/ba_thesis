@@ -85,11 +85,8 @@ Zur verdeutlichung wie diese unterschliedlichen Funktionen ineinander greifen, s
     C: </stream:stream>
 
 
-
-
-.. todo::
-
-    jid/resource
+Üblicherweise wird sich ein User mit seiner "Jabber ID" (JID) anmelden.
+Diese besteht aus dem Accountnamen, der Serveradresse und einer Resource, die die jeweiligen Endpunkte unterscheidet, im Format "username@serveraddresse/resource". die Kombination aus Accountname und Serveraddresse wird "bare" JID genannt, kommt die Ressource hinzu, spricht man von der "full" JID.
 
 
 Erweiterungen
@@ -99,9 +96,8 @@ Erweiterungen
 
 Dadurch, dass XMPP auf der Extensible Markup Language aufbaut kann es relativ leicht um eigene Funktionen erweitert werden. Die XMPP Standards Foundation führt hierzu eine Liste der eingereichten Erweiterungen als XMPP Extension Protocols (XEP). Diese Umfassen zu diesem Zeitpunkt 379 Dokumente.
 
-Einige der am häufigsten genutzten Erweiterungen sind Beispielsweise User Avatars (XEP-0084), In-Band Registration (XEP-0077) und Service Discovery (XEP-0030). (TODO: im grunde unnötig, verwirrt nur. oder?)
 
-Als Beispiel, wie mit wenig Aufwand bestimmte Informationen an die eigenen Kontakte gesendet werden können, soll hier eine kurze Einführung in XEP-0118: User Tune, bzw. das zugrunde liegende Personal Eventing Protocol (XEP-0163) gegeben werden.
+Als Möglichkeit, mit wenig Aufwand definierte Informationen an die eigenen Kontakte zu senden, soll hier eine Einführung in das Personal Eventing Protocol (XEP-0163), bzw. eine seiner Anwendungen, das auf PEP aufbauende "User Tune" (XEP-0118) gegeben werden.
 
 
 PEP / User Tune
@@ -117,7 +113,7 @@ Mithilfe von Entity Capabilities (XEP-0115) :cite:`XEP-0115:online` kann ein Kon
 Eine zweite Möglichkeit, PEP Nachrichten zu erhalten ist das "auto-subscribe" Feature, bei dem die gesamte Presence eines Users abonniert wird. In diesem Fall bekommt der Client immer alle Nodes, es wird nicht gefiltert.
 
 
-Bereits in vielen Clients umgesetzt sind hier "User Geolocation" (XEP-0080), "User Mood" (XEP-0107), "User Activity" (XEP-0108) und "User Tune" (XEP-0118). All diese XEPs sind darauf ausgelegt, Informationen die sich auf den aktuellen Useraccount beziehen, an interessierte Kontakte auszuliefern.
+Bereits in vielen Clients umgesetzt sind die auf PEP basierenden Erweiterungen "User Geolocation" (XEP-0080), "User Mood" (XEP-0107), "User Activity" (XEP-0108) und "User Tune" (XEP-0118). All diese XEPs sind darauf ausgelegt, Informationen die sich auf den aktuellen Useraccount beziehen, an interessierte Kontakte auszuliefern.
 
 
 Ein übersichtliches Beispiel zur Anwendung von PEP ist in der User Tune Spezifikation gegeben.
