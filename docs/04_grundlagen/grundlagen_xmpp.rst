@@ -2,10 +2,10 @@
 XMPP
 ====
 
-Das Extensible Messaging and Presence Protocol ist im Grunde eine Technologie zum XML streamen (vgl. :cite:`XMPPTheDefinitiveGuide:streamingxml`) und kann so benutzt werden um alle möglichen Arten Textbasierter Informationen zu versenden und zu empfangen.
+Das Extensible Messaging and Presence Protocol ist im Grunde eine Technologie zum XML streamen (vgl. :cite:`XMPPTheDefinitiveGuide:streamingxml`) und kann so benutzt werden um alle möglichen Arten textbasierter Informationen zu versenden und zu empfangen.
 
 Ein Stream beginnt immer mit dem öffnen eines <stream> Tags und endet mit dem schließenden </stream> Tag.
-Innerhalb dieses Streams können eine beliebige Menge an XML Stanzas versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also wiederum ein XML Tag in den wiederum auch Tags eingebettet sein können. (TODO: blöder satz)
+Innerhalb dieses Streams können eine beliebige Menge an XML Stanzas versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also als ein XML Tag in den wiederum Tags eingebettet sein können.
 
 Für die Tiefe 1 des Streams also unmittelbar dem <stream> Stanza untergeordnet, sind 3 Basis-Stanzatypen definiert, die sich im default-Namespace "jabber:client" bzw. "jabber:server" befinden:
 
@@ -106,7 +106,7 @@ PEP / User Tune
  "Instead of extending <presence> stanzas directly, it is a best practice to make use of the Personal Eventing Protocol, or PEP, defined in XEP-0163, which allows users to subscribe to the extra data they are interested in. The PEP extension, along with Entity Capabilities (XEP-0114) and Service Discovery (XEP-0015), make providing extended presence-type information efficient and opt-in." :cite:`professionalxmpp:pep`
 
 
-Mit dem Personal Eventing Protocol existiert eine gute Möglichkeit, Nutzerbezogene Informationen zu teilen. Hier wird jedem Nutzeraccount eine PubSub Node zugeordnet, auf der er Informationen in die jeweiligen Namespaces publishen kann.
+Mit dem Personal Eventing Protocol (PEP) existiert eine gute Möglichkeit, Nutzerbezogene Informationen zu teilen. Hier wird jedem Nutzeraccount eine PubSub Node zugeordnet, auf der er Informationen in die jeweiligen Namespaces publishen kann.
 
 Mithilfe von Entity Capabilities (XEP-0115) :cite:`XEP-0115:online` kann ein Kontakt dem Server mitteilen, welche Namespaces er unterstützt (PEP spricht hier von "interest"), und wird daraufhin nach diesen Namespaces gefilterte Listen mit Userinformationen bekommen. Außerdem wird der Server falls nötig Updates ausliefern.
 
