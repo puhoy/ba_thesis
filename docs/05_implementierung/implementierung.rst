@@ -44,7 +44,4 @@ Logging
     logging modul, lesen aus yml...
 
 
-.. raw:: latex
-
-    \clearpage
 

@@ -47,6 +47,3 @@ Dazu wird ein minimaler XMPP- und BitTorrent Client implementiert, der dazu dien
     "kurze Erörterung der Randbedingungen, die insbesondere darlegt, was vorgegeben und daher "nur" genutzt und was eigenständig entwickelt wurde. Außerdem soll in der Einleitung der weitere Aufbau der Arbeit beschrieben werden"
 
 
-.. raw:: latex
-
-    \clearpage

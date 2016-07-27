@@ -13,7 +13,3 @@ Außerdem wird im darauf Folgenden Kapitel "BitTorrent" auf einige Grundlagen zu
     grundlagen_xmpp
     grundlagen_bt
 
-
-.. raw:: latex
-
-\clearpage
