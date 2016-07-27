@@ -5,7 +5,7 @@ rankdir=BT
 "2" [label="BitTorrentClient", shape="record"];
 "3" [label="ContactShares", shape="record"];
 "4" [label="Handles", shape="record"];
-"5" [label="JsonRpcAPI", shape="record"];
+"5" [label="Web", shape="record"];
 "8" [label="Subscriber", shape="record"];
 "11" [label="XmppClient", shape="record"];
 "2" -> "8" [arrowhead="empty", arrowtail="none"];

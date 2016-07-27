@@ -1,5 +1,9 @@
 :orphan:
 
+#########
+BA Thesis
+#########
+
 .. toctree::
 
    01_abstract/abstract

@@ -258,7 +258,7 @@ htmlhelp_basename = 'toolsdoc'
 latex_elements = {
      # The paper size ('letterpaper' or 'a4paper').
      #
-     'papersize': 'a4paper',
+     'papersize': 'letterpaper',
 
      # The font size ('10pt', '11pt' or '12pt').
      #
@@ -295,7 +295,7 @@ latex_documents = [
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
 #
-latex_use_parts = True
+# latex_use_parts = True
 
 # If true, show page references after internal links.
 #
