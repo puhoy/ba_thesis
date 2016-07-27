@@ -27,12 +27,12 @@ Das Programm gliedert sich in verschiedene Kernkomponenten (:num:`modules`), die
     Als Libary wird libtorrent verwendet, eine in c++ geschriebene Bibliothek mit optionaler Python Anbindung.
 
 
- - eine Nutzerschnittstelle zur Bedienung (JsonRpcAPI)
+ - eine Nutzerschnittstelle zur Bedienung (Web)
 
-    Das JsonRPC Modul dient als Schnittstelle für Frontends.
+    Die JsonRPC API des Web Moduls dient als Schnittstelle für Frontends.
     Da das Programm theoretisch als Daemon auf einem entfernten Rechner laufen könnte, öffnet es einen Port zur Steuerung.
-    Außerdem kann es selbst eine Weboberfläche zur Darstellung der implementierten Funktionen starten.
-    Hier wurde das auf dem Python Web-Framework Flask aufbauende "Flask JSON-RPC" verwendet.
+    Hier wurde mit Hilfe des Frameworks Flask ein minimales Webinterface und eine JSONRPC Schnittstelle für andere externe Anwendungen entwickelt.
+
 
  - ein Modul zur IPC (Subscriber)
 

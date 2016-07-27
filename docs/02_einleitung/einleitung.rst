@@ -15,19 +15,11 @@ Durch die Möglichkeit, XMPP Server ähnlich wie Email Server in einem dezentral
 Allerdings bringt die Tatsache, dass XMPP auf einem Textbasierten Protokoll aufbaut auch Nachteile mit sich.
 
 So werden im Falle der Übertragungen von Binärdaten diese erst Base64 kodiert, um sie in den XML Stream einzubetten.
-Dies vergrößert die Datenmenge auf ca. 4/3 für diese sogenannten In-Band Übertragungen.
-Häufig wird die Übertragungsrate dieser in XML-Datenpakete dann noch von den beteiligten Servern gedrosselt.
-
-.. todo::
-
-    - link zu base64 erklärung suchen;
-    - verweisen auf erklärungen in der BA zum thema in-band übertragungen, XEP-0047
-    - möglichst ohne wertung erklären das man sich totwarten kann bis so eine übertragung fertig wird
-
+Dies vergrößert die Datenmenge auf ca. 4/3 für diese sogenannten In-Band Übertragungen und häufig wird die Übertragungsrate dieser in XML-Datenpakete dann noch von den beteiligten Servern gedrosselt.
 
 Deshalb stellen In-Band Übertragungen in den meisten Fällen nur den Fallback Modus dar, bevorzugt werden Out-of-Band Übertragungen.
 
-Dies bedeutet, dass eine separate Client-zu-Client Verbindung hergestellt wird, über die die Datenübertragung stattfinden soll. Da hier aber mehrere Erweiterungen existieren, die wiederum von beteiligten Clients sowie Servern unterstützt werden müssen, schlagen diese Übertragungen häufig fehl, sodass in vielen Fällen die Clients auf In-Band Übertragung zurückfallen oder die Übertragung gar nicht zustande kommt.
+Das bedeutet, dass eine separate Client-zu-Client Verbindung hergestellt wird, über die die Datenübertragung stattfinden soll. Da hier aber mehrere Erweiterungen existieren, die wiederum von beteiligten Clients sowie Servern unterstützt werden müssen, schlagen diese Übertragungen häufig fehl, sodass in vielen Fällen die Clients auf In-Band Übertragung zurückfallen oder die Übertragung gar nicht zustande kommt.
 
 
 Diese Thesis untersucht eine andere Methode, die Dateiübertragungen abzuwickeln: über das Peer-to-Peer Protokoll BitTorrent (BT).
@@ -37,12 +29,10 @@ Das Herstellen der Verbindung zwischen den Clients sowie die eigentliche Datenü
 
 Dazu wird ein minimaler XMPP- und BitTorrent Client implementiert, der dazu dient die für den Datenaustausch wichtigen Informationen unter den Teilnehmern zu verteilen, und gegebenenfalls die Datenübertragungen abzuwickeln.
 
+
 .. todo::
 
-    - (warum BitTorrent diese Lücke füllen würde)
-    - BT ein bisschen erklären
     - was ich in welchem Kapitel beschreibe
-
 
     "kurze Erörterung der Randbedingungen, die insbesondere darlegt, was vorgegeben und daher "nur" genutzt und was eigenständig entwickelt wurde. Außerdem soll in der Einleitung der weitere Aufbau der Arbeit beschrieben werden"
 

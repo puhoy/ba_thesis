@@ -18,7 +18,9 @@ Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie fo
         components/
             xmpp/
             bt/
-            jsonrpc_api/
+            web/
+                api/
+                gui/
             models/
             pubsub/
         bitweend.py

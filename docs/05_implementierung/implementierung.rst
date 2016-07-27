@@ -23,7 +23,7 @@ Implementierung
 
     implementierung_xmpp
     implementierung_bt
-    implementierung_jsonrpc
+    implementierung_web
     implementierung_ipc
     implementierung_tests
 
