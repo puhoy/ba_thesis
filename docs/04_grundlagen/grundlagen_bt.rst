@@ -18,7 +18,18 @@ In deutsch etwa:
 
 Der Vorteil von BitTorrent als Übertragungsprotokoll ist also, dass wenn mehr als ein Kontakt dieselbe Datei zum Download anbietet, auch von mehreren Kontakten gleichzeitig heruntergeladen werden kann. Hierzu würde Normalerweise der Tracker die Peers vermitteln. In Dieser Implementierung soll dies jedoch über XMPP geschehen.
 
-Die Identifikation der Dateien, normalerweise per .torrent File, basiert in der umgesetzten Implementierung auf einem SHA-1 Hash wie er auch in einem Magnetlink benutzt würde. So kann einer Datei ein eindeutiger Hashwert zugeordnet werden.
+Die Identifikation der Dateien findet laut der BitTorrent Protocol Specification (:cite:`www.b44:online`) über ein "info dict" im torrent-File statt. In dieser Implementierung soll jedoch eine andere Methode genutzt werden: Die in der BitTorrent Extension Protocol (BEP) 9 beschriebene unterstützung für Magnet Links.
+
+ "The purpose of this extension is to allow clients to join a swarm and complete a download without the need of downloading a .torrent file first. This extension instead allows clients to download the metadata from peers. It makes it possible to support magnet links, a link on a web page only containing enough information to join the swarm (the info hash)." :cite:`www.b79:online`
+
+Das in der Spezifikation beschriebene Format eines Magnet Links ist dabei wie Folgt:
+
+ magnet:?xt=urn:btih:<info-hash>&dn=<name>&tr=<tracker-url>&x.pe=<peer-address>
+
+Da kein Tracker benötigt wird um Informationen zu verteilen und dynamisch Peer Adressen hinzugefügt werden sollen, wird hier also nur der Info Hash benötigt. Dieser ist der SHA-1 Hash des info dict des torrent-Files.
+
+Da in der zur Implementierung genutzten Libary (libtorrent) die Möglichkeit besteht, einen neuen Torrent auf Basis eines Magnet Links anzulegen der nur einen Info Hash enthält, und später dynamisch Peer Adressen hinzugefügt werden können, besteht also die Möglichkeit das Peer Management zur Laufzeit des Torrents abzuwickeln.
+
 
 
 

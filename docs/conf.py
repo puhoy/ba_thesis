@@ -277,6 +277,8 @@ latex_elements = {
      # Latex figure (float) alignment
      #
      # 'figure_align': 'htbp',
+    'fncychap': '\\usepackage[Sonny]{fncychap}'
+
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -284,7 +286,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ba.tex', 'BA Thesis',
-     'Jan Hartmann\n', 'article'),
+     'Jan Hartmann\n', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
