@@ -12,6 +12,13 @@ Das folgende Kapitel beschreibt den Aufbau der Komponente. Im Kapitel "PEP Plugi
 Aufbau der Komponente
 ---------------------
 
+.. figure:: resources/classes_xmpp_client.png
+   :align: center
+   :alt: Klassendiagramm XMPP
+
+   Klassendiagramm XMPP
+
+
 .. code-block:: none
    :caption: Übersicht Aufbau des XMPP Moduls
 
@@ -125,6 +132,18 @@ Nach der API wird der BitTorrent Client in einem eigenen Prozess gestartet. Da a
 
 Plugins
 -------
+
+.. figure:: resources/classes_xmpp_user_share.png
+   :align: center
+   :alt: Klassendiagramm XMPP Erweiterung
+
+   Klassendiagramm XMPP Erweiterung
+
+.. figure:: resources/classes_xmpp_user_share_stanzas.png
+   :align: center
+   :alt: Klassendiagramm der benötigten Stanzas
+
+   Klassendiagramm der benötigten Stanzas
 
 .. todo::
 

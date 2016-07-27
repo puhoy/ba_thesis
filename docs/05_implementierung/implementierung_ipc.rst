@@ -8,6 +8,13 @@ Wie bei Publish-Subscribe des XMPP Protokolls können Teilnehmer (in diesem Fall
 Hierzu wurde eine Klasse "Subscriber" implementiert die als Basisklasse für alle anderen Klassen dient, die Nachrichten empfangen.
 Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachrichten enthält, eine subscribe-Methode um Nachrichten zu Topics zu "Abonnieren" sowie eine has_messages- und get_messages-Methode um den Zustand der Queue abzufragen und Nachrichten zu entnehmen.
 
+Im Folgenden Diagramm ist außerdem eine Klasse "AutoSub" zu sehen, die dazu dient die PubSub Klasse zu testen, und die gleichzeitig als einfaches Beispiel dienen soll, wie eine Klasse einige ihrer Methoden direkt als Topics abonnieren kann. Hierauf wird am Ende dieses Kapitels genauer eingegangen.
+
+.. figure:: resources/classes_pubsub.png
+   :align: center
+   :alt: Klassendiagramm Pubsub
+
+
 
 .. code-block:: python
    :linenos:
@@ -16,8 +23,6 @@ Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachri
 
     class Subscriber:
         def __init__(self, name='', autosubscribe=False):
-            # [...]
-            self.queue = queue.Queue()
             # [...]
             if autosubscribe:
                 listen_to = [x for x, y in self.__class__.__dict__.items() if
@@ -39,14 +44,14 @@ Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachri
         # [...]
 
 
-Im einfachsten Fall wird ein Subscriber Objekt ohne Parameter erstellt. Dann wird nur eine Nachrichtenqueue angelegt (Zeile 4) und es können Topics mit subscribe('topicname') abonniert werden.
+Im einfachsten Fall wird ein Subscriber Objekt ohne Parameter erstellt. Dann wird nur eine Nachrichtenqueue angelegt und es können Topics mit subscribe('topicname') abonniert werden.
 
 .. code-block:: python
 
     s = Subscriber()
     s.subscribe('some_topic')
 
-Dazu wird in der Methode ein Dictionary mit den subscribern des Topics geholt (Zeile 14), oder wenn nicht vorhanden, ein neues Topic angelegt.
+Dazu wird in der Methode ein Dictionary mit den Subscribern des Topics geholt (Zeile 14), oder wenn nicht vorhanden, ein neues Topic angelegt.
 Falls das Subscriber Objekt noch nicht in der 'subscribers'-Liste ist, wird es angehangen (Zeile 18) und die Methode mit True verlassen, andernfalls bleibt die Liste unverändert und False wird zurück gegeben.
 
 Eine interessantere Anwendung ergibt sich, wenn eine Subklasse von Subscriber erstellt und autosubscribe mit True aufgerufen wird. In diesem Fall wird erst eine Liste mit allen Methoden erstellt, deren Name mit "on_" beginnt (Zeile 7 und 8). Dann wird über die Liste der gesammelten Namen iteriert: das "on_" am Anfang wird abgeschnitten, und der resultierende String wird als Topic abonniert.

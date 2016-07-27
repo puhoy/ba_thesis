@@ -19,8 +19,6 @@ Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie fo
             xmpp/
             bt/
             web/
-                api/
-                gui/
             models/
             pubsub/
         bitweend.py
@@ -37,9 +35,10 @@ bitween/
    Der Name des Programms und der Name des Verzeichnisses das den Programmcode enthält.
    Im Unterverzeichnis "components" befinden sich die Module in denen die jeweiligen funktionen und Klassen implementiert wurden.
     Ein Modul umfasst dabei jeweils eine Datei "__init__.py", die das Verzeichnis als Modul in Python importierbar macht und (je nach Modul) beliebige andere .py-Dateien. Da in Python keine privaten Methoden existieren, werden in der __init__.py werden alle alle Funktionen oder Klassen aus dem Modul importiert, die von anderen Modulen benötigt werden könnten. So wird eine logische Abgrenzung geschaffen zu Elementen die nur im Modul benötigt werden, und solchen die für die Nutzung von anderen Modulen gedacht sind.
+   Der Aufbau der einzelnen Komponenten wird in den folgenden Kapiteln besprochen.
 
 bitweend.py
-   Der Einstiegspunkt für das Programm, zum starten des daemons. (Bitweend ist hier kurz für Bitween Daemon)
+   Der Einstiegspunkt für das Programm, zum starten des Daemons. (Bitweend ist hier kurz für Bitween Daemon)
 
 bitweenc.py
    Client für die JsonRPC API des Programms.
