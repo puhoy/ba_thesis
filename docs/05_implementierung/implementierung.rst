@@ -6,11 +6,11 @@ Implementierung
 
 
 
+
+
 .. todo::
 
     # python (skriptsprache, gut für prototyping undso.)
-
-    ## messaging zwischen threads ()
 
     Verzeichnisstruktur eines Python Moduls (http://docs.python-guide.org/en/latest/writing/structure/#structure-of-the-repository)
 

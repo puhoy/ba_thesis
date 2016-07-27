@@ -3,13 +3,7 @@ IPC
 ===
 
 Die Kommunikation zwischen den Threads wurde durch eine PublishSubscribe Pattern gelöst.
-Wie bei XMPP-PubSub können Teilnehmer (in diesem Fall Objekte der jeweiligen Klassen) Nachrichten zu bestimmten Topics abonnieren ("subscriben"). Außerdem steht eine "publish" Methode zur Verfügung, mit der Nachrichten auf bestimmten Topics veröffentlicht werden können.
-
-.. todo::
-
-   https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern
-
-   link xmpp pubsub
+Wie bei Publish-Subscribe des XMPP Protokolls können Teilnehmer (in diesem Fall Objekte der jeweiligen Klassen) Nachrichten zu bestimmten Topics abonnieren ("subscriben"). Außerdem steht eine "publish" Methode zur Verfügung, mit der Nachrichten auf bestimmten Topics veröffentlicht werden können.
 
 Hierzu wurde eine Klasse "Subscriber" implementiert die als Basisklasse für alle anderen Klassen dient, die Nachrichten empfangen.
 Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachrichten enthält, eine subscribe-Methode um Nachrichten zu Topics zu "Abonnieren" sowie eine has_messages- und get_messages-Methode um den Zustand der Queue abzufragen und Nachrichten zu entnehmen.

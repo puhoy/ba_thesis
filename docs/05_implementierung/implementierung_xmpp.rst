@@ -103,7 +103,7 @@ Eigene Addressen finden
 
 (Zeile 3 und 4, Zeile 14)
 self.addresses ist hier ein neues Objekt der Addresses Klasse die die eigenen IPv4 und v6 Adressen und die Ports enthält, die der BitTorrent Client nutzt.
-self.addresses.fetch_addresses() startet nun den den prozess, die eigene IPv4 Adresse herauszufinden. Dies geschieht mit Hilfe des Python Paketes "ipgetter". In diesem sind Services gelistet, die die IP Adresse zurück geben, von denen sie kontaktiert wurden. Auf diese Art ist es einfach möglich, auch hinter einem NAT-Router die eigene öffentliche IPv4 zu bestimmen.
+self.addresses.fetch_addresses() startet nun den den Prozess, die eigene IPv4 Adresse herauszufinden. Dies geschieht mit Hilfe des Python Paketes "ipgetter". In diesem sind Services gelistet, die die IP Adresse zurück geben, von denen sie kontaktiert wurden. Auf diese Art ist es einfach möglich, auch hinter einem NAT-Router die eigene öffentliche IPv4 zu bestimmen.
 Als zweiten Schritt wird mithilfe des Python Paketes "netifaces" eine Liste der globalen IPv6 Adressen erstellt. Da es hier nicht möglich ist, die Flags für die temporären Adressen auszulesen, werden ganz einfach alle Adressen gelistet. Zu diesem Zeitpunkt existiert bereits ein Pull-Request für das netifaces Git-Repository auf BitBucket, der jedoch nur BSD und Mac-OS unterstützt und noch nicht in dem Hauptentwicklungszweig integriert wurde. :cite:`al45t61:online`
 
 Zum Schluss wird, nach dem starten des BitTorrent Clients (Zeile 14), noch der BitTorrent Port gesetzt.
@@ -131,7 +131,7 @@ Plugins
     was sagt die sleekxmpp doku zu plugins? (da war iwas)
 
 
-SleekXMPP ist su aufgebaut, dass Funktion in Form von Plugins, die meiste spezifische XEP implementierungen darstellen, erweitert werden kann.
+SleekXMPP ist so aufgebaut, dass Funktion in Form von Plugins, die meiste spezifische XEP Implementierungen darstellen, erweitert werden kann.
 
 Um die Funktionalität abzubilden, eine Liste mit Hashwerten und zugehörigen Eigenschaften wie Dateiname- und Größe an alle Kontakte des Rosters zu senden, wurde hier auf dem Personal Eventing Protocol (XEP-0163) aufgebaut. (TODO: cite.., erklären)
 
