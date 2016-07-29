@@ -12,24 +12,19 @@ Das folgende Kapitel beschreibt den Aufbau der Komponente. Im Kapitel "PEP Plugi
 Aufbau der Komponente
 ---------------------
 
-.. figure:: resources/classes_xmpp_client.png
+.. figure:: resources/classes_xmpp.png
    :align: center
    :alt: Klassendiagramm XMPP
 
    Klassendiagramm XMPP
 
+Die Klasse XmppClient leitet sich ab aus ser Klasse ClientXMPP der Python Bibliothek sleekxmpp, in der jede Grundlegende Funktionalität für einen XMPP Client definiert ist und der Subscriber Klasse aus dem im Kapitel "IPC" beschriebenen Modul pubsub, die für die Möglichkeit der Inter Process Communication sorgt.
 
-.. code-block:: none
-   :caption: Übersicht Aufbau des XMPP Moduls
+Im Konstruktor der XmppClient Klasse (bitween/components/xmpp/client.py) werden einerseits alle XMPP-bezogenen Konfigurationen vorgenommen, aber auch die anderen Komponenten der Anwendung gestartet.
+Im ersten Schritt ist dies also das Einrichten der XMPP Handler, sowie das Registrieren der benötigten XMPP Erweiterungen.
+Hier wird erst die Basisklasse mit Jabber ID und Passwort initialisiert.
 
-    xmpp/
-        __init__.py
-        client.py
-        share_plugin/
-            [...]
-
-
-Da im Konstruktor einerseits alles XMPP-bezogene eingerichtet eingerichtet wird, andererseits aber auch einige andere Komponenten gestartet werden, wird der code in zwei Beispielen erklärt.
+(TODO)
 
 
 .. code-block:: python
@@ -37,22 +32,20 @@ Da im Konstruktor einerseits alles XMPP-bezogene eingerichtet eingerichtet wird,
    :caption: Konstruktor Teil 1: einbinden des Schedulers und registrieren der Plugins
    :name: xmpp-client-init
 
-    class XmppClient(sleekxmpp.ClientXMPP, Subscriber):
-        def __init__(self, jid, password, api_host='localhost', api_port=8080):
-            Subscriber.__init__(self, autosubscribe=True)
-            sleekxmpp.ClientXMPP.__init__(self, jid, password)
+        Subscriber.__init__(self, autosubscribe=True)
+        sleekxmpp.ClientXMPP.__init__(self, jid, password)
 
-            self.add_event_handler("session_start", self.start)
-            self.scheduler.add("_schedule", 2, self.process_queue, repeat=True)
-            self.add_event_handler('shares_publish', self.on_shares_publish)
+        self.add_event_handler("session_start", self.start)
+        self.scheduler.add("_schedule", 2, self.process_queue, repeat=True)
+        self.add_event_handler('shares_publish', self.on_shares_publish)
 
-            self.register_plugin('xep_0030')  # service discovery
-            self.register_plugin('xep_0115')  # entity caps
-            self.register_plugin('xep_0128')  # service discovery extensions
-            self.register_plugin('xep_0163')  # pep
-            self.register_plugin('shares', module=share_plugin)
+        self.register_plugin('xep_0030')  # service discovery
+        self.register_plugin('xep_0115')  # entity caps
+        self.register_plugin('xep_0128')  # service discovery extensions
+        self.register_plugin('xep_0163')  # pep
+        self.register_plugin('shares', module=share_plugin)
 
-            # [...]
+        # [...]
 
 Der erste Teil des Konstruktors widmet sich dem Setup der Grundfunktionen der Komponente:
 
