@@ -5,7 +5,7 @@ Implementierung
 ~~~~~~~~~~~~~~~
 
 
-
+In den folgenden Kapiteln
 
 
 .. todo::
@@ -18,11 +18,11 @@ Implementierung
 
 .. toctree::
 
-    implementierung_entwurf
     implementierung_allgemeines
+    implementierung_entwurf
 
-    implementierung_xmpp
     implementierung_bt
+    implementierung_xmpp
     implementierung_web
     implementierung_ipc
     implementierung_tests

@@ -18,13 +18,9 @@ Aufbau der Komponente
 
    Klassendiagramm XMPP
 
-Die Klasse XmppClient leitet sich ab aus ser Klasse ClientXMPP der Python Bibliothek sleekxmpp, in der jede Grundlegende Funktionalität für einen XMPP Client definiert ist und der Subscriber Klasse aus dem im Kapitel "IPC" beschriebenen Modul pubsub, die für die Möglichkeit der Inter Process Communication sorgt.
+Die Klasse XmppClient leitet sich ab aus der Klasse ClientXMPP der Python Bibliothek sleekxmpp, in der jede Grundlegende Funktionalität für einen XMPP Client definiert ist und der Subscriber Klasse aus dem im Kapitel "IPC" beschriebenen Modul pubsub, die für die Möglichkeit der Inter Process Communication sorgt.
 
 Im Konstruktor der XmppClient Klasse (bitween/components/xmpp/client.py) werden einerseits alle XMPP-bezogenen Konfigurationen vorgenommen, aber auch die anderen Komponenten der Anwendung gestartet.
-Im ersten Schritt ist dies also das Einrichten der XMPP Handler, sowie das Registrieren der benötigten XMPP Erweiterungen.
-Hier wird erst die Basisklasse mit Jabber ID und Passwort initialisiert.
-
-(TODO)
 
 
 .. code-block:: python
@@ -36,16 +32,31 @@ Hier wird erst die Basisklasse mit Jabber ID und Passwort initialisiert.
         sleekxmpp.ClientXMPP.__init__(self, jid, password)
 
         self.add_event_handler("session_start", self.start)
-        self.scheduler.add("_schedule", 2, self.process_queue, repeat=True)
-        self.add_event_handler('shares_publish', self.on_shares_publish)
 
         self.register_plugin('xep_0030')  # service discovery
         self.register_plugin('xep_0115')  # entity caps
         self.register_plugin('xep_0128')  # service discovery extensions
         self.register_plugin('xep_0163')  # pep
+
         self.register_plugin('shares', module=share_plugin)
+        self.add_event_handler('shares_publish', self.on_shares_publish)
+
+        self.scheduler.add("_schedule", 2, self.process_queue, repeat=True)
 
         # [...]
+
+
+Hier wird erst die Basisklasse mit Jabber ID und Passwort initialisiert und die self.start Methode mit dem session_start Event verknüpft.
+Danach werden die benötigten XEP Plugins registriert. Diese implementieren die entsprechende Funktionalität des XMPP Protokolls und sind Teil von sleekxmpp.
+
+Das "shares" Plugin wurde als Modul share_plugin implementiert und ist zuständig für das Verteilen der Metadaten der BitTorrent Freigaben und wird im folgenden Kapitel TODO beschrieben.
+
+
+
+ und die benötigten Erweiterungen und ein Scheduler zum auslesen des Message Queues registriert.
+Die XEP-Plugins
+
+
 
 Der erste Teil des Konstruktors widmet sich dem Setup der Grundfunktionen der Komponente:
 

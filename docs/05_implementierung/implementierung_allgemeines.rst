@@ -28,8 +28,8 @@ Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie fo
 bitween/
    Der Name des Programms und der Name des Verzeichnisses das den Programmcode enthält.
 
-   Im Unterverzeichnis "components" befinden sich die Module in denen die jeweiligen funktionen und Klassen implementiert wurden.
-    Ein Modul umfasst dabei jeweils eine Datei "__init__.py", die das Verzeichnis als Modul in Python importierbar macht und (je nach Modul) beliebige andere .py-Dateien. Da in Python keine privaten Methoden existieren, werden in der __init__.py werden alle alle Funktionen oder Klassen aus dem Modul importiert, die von anderen Modulen benötigt werden könnten. So wird eine logische Abgrenzung geschaffen zu Elementen die nur im Modul benötigt werden, und solchen die für die Nutzung von anderen Modulen gedacht sind.
+   Im Unterverzeichnis "components" befinden sich die Module in denen die jeweiligen Funktionen und Klassen implementiert wurden.
+   Ein Modul umfasst dabei jeweils eine Datei "__init__.py", die das Verzeichnis als Modul in Python importierbar macht. Da in Python keine privaten Methoden existieren, werden in der __init__.py werden alle alle Funktionen oder Klassen aus dem Modul importiert, die von anderen Modulen benötigt werden könnten. So wird eine logische Abgrenzung geschaffen zu Elementen die nur im Modul benötigt werden, und solchen die für die Nutzung von anderen Modulen gedacht sind.
    Der Aufbau der einzelnen Komponenten wird in den folgenden Kapiteln besprochen.
 
 bitweend.py
