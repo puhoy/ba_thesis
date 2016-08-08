@@ -83,5 +83,20 @@ Ein Beispiel zur Funktion:
    get_message liefert als topic den String "test", als args = [2, 4] und als kwargs = {'name': 'Peter'}. Dann wird im Try-Block eine Funktion mit Namen "on_test" gesucht und der Variable f zugewiesen. In dieser Klasse würde an dieser Stelle schon eine Exception geworfen und eine Fehlermeldung ausgegeben werden.
    Wäre die Funktion vorhanden, würde dann on_test(2, 4, name='Peter') aufgerufen werden.
 
+So können alle Funktionen die mit "on_" beginnen "von außen" genutzt werden. Beispielsweise kann ein neuer Torrent per SHA1 Hash über die Methode on_add_hash hinzugefügt werden. In dieser würde dann ein neuer Torrent angelegt und entsprechende IP-Adressen und Ports hinzufügen, wo der Torrent zu finden ist. Dazu müssen natürlich in der XMPP Komponente die entsprechenden Informationen gesammelt worden sein.
+
+In der handle_alert Methode wird jeweils eine Meldung der Session verarbeitet. So wird zum Beispiel bei einem "torrent_update_alert" eine Nachricht mit topic "publish_shares" erzeugt, was den XMPP Client veranlassen würde, eine Liste der aktuellen Torrents zu senden. Ein "portmap_alert" wäre zu erwarten, wenn ein Port per NAT gemapped wurde. In diesem Fall würde eine Nachricht auf topic "set_port" mit dem externen Port als Argument erzeugt.
+
+Beenden des Run-Loops
+---------------------
+
+Wird "on_exit()" aufgerufen, wird die "end" Variable auf True gesetzt und das "saubere" Beenden des Threads wird eingeleitet.
+Als erstes werden alle Einträge aus der SQLite Datenbank entfernt, damit nur Torrents die noch Teil der Session sind, gespeichert werden können.
+Dann wird für jeden Torrent das Erzeugen der "resume data" angetriggert.
+
+Danach läuft eine Schleife, solange noch Torrent Handles vorhanden sind. Da für jeden Torrent ein "save_resume_data_alert" erwartet wird, kann im Handling dieses Alerts der Torrent in die SQLite Datenbank gespeichert und aus der Session entfernt werden.
+Wird stattdessen ein "save_resume_data_failed_alert" empfangen, wird der Torrent ohne zu speichern aus der Session entfernt. Das kommt vor, wenn ein Torrent neu hinzugefügt wurde und das Programm beendet wird bevor genug Daten geladen wurden um ein "komplettes" Torrent File zu erzeugen.
 
 
+
+Um nun eine Übersicht der eigenen Torrents zu versenden und Daten über andere Torrents zu empfangen wird die XMPP Komponente benötigt, die im folgenden Kapitel beschrieben wird.
