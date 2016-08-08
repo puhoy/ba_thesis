@@ -10,6 +10,8 @@ Upnp / NATpnp
 
 .. todo::
 
+    vor/nachteile libtorrent
+    (installation hgauptsächlich)
 
 IPv4 / v6
 ---------
