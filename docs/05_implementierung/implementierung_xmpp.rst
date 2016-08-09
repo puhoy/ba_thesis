@@ -1,12 +1,121 @@
 XMPP
 ====
 
-Die Hauptkomponente des Programms stellt die XMPP Komponente dar.
-Neben den XMPP bezogenen Funktionen wickelt die Komponente beim starten das herausfinden der eigenen öffentlichen IP Adressen ab und startet die JsonRPC API (Kapitel TODO) und den BitTorrent Client (Kapitel TODO).
+Im vorigen Kapitel BitTorrent wurde die Implementierung eines BitTorrent Clients beschrieben, der eine Liste der zu verteilenden Torrents generiert, und der andererseits die IP Adressen und Ports der zu Downloadenden Torrents benötigt.
 
-Außerdem wurde ein Plugin implementiert, das auf Basis der XMPP Erweiterung PEP :cite:`XEP-0163:online` Freigabelisten versendet und empfängt.
+Die XMPP Komponente muss nun also diese Liste inklusive der eigenen IP Adressen an alle Kontakte verteilen und außerdem eine Liste der empfangenen Torrents und der entsprechenden Quellen führen.
 
-Das folgende Kapitel beschreibt den Aufbau der Komponente. Im Kapitel "PEP Plugin" wird die Imlementierung des Plugins  und des zugehörigen ContactShares-Models besprochen, in dem die empfangenen Freigabelisten gehalten werden.
+Das hier verwendete Python Modul sleekxmpp bietet hier die Möglichkeit diese Funktionen in einem Plugin zu implementieren, das in einem ansonsten übersichtlichem XMPP Client geladen werden kann.
+
+Die folgenden Kapitel beschreiben die Stanzas in denen die benötigten Informationen übertragen werden sollen und des Aufbau des Plugins.
+Danach wird das Einbinden in den XMPP Client erläutert.
+
+
+
+Benötigte Stanzas
+-----------------
+
+.. figure:: resources/classes_share_stanzas.png
+   :align: center
+   :alt: Klassendiagramm der benötigten Stanzas
+
+   Klassendiagramm der benötigten Stanzas
+
+
+Die benötigten Informationen umfassen mehrere gekapselte Elemente.
+
+Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur gleichen Zeit online ist. Diese wiederum haben sehr wahrscheinlich unterschiedliche IP Adresse, Ports und bieten verschiedene Torrents an.
+
+Daraus ergibt sich folgende Struktur der Daten:
+
+.. code-block:: json
+
+   XMPP Accountname {
+      Bezeichnung der Ressource {
+         Addressen: [ Liste aus IP, Port- Tupeln ],
+         Shares: [ Liste der Torrents und Eckdaten ]
+      }
+   }
+
+
+
+Aufbau des Plugins
+------------------
+
+
+
+.. figure:: resources/classes_usershares.png
+   :align: center
+   :alt: Klassendiagramm XMPP Erweiterung
+
+   Klassendiagramm XMPP Erweiterung
+
+
+Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexXMPP Klasse BasePlugin abgeleitet wird und in dieser die benötigten Methoden überschrieben werden.
+
+Hier wird eine neue Klasse UserShares erstellt und die Methoden plugin_init und plugin_end überschrieben. Diese werden später vom Client beim starten bzw. beenden des Plugins ausgeführt.
+
+Außerdem wurden hier die Methoden publish_shares und stop implementiert.
+
+publish_shares soll beim starten des XMPP Clients aufgerufen werden und wenn Änderungen an den Torrents oder des BitTorrent Clients stattfinden, beispielsweise falls ein neuer Torrent hinzugefügt wird oder sich der NAT Port ändert.
+
+
+
+
+.. todo::
+
+    was sagt die sleekxmpp doku zu plugins? (da war iwas)
+
+
+SleekXMPP ist so aufgebaut, dass Funktion in Form von Plugins, die meiste spezifische XEP Implementierungen darstellen, erweitert werden kann.
+
+Um die Funktionalität abzubilden, eine Liste mit Hashwerten und zugehörigen Eigenschaften wie Dateiname- und Größe an alle Kontakte des Rosters zu senden, wurde hier auf dem Personal Eventing Protocol (XEP-0163) aufgebaut. (TODO: cite.., erklären)
+
+
+.. code-block:: Python
+
+        from . import stanza
+        from . import UserSharesStanza, ShareItemStanza, ResourceStanza, AddressStanza
+
+        class UserShares(BasePlugin):
+            name = 'shares'
+            description = 'UserShares'
+            dependencies = set(['xep_0163'])
+            stanza = stanza
+
+            def plugin_end(self)
+
+            def session_bind(self, jid)
+
+            def _update_own_shares(self, handle_infos, addresses)
+
+            def publish_shares(self, handle_infos=None, addresses=None, options=None,
+                               ifrom=None, block=True, callback=None, timeout=None)
+
+            def stop(self, ifrom=None, block=True, callback=None, timeout=None)
+
+SleexXMPP PEP Plugin
+--------------------
+
+
+.. todo::
+
+    kurze wiederholung + verweis auf xmpp
+     -> user tune
+
+    erweiterung auf Basis von UserTune
+     -> diff zur änderung
+
+
+problem: sleekxmpp benutzt für pubsub, xep-163, keine extended stanzas (xep-0033, replyto)
+
+ -> wir können nur pro user shares definieren, nicht per resource
+    http://xmpp.org/extensions/xep-0163.html#notify-addressing #3
+
+lösung:
+
+wir bekommen auf jedem account unsere eigenen pep nachrichten zugeschickt. wir definieren also eine struktur, die unsere freigaben nach resourcen gliedert, und erweitern gegebenenfalls die liste der ressourcen um ein element, das die freigaben der aktuellen resource enthält.
+
 
 
 Aufbau der Komponente
@@ -25,7 +134,7 @@ Im Konstruktor der XmppClient Klasse (bitween/components/xmpp/client.py) werden 
 
 .. code-block:: python
    :linenos:
-   :caption: Konstruktor Teil 1: einbinden des Schedulers und registrieren der Plugins
+   :caption: Konstruktor Teil 1: Einbinden des Schedulers und registrieren der Plugins
    :name: xmpp-client-init
 
         Subscriber.__init__(self, autosubscribe=True)
@@ -133,73 +242,4 @@ Starten des BitTorrent Clients
 Nach der API wird der BitTorrent Client in einem eigenen Prozess gestartet. Da auch diese Klasse von der Thread-Klasse abgeleitet ist, wird der Client mit der start-Methode in einem neuen Thread gestartet. Näheres zu dem Ablauf in Kapitel "Implementierung BitTorrent" (TODO)
 
 
-
-Plugins
--------
-
-.. figure:: resources/classes_xmpp_user_share.png
-   :align: center
-   :alt: Klassendiagramm XMPP Erweiterung
-
-   Klassendiagramm XMPP Erweiterung
-
-.. figure:: resources/classes_xmpp_user_share_stanzas.png
-   :align: center
-   :alt: Klassendiagramm der benötigten Stanzas
-
-   Klassendiagramm der benötigten Stanzas
-
-.. todo::
-
-    was sagt die sleekxmpp doku zu plugins? (da war iwas)
-
-
-SleekXMPP ist so aufgebaut, dass Funktion in Form von Plugins, die meiste spezifische XEP Implementierungen darstellen, erweitert werden kann.
-
-Um die Funktionalität abzubilden, eine Liste mit Hashwerten und zugehörigen Eigenschaften wie Dateiname- und Größe an alle Kontakte des Rosters zu senden, wurde hier auf dem Personal Eventing Protocol (XEP-0163) aufgebaut. (TODO: cite.., erklären)
-
-
-.. code-block:: Python
-
-        from . import stanza
-        from . import UserSharesStanza, ShareItemStanza, ResourceStanza, AddressStanza
-
-        class UserShares(BasePlugin):
-            name = 'shares'
-            description = 'UserShares'
-            dependencies = set(['xep_0163'])
-            stanza = stanza
-
-            def plugin_end(self)
-
-            def session_bind(self, jid)
-
-            def _update_own_shares(self, handle_infos, addresses)
-
-            def publish_shares(self, handle_infos=None, addresses=None, options=None,
-                               ifrom=None, block=True, callback=None, timeout=None)
-
-            def stop(self, ifrom=None, block=True, callback=None, timeout=None)
-
-SleexXMPP PEP Plugin
---------------------
-
-
-.. todo::
-
-    kurze wiederholung + verweis auf xmpp
-     -> user tune
-
-    erweiterung auf Basis von UserTune
-     -> diff zur änderung
-
-
-problem: sleekxmpp benutzt für pubsub, xep-163, keine extended stanzas (xep-0033, replyto)
-
- -> wir können nur pro user shares definieren, nicht per resource
-    http://xmpp.org/extensions/xep-0163.html#notify-addressing #3
-
-lösung:
-
-wir bekommen auf jedem account unsere eigenen pep nachrichten zugeschickt. wir definieren also eine struktur, die unsere freigaben nach resourcen gliedert, und erweitern gegebenenfalls die liste der ressourcen um ein element, das die freigaben der aktuellen resource enthält.
 

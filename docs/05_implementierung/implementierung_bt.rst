@@ -20,7 +20,7 @@ Aufbau der Komponente
    Klassendiagramm BitTorrent
 
 
-Wie in Klassendiagramm :num:`_fig-classes-bt` zu sehen, leitet sich die BitTorrentClient Klasse ab aus der Thread Klasse, die sich in der Python Standard Libary befindet und somit zum "Lieferumfang" jeder Python Installation gehört.
+Wie in Klassendiagramm :num:`_fig-classes-bt` zu sehen, leitet sich die BitTorrentClient Klasse  aus der Thread Klasse ab, die sich in der Python Standard Libary befindet und somit zum "Lieferumfang" jeder Python Installation gehört.
 
 Außerdem erbt BitTorrentClient von der Klasse Subscriber, deren implementierung im Kapitel TODO erläutert wird und die Funktionen zur Prozesskommunikation bereitstellt.
 
@@ -60,6 +60,11 @@ Der Run-Loop
 
 Die Aktivität eines Thread Objektes wird in der "run" Methode der Klasse definiert. Diese kann dann nach dem erzeugen des Objektes mit "start()" gestartet werden.
 
+.. todo::
+
+   flowchart des loops (1. teil)
+
+
 In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode "handle_queue" aufrufen, danach mit der Methode "handle_alerts" die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
 
 .. code-block:: python
@@ -89,6 +94,10 @@ In der handle_alert Methode wird jeweils eine Meldung der Session verarbeitet. S
 
 Beenden des Run-Loops
 ---------------------
+
+.. todo::
+
+   flowchart des loops (2. teil)
 
 Wird "on_exit()" aufgerufen, wird die "end" Variable auf True gesetzt und das "saubere" Beenden des Threads wird eingeleitet.
 Als erstes werden alle Einträge aus der SQLite Datenbank entfernt, damit nur Torrents die noch Teil der Session sind, gespeichert werden können.

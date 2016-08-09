@@ -1,0 +1,16 @@
+digraph "classes_share_stanza" {
+charset="utf-8"
+rankdir=BT
+"0" [label="{AddressStanza|interfaces : set\lname : str\lnamespace : str\lplugin_attrib : str\lplugin_multi_attrib : str\l|}", shape="record"];
+
+"2" [label="{ElementBase|\l|\l}", shape="record"];
+"3" [label="{ResourceStanza|interfaces : set\lname : str\lnamespace : str\lplugin_attrib : str\lplugin_multi_attrib : str\l|add_address()\ladd_share()\l}", shape="record"];
+"4" [label="{ShareItemStanza|interfaces : set\lname : str\lnamespace : str\lplugin_attrib : str\lplugin_multi_attrib : str\l|}", shape="record"];
+"6" [label="{UserSharesStanza|name : str\lnamespace : str\lplugin_attrib : str\l|add_resource()\l}", shape="record"];
+"0" -> "2" [arrowhead="empty", arrowtail="none"];
+"3" -> "2" [arrowhead="empty", arrowtail="none"];
+"4" -> "2" [arrowhead="empty", arrowtail="none"];
+
+"6" -> "2" [arrowhead="empty", arrowtail="none"];
+}
+
