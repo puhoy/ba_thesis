@@ -96,60 +96,21 @@ Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexX
    Klassendiagramm XMPP Erweiterung
 
 
-
-
 Hier wird eine neue Klasse UserShares erstellt und die Methoden plugin_init und plugin_end überschrieben. Diese werden später vom Client beim starten bzw. beenden des Plugins ausgeführt.
 
 Außerdem wurden hier die Methoden publish_shares und stop implementiert.
 
-publish_shares soll beim starten des XMPP Clients aufgerufen werden und wenn Änderungen an den Torrents oder des BitTorrent Clients stattfinden, beispielsweise falls ein neuer Torrent hinzugefügt wird oder sich der NAT Port ändert.
+publish_shares wird aufgerufen sobald der Client startet, außerdem wenn Änderungen an den Torrents oder des BitTorrent Clients stattfinden, beispielsweise falls ein neuer Torrent hinzugefügt wird oder sich der NAT Port ändert.
+
+Hier soll ein Plugin implementiert werden, das auf dem bereits in den Grundlagen beschriebenen Personal Eventing Protocol (PEP) aufsetzt.
+
+Dadurch müssen Informationen nur gesendet werden, wenn sich etwas an den zu verteilenden Daten ändert. Der XMPP Server wird selbst dafür sorgen, das Clients die zur Laufzeit erst online gehen die aktuellen Daten bekommen und im Falle von Aktualisierungen alle betreffenden Clients ein Update erhalten.
+
+
+Dabei muss beachtet werden, das eine Limitierung vom PEP umgangen werden muss: es werden keine multiplen Ressourcen pro Account unterstützt. Da allerdings bei der Anmeldung eine Liste der bisherigen veröffentlichen Daten von Server gesendet wird - auch an den eigenen Account - kann diese Liste einfach erweitert werden um die neue Ressource.
 
 
 
-
-.. todo::
-
-    was sagt die sleekxmpp doku zu plugins? (da war iwas)
-
-
-SleekXMPP ist so aufgebaut, dass Funktion in Form von Plugins, die meiste spezifische XEP Implementierungen darstellen, erweitert werden kann.
-
-Um die Funktionalität abzubilden, eine Liste mit Hashwerten und zugehörigen Eigenschaften wie Dateiname- und Größe an alle Kontakte des Rosters zu senden, wurde hier auf dem Personal Eventing Protocol (XEP-0163) aufgebaut. (TODO: cite.., erklären)
-
-
-.. code-block:: Python
-
-        from . import stanza
-        from . import UserSharesStanza, ShareItemStanza, ResourceStanza, AddressStanza
-
-        class UserShares(BasePlugin):
-            name = 'shares'
-            description = 'UserShares'
-            dependencies = set(['xep_0163'])
-            stanza = stanza
-
-            def plugin_end(self)
-
-            def session_bind(self, jid)
-
-            def _update_own_shares(self, handle_infos, addresses)
-
-            def publish_shares(self, handle_infos=None, addresses=None, options=None,
-                               ifrom=None, block=True, callback=None, timeout=None)
-
-            def stop(self, ifrom=None, block=True, callback=None, timeout=None)
-
-SleexXMPP PEP Plugin
---------------------
-
-
-.. todo::
-
-    kurze wiederholung + verweis auf xmpp
-     -> user tune
-
-    erweiterung auf Basis von UserTune
-     -> diff zur änderung
 
 
 problem: sleekxmpp benutzt für pubsub, xep-163, keine extended stanzas (xep-0033, replyto)
