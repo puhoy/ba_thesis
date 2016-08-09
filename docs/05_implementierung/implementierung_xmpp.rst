@@ -22,7 +22,7 @@ Daraus ergibt sich folgende Struktur der Daten (hier als Beispiel in Pseudo-XML)
 
 .. code-block:: xml
 
-   <XMPP Accountname>
+   <Ressourcen>
       <1. Ressource>
 
          <Addressen>
@@ -41,7 +41,7 @@ Daraus ergibt sich folgende Struktur der Daten (hier als Beispiel in Pseudo-XML)
          <Addressen> ... </Addressen>
          <Shares> ... </Shares>
       </n. Ressource>
-   </XMPP Accountname>
+   </Ressourcen>
 
 
 Diese logische Verschachtelung wurde in den folgenden Stanzas abgebildet.
@@ -75,16 +75,15 @@ Die Verknüpfung der jeweiligen Stanzas erfolgt dabei aus dem jeweils übergeord
 Hier wird in der Methode add_resource ein neues ResourceStanza erzeugt.
 "ResourceStanza(None, self)" verknüpft das neu erstellte Stanza mit "self", dem UserSharesStanza.
 
-.. todo::
-
-   ein satz zu den Attributen
-
+Der Namespace ist hier Erkennungsmerkmal aller zum Plugin gehörigen Stanzas und wird genutzt um eingehende Stanzas dem Plugin zu zu ordnen.
 
 Diese Stanzastruktur wird vom im folgenden Kapitel beschriebenen Plugin benutzt.
 
 
 Aufbau des Plugins
 ------------------
+
+Im SleekXMPP Plugin wird nun die beschriebene Datenstruktur benutzt, um die zu verteilenden Daten zu senden bzw. auszulesen.
 
 Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexXMPP Klasse BasePlugin abgeleitet wird und in dieser die benötigten Methoden überschrieben werden.
 
@@ -102,30 +101,103 @@ Außerdem wurden hier die Methoden publish_shares und stop implementiert.
 
 publish_shares wird aufgerufen sobald der Client startet, außerdem wenn Änderungen an den Torrents oder des BitTorrent Clients stattfinden, beispielsweise falls ein neuer Torrent hinzugefügt wird oder sich der NAT Port ändert.
 
+on_shares_publish hingegen stellt das Gegenstück zu publish_shares dar: diese Methode soll das Empfangen der Daten abwickeln.
+
 Hier soll ein Plugin implementiert werden, das auf dem bereits in den Grundlagen beschriebenen Personal Eventing Protocol (PEP) aufsetzt.
 
-Dadurch müssen Informationen nur gesendet werden, wenn sich etwas an den zu verteilenden Daten ändert. Der XMPP Server wird selbst dafür sorgen, das Clients die zur Laufzeit erst online gehen die aktuellen Daten bekommen und im Falle von Aktualisierungen alle betreffenden Clients ein Update erhalten.
-
+Aufgrund der Funktionalität vom PEP müssen Informationen nur gesendet werden, wenn sich etwas an den zu verteilenden Daten ändert. Der XMPP Server wird selbst dafür sorgen, das Clients die zur Laufzeit erst online gehen die aktuellen Daten bekommen und im Falle von Aktualisierungen alle betreffenden Clients ein Update erhalten.
 
 Dabei muss beachtet werden, das eine Limitierung vom PEP umgangen werden muss: es werden keine multiplen Ressourcen pro Account unterstützt. Da allerdings bei der Anmeldung eine Liste der bisherigen veröffentlichen Daten von Server gesendet wird - auch an den eigenen Account - kann diese Liste einfach erweitert werden um die neue Ressource.
 
 
+Start des Plugins
+-----------------
+
+
+.. code-block:: python
+
+   def plugin_init(self):
+      register_stanza_plugin(
+               UserSharesStanza, ResourceStanza, iterable=True)
+      register_stanza_plugin(
+               ResourceStanza, ShareItemStanza, iterable=True)
+      register_stanza_plugin(
+               ResourceStanza, AddressStanza, iterable=True)
+
+      self.xmpp['xep_0163'].register_pep('shares', UserSharesStanza)
+      self.xmpp.add_event_handler('shares_publish', self.on_shares_publish)
+
+Wird das Plugin vom Client geladen, wird zuerst die plugin_init Methode aufgerufen.
+In dieser werden die vom Plugin genutzten Stanzas registriert und das UserShares Stanza unter dem Namen "shares" im PEP Plugin registriert.
+Das PEP Plugin wird daraufhin den Namespace des UserShares Stanzas als unterstütztes Feature der Service Discovery hinzufügen. Auf diese Art werden nur solche Clients die Informationen erhalten, die das Plugin unterstützen. Außerdem werden in register_pep die Events "shares_publish" und "shares_retract" angelegt.
+
+Als nächstes wird ein Event Handler für shares_publish registriert. In dieser Methode "on_shares_publish" soll das Empfangen und Einpflegen der Daten erfolgen.
+
+
+Empfangen von Daten
+-------------------
+
+Wird nun ein UserShareStanza empfangen, wird über den Namespace identifiziert dass UserShare Plugin dafür zuständig ist, und die zugehörige Methode on_shares_publish wird mit dem Stanza als erstem Argument aufgerufen.
+
+Diese Informationen werden in einem Objekt der Klasse ContactShares der models gehalten.
+Diese dient als Wrapper um ein Python Dictionary und bietet einige von der Datenstruktur abstrahierte Funktionen wie "get_resource(jid, resource)", die für einen bestimmten User die Daten einer bestimmten Ressource liefert.
+Außerdem wurden mit threading.Lock Sperren gegen den Zugriff aus mehreren Threads zur gleichen Zeit implementiert.
+
+.. code-block:: python
+
+    @staticmethod
+    def on_shares_publish(msg):
+        """ handle incoming files """
+        incoming_shares = msg['pubsub_event']['items']['item']['user_shares']
+        logger.info('%s' % incoming_shares)
+
+        contact_shares.clear(msg['from'])
+
+        for resource in incoming_shares['resources']:
+            [...]
+
+            for item in resource['share_items']:
+                logger.info('adding share %s to resource %s' % (item['name'], resource['resource']))
+                contact_shares.add_share( msg['from'],
+                                          resource['resource'],
+                                          item['hash'],
+                                          item['name'],
+                                          item['size'])
+
+            for address in resource['ip_addresses']:
+                contact_shares.add_address( msg['from'],
+                                            resource['resource'],
+                                            address['address'],
+                                            address['port'])
+
+        publish('recheck_handles')
+
+In der on_shares_publish Methode werden dann zuerst alle bislang vorhandenen Daten gelöscht, da davon ausgegangen wird, dass in dem erhaltenen Paket alle aktuellen Daten vorhanden sind. Daraufhin wird über die gesendete Liste an Ressourcen iteriert. Jede Ressource sollte "share_items", also Informationen über Torrents, und mindestens eine IP-Adresse mit Port haben.
+
+Wurde das Datenpaket verarbeitet, wird eine Nachricht ohne Argumente auf Topic "recheck_handles" geschickt. Das wiederum hat zur Folge dass im BitTorrent Client über alle eigenen Torrents iteriert und überprüft wird, ob neue Quellen für einen der eigenen Torrents vorliegen.
+
+Auf diese Art können zur Laufzeit neue Quellen zu vorhandenen Torrents hinzugefügt werden.
+Außerdem liegt eine durchsuchbare Datenstruktur vor, die beispielsweise von Frontends benutzt werden kann um die empfangenen Torrentlisten anzuzeigen.
+
+
+Versenden der Daten
+-------------------
+
+Das Versenden der Daten wird in der Methode publish_shares abgewickelt.
+Diese soll, wenn aufgerufen, eine aktuelle Liste der Torrents, verpackt in die definierten Stanzas versenden.
+
+Hier muss darauf geachtet werden, dass nicht nur eine Liste der aktuellen Torrents gesendet wird. Es müssen außerdem die bereits empfangenen Torrents anderer Ressourcen des Eigenen Accounts mit einbezogen werden.
+
+Dazu wird die Tatsache genutzt, das nach dem senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
+
+Es muss also nurnoch der eigene Useraccount aus der Liste ausgelesen und die Daten der lokalen Ressource aktualisiert werden.
+
+Danach wird die bereits erläuterte Struktur aus Stanzas entsprechend der Daten erstellt und gesendet.
 
 
 
-problem: sleekxmpp benutzt für pubsub, xep-163, keine extended stanzas (xep-0033, replyto)
-
- -> wir können nur pro user shares definieren, nicht per resource
-    http://xmpp.org/extensions/xep-0163.html#notify-addressing #3
-
-lösung:
-
-wir bekommen auf jedem account unsere eigenen pep nachrichten zugeschickt. wir definieren also eine struktur, die unsere freigaben nach resourcen gliedert, und erweitern gegebenenfalls die liste der ressourcen um ein element, das die freigaben der aktuellen resource enthält.
-
-
-
-Aufbau der Komponente
----------------------
+Aufbau des Clients
+------------------
 
 .. figure:: resources/classes_xmpp.png
    :align: center
