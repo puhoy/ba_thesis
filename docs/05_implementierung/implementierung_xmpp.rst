@@ -7,13 +7,44 @@ Die XMPP Komponente muss nun also diese Liste inklusive der eigenen IP Adressen 
 
 Das hier verwendete Python Modul sleekxmpp bietet hier die Möglichkeit diese Funktionen in einem Plugin zu implementieren, das in einem ansonsten übersichtlichem XMPP Client geladen werden kann.
 
-Die folgenden Kapitel beschreiben die Stanzas in denen die benötigten Informationen übertragen werden sollen und des Aufbau des Plugins.
+Die folgenden Kapitel beschreiben die Stanzas in denen die benötigten Informationen übertragen werden sollen sowie des Aufbau des Plugins.
 Danach wird das Einbinden in den XMPP Client erläutert.
-
 
 
 Benötigte Stanzas
 -----------------
+
+Die benötigten Informationen umfassen mehrere gekapselte Elemente.
+
+Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur gleichen Zeit online ist. Diese wiederum haben sehr wahrscheinlich unterschiedliche IP Adressen, Ports und bieten verschiedene Torrents an.
+
+Daraus ergibt sich folgende Struktur der Daten (hier als Beispiel in Pseudo-XML):
+
+.. code-block:: xml
+
+   <XMPP Accountname>
+      <1. Ressource>
+
+         <Addressen>
+            <addresse ip='1.1.1.1' port=11>
+            <addresse ip='2.2.2.2' port=22>
+         </Addressen>
+
+         <Shares>
+            <share hash='123123123' name='beispiel1' size=123>
+            <share hash='234234234' name='beispiel2' size=234>
+         </Shares>
+
+      </1. Ressource>
+      ...
+      <n. Ressource>
+         <Addressen> ... </Addressen>
+         <Shares> ... </Shares>
+      </n. Ressource>
+   </XMPP Accountname>
+
+
+Diese logische Verschachtelung wurde in den folgenden Stanzas abgebildet.
 
 .. figure:: resources/classes_share_stanzas.png
    :align: center
@@ -21,27 +52,41 @@ Benötigte Stanzas
 
    Klassendiagramm der benötigten Stanzas
 
+Jede Stanzaklasse wurde von ElementBase abgeleitet, der Basisklasse für Stanzas aus SleekXMPP. Mithilfe dieser können die XML Elemente einfach als Klassen und Attribute von Klassen behandelt werden, ohne das XML als String behandelt werden muss.
 
-Die benötigten Informationen umfassen mehrere gekapselte Elemente.
+Das "äußerste" Stanza ist das UserShareStanza. Diesem Container Stanza können über die Methode add_resource Ressourcen, also angemeldete XMPP Clients als Endpunkte, hinzugefügt werden. In diesem ResourceStanza können nun per add_address und add_share AddressStanzas und ShareItems eingebettet werden.
 
-Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur gleichen Zeit online ist. Diese wiederum haben sehr wahrscheinlich unterschiedliche IP Adresse, Ports und bieten verschiedene Torrents an.
 
-Daraus ergibt sich folgende Struktur der Daten:
+Die Verknüpfung der jeweiligen Stanzas erfolgt dabei aus dem jeweils übergeordnetem Stanza.
 
-.. code-block:: json
+.. code-block:: python
 
-   XMPP Accountname {
-      Bezeichnung der Ressource {
-         Addressen: [ Liste aus IP, Port- Tupeln ],
-         Shares: [ Liste der Torrents und Eckdaten ]
-      }
-   }
+   class UserSharesStanza(ElementBase):
+       name = 'user_shares'
+       namespace = 'https://xmpp.kwoh.de/protocol/shares'
+       plugin_attrib = 'user_shares'
 
+       def add_resource(self, resource=''):
+           [...]
+           resource_stanza = ResourceStanza(None, self)
+           resource_stanza['resource'] = resource
+           return resource_stanza
+
+Hier wird in der Methode add_resource ein neues ResourceStanza erzeugt.
+"ResourceStanza(None, self)" verknüpft das neu erstellte Stanza mit "self", dem UserSharesStanza.
+
+.. todo::
+
+   ein satz zu den Attributen
+
+
+Diese Stanzastruktur wird vom im folgenden Kapitel beschriebenen Plugin benutzt.
 
 
 Aufbau des Plugins
 ------------------
 
+Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexXMPP Klasse BasePlugin abgeleitet wird und in dieser die benötigten Methoden überschrieben werden.
 
 
 .. figure:: resources/classes_usershares.png
@@ -51,7 +96,7 @@ Aufbau des Plugins
    Klassendiagramm XMPP Erweiterung
 
 
-Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexXMPP Klasse BasePlugin abgeleitet wird und in dieser die benötigten Methoden überschrieben werden.
+
 
 Hier wird eine neue Klasse UserShares erstellt und die Methoden plugin_init und plugin_end überschrieben. Diese werden später vom Client beim starten bzw. beenden des Plugins ausgeführt.
 
