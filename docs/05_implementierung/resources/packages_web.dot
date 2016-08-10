@@ -1,0 +1,16 @@
+digraph "packages_web" {
+charset="utf-8"
+rankdir=BT
+"0" [label="web", shape="box"];
+"1" [label="web.api", shape="box"];
+"2" [label="web.api.bt", shape="box"];
+"3" [label="web.api.xmpp", shape="box"];
+"4" [label="web.gui", shape="box"];
+"5" [label="web.gui.errors", shape="box"];
+"6" [label="web.gui.views", shape="box"];
+"0" -> "1" [arrowhead="open", arrowtail="none"];
+"0" -> "2" [arrowhead="open", arrowtail="none"];
+"0" -> "3" [arrowhead="open", arrowtail="none"];
+"0" -> "4" [arrowhead="open", arrowtail="none"];
+"3" -> "0" [arrowhead="open", arrowtail="none"];
+}
