@@ -5,17 +5,6 @@ Implementierung
 ~~~~~~~~~~~~~~~
 
 
-In den folgenden Kapiteln
-
-
-.. todo::
-
-    # python (skriptsprache, gut für prototyping undso.)
-
-    Verzeichnisstruktur eines Python Moduls (http://docs.python-guide.org/en/latest/writing/structure/#structure-of-the-repository)
-
-    sequenzdiagramm bootprozess
-
 .. toctree::
 
     implementierung_allgemeines

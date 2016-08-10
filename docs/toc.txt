@@ -4,12 +4,10 @@
    03_planung/planung
    04_grundlagen/grundlagen
    05_implementierung/implementierung
-
-   probleme/probleme
+   06_beurteilung/beurteilung
+   07_zusammenfassung/zusammenfassung
 
    zukunft/zukunft
 
-   zusammenfassung/beurteilung
-   zusammenfassung/zusammenfassung
 
    zzreferences
