@@ -9,6 +9,7 @@ Da es sich bei der geplanten Anwendung um einen Prototypen handelt, der in erste
 .. figure:: resources/usecases.png
    :align: center
    :alt: Usecases
+   :width: 50%
 
    Anwendungsfälle
 

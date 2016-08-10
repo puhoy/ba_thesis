@@ -9,6 +9,7 @@ Entwurf
 .. figure:: resources/classes_bitween_small.png
    :align: center
    :alt: Modulübersicht
+   :width: 50%
 
    Modulübersicht
 

@@ -16,6 +16,7 @@ Aufbau der Komponente
 .. figure:: resources/classes_bt.png
    :align: center
    :alt: Klassendiagramm BitTorrent
+   :width: 30%
 
    Klassendiagramm BitTorrent
 
@@ -65,6 +66,7 @@ Die Aktivität eines Thread Objektes wird in der "run" Methode der Klasse defini
 .. figure:: resources/bt_loop_1.png
    :align: center
    :alt: BitTorrent run() Loop (1)
+   :width: 40%
 
    BitTorrent run() Loop (1)
 
@@ -104,6 +106,7 @@ Beenden des Run-Loops
 .. figure:: resources/bt_loop_2.png
    :align: center
    :alt: BitTorrent run() Loop (2)
+   :width: 60%
 
    BitTorrent run() Loop (2)
 

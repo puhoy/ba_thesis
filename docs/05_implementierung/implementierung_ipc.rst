@@ -13,6 +13,7 @@ Im Folgenden Diagramm ist außerdem eine Klasse "AutoSub" zu sehen, die dazu die
 .. figure:: resources/classes_pubsub.png
    :align: center
    :alt: Klassendiagramm Pubsub
+   :width: 30%
 
 
 Im einfachsten Fall wird ein Subscriber Objekt ohne Parameter erstellt. Dann wird nur eine Nachrichtenqueue angelegt und es können Topics mit subscribe('topicname') abonniert werden.

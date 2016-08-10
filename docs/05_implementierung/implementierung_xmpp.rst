@@ -91,6 +91,7 @@ Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexX
 .. figure:: resources/classes_usershares.png
    :align: center
    :alt: Klassendiagramm XMPP Erweiterung
+   :width: 30%
 
    Klassendiagramm XMPP Erweiterung
 
@@ -202,6 +203,7 @@ Aufbau des Clients
 .. figure:: resources/classes_xmpp.png
    :align: center
    :alt: Klassendiagramm XMPP
+   :width: 40%
 
    Klassendiagramm XMPP
 
