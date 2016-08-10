@@ -15,46 +15,43 @@ Im Folgenden Diagramm ist außerdem eine Klasse "AutoSub" zu sehen, die dazu die
    :alt: Klassendiagramm Pubsub
 
 
-
-.. code-block:: python
-   :linenos:
-   :caption: pubsub.py Subscriber Klasse (__init__)
-   :name: pubsub-py-subscriber-init
-
-    class Subscriber:
-        def __init__(self, name='', autosubscribe=False):
-            # [...]
-            if autosubscribe:
-                listen_to = [x for x, y in self.__class__.__dict__.items() if
-                             (type(y) == FunctionType and x.startswith('on_'))]
-                for l in listen_to:
-                    self.subscribe(l.split('on_')[1])
-
-        def subscribe(self, topic):
-            # [...]
-            t = _get_topic(topic)
-            # [...]
-                if self not in t['subscribers']:
-                    # [...]
-                    t['subscribers'].append(self)
-                    return True
-                else:
-                    logger.error('already subscribed to %s' % topic)
-                    return False
-        # [...]
-
-
 Im einfachsten Fall wird ein Subscriber Objekt ohne Parameter erstellt. Dann wird nur eine Nachrichtenqueue angelegt und es können Topics mit subscribe('topicname') abonniert werden.
+
 
 .. code-block:: python
 
     s = Subscriber()
     s.subscribe('some_topic')
 
-Dazu wird in der Methode ein Dictionary mit den Subscribern des Topics geholt (Zeile 14), oder wenn nicht vorhanden, ein neues Topic angelegt.
-Falls das Subscriber Objekt noch nicht in der 'subscribers'-Liste ist, wird es angehangen (Zeile 18) und die Methode mit True verlassen, andernfalls bleibt die Liste unverändert und False wird zurück gegeben.
 
-Eine interessantere Anwendung ergibt sich, wenn eine Subklasse von Subscriber erstellt und autosubscribe mit True aufgerufen wird. In diesem Fall wird erst eine Liste mit allen Methoden erstellt, deren Name mit "on_" beginnt (Zeile 7 und 8). Dann wird über die Liste der gesammelten Namen iteriert: das "on_" am Anfang wird abgeschnitten, und der resultierende String wird als Topic abonniert.
+Wird daraufhin die Methode publish eines Objekts der Subscriber Klasse oder die Funktion publish des pubsub-Moduls mit 'topicname' als erstem Argument aufgerufen, wird eine Nachricht im queue der entsprechenden Klasse hinterlegt.
+
+.. _concept_pubsub:
+.. figure:: resources/pubsub_concept.png
+   :align: center
+   :alt: Pubsub Konzept
+
+Die Grafik :num:`concept_pubsub` soll dieses Konzept verdeutlichen. hier sind subscriber_A und subscriber_B Abonnenten des "topic_A". Wird nun publish() mit den Argumenten 'topic_A', 12, 'test' aufgerufen, wird in den Queues der beiden subscriber die Entsprechende Nachricht hinterlegt und kann im Objekt verarbeitet werden.
+
+Dazu wird in der Methode ein Dictionary des pubsub Moduls benutzt, in dem gespeichert wird, welches Objekt welche Topics abonniert hat.
+
+Automatisches Abonnieren von Topics
+-----------------------------------
+
+.. code-block:: python
+   :linenos:
+
+   class Subscriber:
+       def __init__(self, name='', autosubscribe=False):
+           [...]
+           if autosubscribe:
+               listen_to = [x for x, y in self.__class__.__dict__.items() if
+                            (type(y) == FunctionType and x.startswith('on_'))]
+               for l in listen_to:
+                   self.subscribe(l.split('on_')[1])
+
+Eine interessantere Anwendung ergibt sich, wenn eine Subklasse von Subscriber erstellt und autosubscribe mit True aufgerufen wird. In diesem Fall wird erst eine Liste mit allen Methoden erstellt, deren Name mit "on_" beginnt (Zeile 5 und 6). Dann wird über die Liste der gesammelten Namen iteriert: das "on_" am Anfang wird abgeschnitten, und der resultierende String wird als Topic abonniert.
+
 Damit besteht die Möglichkeit, Methoden der Klassen direkt als Topics zu abonnieren und es entfällt das händische zuordnen von Topics und Funktionsaufrufen.
 
 Als Beispiel hierzu dient die folgende Klasse AutoSub, die sich von Subscriber ableitet.
@@ -79,7 +76,7 @@ Als Beispiel hierzu dient die folgende Klasse AutoSub, die sich von Subscriber a
             print('some_string is %s' % some_string)
             print('some_int is %s' % some_int)
 
-Die Subklasse mit einer Scheduling Methode wie der hier gezeigten process_messages und der Methode on_some_topic würde dann also automatisch das Thema "some_topic" abonnieren.
+Die Subklasse mit einer Scheduling Methode wie der hier gezeigten process_messages und der Methode on_some_topic würde dann also automatisch das Thema "some_topic" abonnieren, da hier eine Methode namens "on_some_topic" definiert wurde.
 Wird dann eine Nachricht in diesem Topic abgelegt, würde während des Schedulings on_some_topic mit den argumenten aus der Nachricht aufgerufen.
 
 In einer Python Shell sieht das ganze wie folgt aus:
@@ -93,46 +90,12 @@ In einer Python Shell sieht das ganze wie folgt aus:
     some_string is teststring
     some_int is 1
 
-**********
 
-.. todo::
+Somit ist es möglich, in Subklassen von Subscriber abonnierte Topics direkt mit Methoden zu verknüpfen, ohne dabei das Scheduling anpassen zu müssen.
 
-    ab hier überarbeiten. publish müsste vllt über das subscribe zeugs, damit das verstanden wird.
+Das wird von der bereits erläuterten Klasse BitTorrentClient und XmppClient genutzt, um Nachrichten über die entsprechenden Threads hinweg zu senden und zu empfangen.
 
-
-
-Hierzu einige Erklärungen anhand des Quellcodes. (components/pubsub/pubsub.py)
-
-.. code-block:: python
-   :linenos:
-   :caption: pubsub.py publish Funktion
-   :name: pubsub-py-publish
-
-    [...]
-    topics = {}
-
-    def publish(topic, *args, **kwargs):
-        # [...]
-        t = _get_topic(topic)
-        # [...]
-
-        if not t['subscribers']:
-            logger.error('published to topic %s with no subscribers' % topic)
-            return False
-
-        with Lock():
-            for s in t['subscribers']:
-                logger.debug('published message on topic %s: %s %s' % (topic, args, kwargs))
-                s._put_message((topic, args, kwargs))
-            return True
-
-
-Die Topics Variable hält ein Dictionary mit allen Topics und deren Subscribern. Sie ist auf Modullevel angelegt und hat somit bei jedem "import pubsub" den selben Inhalt.
-
-Wird nun die publish Funktion mit einem Topic aufgerufen, wird zuerst ermittelt, ob die Liste der Subscriber leer ist (Zeile 9): in diesem Fall wird ein False zurück gegeben.
-Hat das Topic Subscriber, wird der Teil des Codes, in dem über die Subscriber iteriert wird erst mit einem Lock für andere Threads gesperrt (Zeile 13) und dann für jeden Subscriber mittels _put_message() (Zeile 16) das Topic und die Argumente hinzugefügt.
-
-
+Eine Übersicht über alle Topics und deren Subscriber befindet sich im Anhang.
 
 
 .. _overview:
@@ -147,4 +110,4 @@ Hat das Topic Subscriber, wird der Teil des Codes, in dem über die Subscriber i
 
 .. todo::
 
-    pubsub (siehe wikipedia publish subscribe pattern)
+    übersicht aktualisieren und in anhang packen, hier entfernen
