@@ -14,7 +14,6 @@ Implementierung
     implementierung_xmpp
     implementierung_web
     implementierung_ipc
-    implementierung_tests
 
 
 Dokumentation
@@ -31,6 +30,3 @@ Logging
 .. todo::
 
     logging modul, lesen aus yml...
-
-
-

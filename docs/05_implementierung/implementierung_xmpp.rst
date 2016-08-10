@@ -212,7 +212,8 @@ Das beschriebene Plugin soll nun von einem XMPP Client genutzt werden. Hierfür 
 
 ClientXMPP bringt hierbei schon alle zum Verbinden benötigten Voraussetzungen mit. Initalisiert wird das Objekt im XmppClient Konstruktor mit der JID und den benötigten Passwort.
 
-.. code-block::
+.. code-block:: python
+
         self.register_plugin('xep_0030')  # service discovery
         self.register_plugin('xep_0115')  # entity caps
         self.register_plugin('xep_0163')  # pep
