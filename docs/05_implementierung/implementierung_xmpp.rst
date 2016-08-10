@@ -205,119 +205,32 @@ Aufbau des Clients
 
    Klassendiagramm XMPP
 
-Die Klasse XmppClient leitet sich ab aus der Klasse ClientXMPP der Python Bibliothek sleekxmpp, in der jede Grundlegende Funktionalität für einen XMPP Client definiert ist und der Subscriber Klasse aus dem im Kapitel "IPC" beschriebenen Modul pubsub, die für die Möglichkeit der Inter Process Communication sorgt.
 
-Im Konstruktor der XmppClient Klasse (bitween/components/xmpp/client.py) werden einerseits alle XMPP-bezogenen Konfigurationen vorgenommen, aber auch die anderen Komponenten der Anwendung gestartet.
+Das beschriebene Plugin soll nun von einem XMPP Client genutzt werden. Hierfür wird eine neue Klasse XmppClient aus der SleekXMPP Klasse ClientXMPP und der bereits im BitTorrent Client genutzten Klasse Subscriber abgeleitet.
 
+ClientXMPP bringt hierbei schon alle zum Verbinden benötigten Voraussetzungen mit. Initalisiert wird das Objekt im XmppClient Konstruktor mit der JID und den benötigten Passwort.
 
-.. code-block:: python
-   :linenos:
-   :caption: Konstruktor Teil 1: Einbinden des Schedulers und registrieren der Plugins
-   :name: xmpp-client-init
-
-        Subscriber.__init__(self, autosubscribe=True)
-        sleekxmpp.ClientXMPP.__init__(self, jid, password)
-
-        self.add_event_handler("session_start", self.start)
-
+.. code-block::
         self.register_plugin('xep_0030')  # service discovery
         self.register_plugin('xep_0115')  # entity caps
-        self.register_plugin('xep_0128')  # service discovery extensions
         self.register_plugin('xep_0163')  # pep
-
         self.register_plugin('shares', module=share_plugin)
-        self.add_event_handler('shares_publish', self.on_shares_publish)
 
-        self.scheduler.add("_schedule", 2, self.process_queue, repeat=True)
+Danach werden die benötigten Erweiterungen registriert, die bereits Teil von SleekXMPP sind: Service Discovery, Entity Caps und PEP.
+Auch das UserShares Modul wird, wie die anderen Plugins, über register_plugin registriert. Hier wird allerdings noch auf das vorher importierte Modul verwiesen, da dieses nicht Teil von SleekXMPP ist.
 
-        # [...]
+Außerdem wird im Konstruktor das "session_start" Event mit einer Methode "start" der Klasse verknüpft. Hier wird nach dem Verbinden die eigene Präsenz gesendet und der Roster, also die Kontaktliste, empfangen.
 
+In dieser Grundkonfiguration wäre der Client grundsätzlich schon betriebsbereit.
+Allerdings fehlt noch jegliche Art der Interaktion mit anderen Komponenten der Anwendung.
 
-Hier wird erst die Basisklasse mit Jabber ID und Passwort initialisiert und die self.start Methode mit dem session_start Event verknüpft.
-Danach werden die benötigten XEP Plugins registriert. Diese implementieren die entsprechende Funktionalität des XMPP Protokolls und sind Teil von sleekxmpp.
+Daher wird im Konstruktor noch ein Scheduler hinzugefügt, der zyklisch die vom Subscriber geerbte Message Queue verarbeitet. Dies Erfolgt auf dieselbe Art wie schon im BitTorrent Client: alle mit "on_" beginnenden Methoden werden automatisch als Topic abonniert und werden in der verknüpften Methode aufgerufen wenn die entsprechenden Nachrichten vorliegen.
 
-Das "shares" Plugin wurde als Modul share_plugin implementiert und ist zuständig für das Verteilen der Metadaten der BitTorrent Freigaben und wird im folgenden Kapitel TODO beschrieben.
+Außerdem werden im Konstruktor die anderen Komponenten der Anwendung gestartet: der BitTorrent Client und eine JsonRPC Api mit einem Web Frontend zur Übersicht über die Torrents, das im Kapitel TODO näher beschrieben wird.
 
+Da die eigene IP Adresse Teil der zu versendenden Datenpakete ist, wird hier außerdem ein Prozess angestoßen, der die eigene IPv4 Adresse herausfinden soll. Da diese hinter einem DSL Router im Lokalen Netz nicht bekannt ist, wurde hier das Modul ipgetter genutzt. In diesem sind eine Reihe an Servern hinterlegt, die die IP zurück geben, von der die Anfrage kommt.
 
-
- und die benötigten Erweiterungen und ein Scheduler zum auslesen des Message Queues registriert.
-Die XEP-Plugins
-
-
-
-Der erste Teil des Konstruktors widmet sich dem Setup der Grundfunktionen der Komponente:
-
-1:
- Die Klasse leitet sich ab aus ClientXMPP, der Client Klasse der SleekXMPP Bibliothek und Subscriber, (siehe Kapitel IPC), was dafür sorgt dass die Klasse IPC Nachrichten empfangen kann.
-
-6:
- Hinzufügen des "session_start" Eventhandlers. Das "session_start" Event wird aufgerufen beim Aufruf der connect() Methode der ClientXMPP Klasse.
-
-7:
- Hinzufügen eines Schedulers der die Nachrichtenqueue abfragt. Hier wird alle 2 Sekunden die Methode "process_queue" des XmppClient ausgeführt.
- :cite:`Sched99:online`
-
-8:
- Hinzufügen eines Eventhandlers für das "shares_publish" Event und verknüpfen mit der on_shares_publish Methode.
- (TODO siehe kapitel plugin..?)
-
-10-13:
- Registrieren der benötigten Plugins
-
-14:
- Registrieren des Share Plugins
- (TODO: das braucht unbedingt viel mehr erklärung)
-
-.. todo::
-
-    vielleicht ein eigenes Kapitel "starten der Anwendung"
+Die IPv6 Adresse kann jedoch aus dem System ausgelesen werden. Hierfür kommt das Modul netifaces zum Einsatz, das Betriebssystemumabhängig die momentanen IP Adressen auslesen kann.
 
 
-.. code-block:: python
-   :linenos:
-   :caption: der Konstruktor: starten der anderen Komponenten
-   :name: xmpp-client-init
-
-            # [...]
-
-            self.addresses = Addresses()
-            self.addresses.fetch_addresses()
-
-            logger.info('got addresses: %s' % (self.addresses.ip_v4 + self.addresses.ip_v6))
-
-            self.api = JsonRpcAPI(api_host, api_port)
-            self.api.start()
-
-            self.bt_client = BitTorrentClient()
-            self.bt_client.start()
-
-            self.addresses.ports.append(self.bt_client.session.listen_port())
-
-
-Der zweite Teil des Konstruktors widmet sich dem beschaffen der eigenen öffentlichen IP Adressen und der Initialisierung der weiteren Komponenten der Anwendung.
-
-Eigene Addressen finden
-~~~~~~~~~~~~~~~~~~~~~~~
-
-(Zeile 3 und 4, Zeile 14)
-self.addresses ist hier ein neues Objekt der Addresses Klasse die die eigenen IPv4 und v6 Adressen und die Ports enthält, die der BitTorrent Client nutzt.
-self.addresses.fetch_addresses() startet nun den den Prozess, die eigene IPv4 Adresse herauszufinden. Dies geschieht mit Hilfe des Python Paketes "ipgetter". In diesem sind Services gelistet, die die IP Adresse zurück geben, von denen sie kontaktiert wurden. Auf diese Art ist es einfach möglich, auch hinter einem NAT-Router die eigene öffentliche IPv4 zu bestimmen.
-Als zweiten Schritt wird mithilfe des Python Paketes "netifaces" eine Liste der globalen IPv6 Adressen erstellt. Da es hier nicht möglich ist, die Flags für die temporären Adressen auszulesen, werden ganz einfach alle Adressen gelistet. Zu diesem Zeitpunkt existiert bereits ein Pull-Request für das netifaces Git-Repository auf BitBucket, der jedoch nur BSD und Mac-OS unterstützt und noch nicht in dem Hauptentwicklungszweig integriert wurde. :cite:`al45t61:online`
-
-Zum Schluss wird, nach dem starten des BitTorrent Clients (Zeile 14), noch der BitTorrent Port gesetzt.
-
-Starten der Json API
-~~~~~~~~~~~~~~~~~~~~
-
-(Zeile 8 und 9)
-Als nächstes wird der API Prozess gestartet. Hierzu wird ein neues JsonRpcAPI Objekt erstellt und dessen start-Methode aufgerufen, welche die API in einem neuen Thread startet. Näheres dazu im Kapitel JsonRpcAPI (TODO)
-
-
-Starten des BitTorrent Clients
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-(Zeile 11 und 12)
-Nach der API wird der BitTorrent Client in einem eigenen Prozess gestartet. Da auch diese Klasse von der Thread-Klasse abgeleitet ist, wird der Client mit der start-Methode in einem neuen Thread gestartet. Näheres zu dem Ablauf in Kapitel "Implementierung BitTorrent" (TODO)
-
-
-
+Der so Konstruierte Client ist somit der Haputteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, das wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.
