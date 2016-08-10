@@ -236,7 +236,7 @@ Da die eigene IP Adresse Teil der zu versendenden Datenpakete ist, wird hier au�
 Die IPv6 Adresse kann jedoch aus dem System ausgelesen werden. Hierfür kommt das Modul netifaces zum Einsatz, das Betriebssystemumabhängig die momentanen IP Adressen auslesen kann.
 
 
-Der so Konstruierte Client ist somit der Haputteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, das wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.
+Der so Konstruierte Client ist somit der Hauptteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, das wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.
 
 
 Im folgenden Kapitel wird die Web Komponente beschrieben, die einerseits eine minimale Weboberfläche zur Übersicht darstellt, aber auch eine JsonRPC API zur verfügung stellt, über die eventuelle Frontends mit der Anwendung kommunizieren können.
