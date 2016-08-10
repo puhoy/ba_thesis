@@ -60,9 +60,14 @@ Der Run-Loop
 
 Die Aktivität eines Thread Objektes wird in der "run" Methode der Klasse definiert. Diese kann dann nach dem erzeugen des Objektes mit "start()" gestartet werden.
 
-.. todo::
 
-   flowchart des loops (1. teil)
+.. _fig-bt_run_loop_1:
+.. figure:: resources/bt_loop_1.png
+   :align: center
+   :alt: BitTorrent run() Loop (1)
+
+   BitTorrent run() Loop (1)
+
 
 
 In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode "handle_queue" aufrufen, danach mit der Methode "handle_alerts" die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
@@ -95,9 +100,12 @@ In der handle_alert Methode wird jeweils eine Meldung der Session verarbeitet. S
 Beenden des Run-Loops
 ---------------------
 
-.. todo::
+.. _fig-bt_run_loop_2:
+.. figure:: resources/bt_loop_2.png
+   :align: center
+   :alt: BitTorrent run() Loop (2)
 
-   flowchart des loops (2. teil)
+   BitTorrent run() Loop (2)
 
 Wird "on_exit()" aufgerufen, wird die "end" Variable auf True gesetzt und das "saubere" Beenden des Threads wird eingeleitet.
 Als erstes werden alle Einträge aus der SQLite Datenbank entfernt, damit nur Torrents die noch Teil der Session sind, gespeichert werden können.
