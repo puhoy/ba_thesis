@@ -19,4 +19,4 @@ So sollen eigene Freigaben erstellt und entfernt werden können (AF/10/ und AF/2
 
 .. todo::
 
-   AF: accounts hinzufügen geht bis jetzt nur in der json...
+   es gibt nurnoch einen XMPP account - evtl anwendungsfall anpassen

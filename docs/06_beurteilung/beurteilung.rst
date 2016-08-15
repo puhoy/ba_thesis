@@ -24,7 +24,7 @@ Die libtorrent Libary, die sich selbst als "feature complete" :cite:`www.l3:onli
 
 Dazu kommt eine asynchrone Arbeitsweise, bei der viele Funktionen nur Alerts auslösen, die dann das Ergebnis enthalten und die das Debugging und Tests erheblich verkomplizieren.
 
-Außerdem existieren Inkompatibilitäten zwischen den Versionen, die in den Changelogs nicht gefunden worden. So ändert sich Beispielsweise die Codecerkennung bei Magnetlinks zwischen Version 0.16.13 (in den Ubuntu 14.04 Paketquellen) und Version 1.1.0 (zu diesem Zeitpunkt aktuell). Da hier keine Warnung gegeben wird, sondern nur ein Torrent mit invalidem Hash angelegt wird, ging viel Zeit in Fehlersuche verloren.
+Außerdem existieren Inkompatibilitäten zwischen den Versionen, die in den Changelogs nicht gefunden worden. So ändert sich Beispielsweise die Codecerkennung bei Magnet Links zwischen Version 0.16.13 (in den Ubuntu 14.04 Paketquellen) und Version 1.1.0 (zu diesem Zeitpunkt aktuell). Da hier keine Warnung gegeben wird, sondern nur ein Torrent mit invalidem Hash angelegt wird, ging viel Zeit in Fehlersuche verloren.
 Zur Lösung wurden zwei Funktionen zum Umwandeln nach UTF-8 aus dem ebenfalls auf libtorrent aufbauenden BitTorrent Client Deluge übernommen. (siehe bitween/components/bt/helpers.py)
 
 Außerdem exisiert für die libtorrent Installation kein Python Wheel, das vorkompilierte die vorkompilierte Libary enthält - der Nutzer ist hier darauf angewiesen, entweder selbst zu kompilieren oder möglicherweise alte Versionen zu nutzen, die das Betriebssystem bereitstellt. Auch das ist negativ zu werten, da es eine Hürde für unerfahrene Nutzer darstellt und somit die Verbreitung einschränkt.

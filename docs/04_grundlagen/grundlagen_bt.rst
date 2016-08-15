@@ -16,7 +16,7 @@ In deutsch etwa:
  "BitTorrent ist ein Protokoll zum Dateien verteilen. Es bestimmt Inhalt anhand einer URL und ist dazu entworfen sich nahtlos ins Internet zu integrieren. Der Vorteil zu HTTP ist, dass wenn multiple Downloads derselben Datei zur gleichen Zeit stattfinden, die Downloader zueinander Uploaden. Dadurch kann eine Dateiquelle sehr viele Downloader bei geringem Anstieg seiner Last haben."
 
 
-Der Vorteil von BitTorrent als Übertragungsprotokoll ist also, dass wenn mehr als ein Kontakt dieselbe Datei zum Download anbietet, auch von mehreren Kontakten gleichzeitig heruntergeladen werden kann. Hierzu würde Normalerweise der Tracker die Peers vermitteln. In Dieser Implementierung soll dies jedoch über XMPP geschehen.
+Der Vorteil von BitTorrent als Übertragungsprotokoll ist also, dass wenn mehr als ein Kontakt dieselbe Datei zum Download anbietet, auch von mehreren Kontakten gleichzeitig heruntergeladen werden kann. Hierzu würde normalerweise der Tracker die Peers vermitteln. In Dieser Implementierung soll dies jedoch über XMPP geschehen.
 
 Die Identifikation der Dateien findet laut der BitTorrent Protocol Specification (:cite:`www.b44:online`) über ein "info dict" im torrent-File statt. In dieser Implementierung soll jedoch eine andere Methode genutzt werden: Die in der BitTorrent Extension Protocol (BEP) 9 beschriebene unterstützung für Magnet Links.
 
@@ -28,17 +28,4 @@ Das in der Spezifikation beschriebene Format eines Magnet Links ist dabei wie Fo
 
 Da kein Tracker benötigt wird um Informationen zu verteilen und dynamisch Peer Adressen hinzugefügt werden sollen, wird hier also nur der Info Hash benötigt. Dieser ist der SHA-1 Hash des info dict des torrent-Files.
 
-Da in der zur Implementierung genutzten Libary (libtorrent) die Möglichkeit besteht, einen neuen Torrent auf Basis eines Magnet Links anzulegen der nur einen Info Hash enthält, und später dynamisch Peer Adressen hinzugefügt werden können, besteht also die Möglichkeit das Peer Management zur Laufzeit des Torrents abzuwickeln.
-
-
-
-
-.. todo::
-
-    BitTorrent ist auch zum Teil Zentral
-     -> BT Tracker als Einsprungpunkt benötigt
-
-
-    Torrentfiles / Magnetlinks
-     Prüfsummen
-      -> SHA-1 als Hashalgorithmus
+Da in der zur Implementierung genutzten Libary (libtorrent) die Möglichkeit besteht, einen neuen Torrent auf Basis eines Magnet Links anzulegen der nur einen Info Hash enthält und später dynamisch Peer Adressen hinzu zu fügen, ist es möglich das komplette Peer Management zur Laufzeit abzuwickeln.
