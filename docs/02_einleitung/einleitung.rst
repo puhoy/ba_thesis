@@ -5,7 +5,7 @@ Einleitung
 ~~~~~~~~~~
 
 Das eXtensible Messaging and Presence Protocol (XMPP), umgangssprachlich "Jabber", ist ein offenes
-Kommunikationsprotokoll das im wesentlichen eine Technologie darstellt, in XML eingebettete Daten zu streamen, und dass sich seit seiner Veröffentlichung 1999 :cite:`XMPP|91:online` stark verbreitet hat.
+Kommunikationsprotokoll das im wesentlichen eine Technologie darstellt, in XML eingebettete Daten zu streamen und dass sich seit seiner Veröffentlichung 1999 :cite:`XMPP|91:online` stark verbreitet hat.
 Beispielsweise arbeiten der Facebook-Chat, WhatsApp und GoogleTalk mit XMPP. Ausserdem verwenden Apple, Cisco, IBM, Nokia und Sun XMPP in eingigen ihrer Produkte. (Vgl. :cite:`XMPPTheDefinitiveGuide:companys`)
 
 
@@ -27,7 +27,8 @@ Diese Thesis untersucht eine andere Methode, die Dateiübertragungen abzuwickeln
 XMPP dient hierbei nurnoch dazu, die Daten weiter zu leiten, die für das starten einer Datenübertragung per BitTorrent nötig sind.
 Das Herstellen der Verbindung zwischen den Clients sowie die eigentliche Datenübertragung finden komplett über BitTorrent statt.
 
-Dazu wird ein minimaler XMPP- und BitTorrent Client implementiert, der dazu dient die für den Datenaustausch wichtigen Informationen unter den Teilnehmern zu verteilen, und gegebenenfalls die Datenübertragungen abzuwickeln.
+Dazu wurde ein XMPP- und BitTorrent Client in Python implementiert, der dazu dient die für den Datenaustausch wichtigen Informationen unter den Teilnehmern zu verteilen und gegebenenfalls die Datenübertragungen abzuwickeln.
+
 
 
 .. todo::

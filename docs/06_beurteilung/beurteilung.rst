@@ -1,62 +1,48 @@
-.. zusammenfassung:
+.. 06_beurteilung:
 
 
 Beurteilung der Ergebnisse
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Während der Implementierung traten eine ganze Reihe an Problemen größerer und Kleinerer Natur auf, die so nicht erwartet wurden.
+Während der Implementierung traten eine ganze Reihe an Problemen größerer und kleinerer Natur auf, die so nicht erwartet wurden.
+
 
 Vor- und Nachteile der Serverlosen Dateiübertragung
 ===================================================
 
 Durch die Serverlose Dateiübertragung per BitTorrent umgeht man zwar potentiell langsame Server, verliert aber auch einen "Mittelsmann" für die Übertragung. Befinden sich beispielsweise beide Teilnehmer hinter einem DSL Router, müssen beide auf Techniken zum Port öffnen unterstützen (oder manuell Ports öffnen) um eine Kommunikation in beide Richtungen zu ermöglichen.
-Außerdem, als im nachhinein offensichtliches Beispiel, müssen beide Parteien dasselbe Protokoll sprechen. Hat ein Teilnehmer eine IPv4 Adresse und ein anderer eine IPv6 Adresse, werden diese zwar gegenseitig ihre Torrentlisten erhalten, da diese vom XMPP Server übermittelt wird, allerdings wird nie eine Datenübertragung zustande kommen.
-Zu einem Gewissen grad werden diese Probleme aufgefangen, wenn sich die Teilnehmerzahlen erhöhen, aber trotzdem werden diese Übertragungen aufgrund der Beschränkung auf die bekannten Kontakte nie so reibungsfrei laufen wie "echte" BitTorrent Dateiübertragungen, bei denen ein Tracker oder das Torrent Netz selbst andere Teilnehmer vermittelt.
+Außerdem, als im nachhinein offensichtliches Beispiel, müssen beide Parteien dasselbe Protokoll sprechen. Hat ein Teilnehmer eine IPv4 Adresse und ein anderer eine IPv6 Adresse, werden diese zwar gegenseitig ihre Torrentlisten erhalten. Allerdings wird nie eine Datenübertragung zustande kommen, da diese vom XMPP Server übermittelt wird.
+Zum Teil werden diese Probleme aufgefangen, wenn sich die Teilnehmerzahlen erhöhen, aber trotzdem werden die Übertragungen aufgrund der Beschränkung auf die bekannten Kontakte nie so reibungsfrei laufen wie "echte" BitTorrent Dateiübertragungen, bei denen ein Tracker oder das Torrent Netz selbst andere Teilnehmer vermittelt und daher viel mehr Endpunkte vorhanden sind.
 
 Aus diesem Grund ist der Erfolg dieser Art der Datenübertragung zu einem gewissen Grad von der Homogenität und Funktionalität des genutzen Netzwerks der Teilnehmer abhängig.
 
 
+libtorrent
+==========
 
-    vor/nachteile libtorrent
-    (installation hgauptsächlich)
+Die libtorrent Libary, die sich selbst als "feature complete" :cite:`www.l3:online` bezeichnet, ist vor allem zu Beginn sehr unübersichtlich. Die Dokumentation bezieht sich auf die c++ Schnittstelle und verweist auch bezüglich der Python Bindings auf diese Dokumentation, da alle Elemente dieselben Bezeichnungen haben und ähnlich funktionieren. Trotzdem wurde während der Implementierung eine Übersicht der zu erwarteten Python Datentypen vermisst.
 
-notizen
--------
+Dazu kommt eine asynchrone Arbeitsweise, bei der viele Funktionen nur Alerts auslösen, die dann das Ergebnis enthalten und die das Debugging und Tests erheblich verkomplizieren.
 
+Außerdem existieren Inkompatibilitäten zwischen den Versionen, die in den Changelogs nicht gefunden worden. So ändert sich Beispielsweise die Codecerkennung bei Magnetlinks zwischen Version 0.16.13 (in den Ubuntu 14.04 Paketquellen) und Version 1.1.0 (zu diesem Zeitpunkt aktuell). Da hier keine Warnung gegeben wird, sondern nur ein Torrent mit invalidem Hash angelegt wird, ging viel Zeit in Fehlersuche verloren.
+Zur Lösung wurden zwei Funktionen zum Umwandeln nach UTF-8 aus dem ebenfalls auf libtorrent aufbauenden BitTorrent Client Deluge übernommen. (siehe bitween/components/bt/helpers.py)
 
-ipv6 issues
-***********
-
-    meatpuppet@sprach ~> ip -6 address show
-    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536
-        inet6 ::1/128 scope host
-           valid_lft forever preferred_lft forever
-    3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
-        inet6 2a03:2267::f9c6:6c2a:c747:adbe/64 scope global temporary dynamic
-           valid_lft 7035sec preferred_lft 2698sec
-        inet6 2a03:2267::76e5:bff:fecd:b756/64 scope global dynamic
-           valid_lft 7035sec preferred_lft 2698sec
-        inet6 fe80::76e5:bff:fecd:b756/64 scope link
-           valid_lft forever preferred_lft forever
-
-
-    >>> netifaces.ifaddresses("wlan0")[10]
-    [{'netmask': 'ffff:ffff:ffff:ffff::', 'addr': '2a03:2267::f9c6:6c2a:c747:adbe'}, {'netmask':
-     'ffff:ffff:ffff:ffff::', 'addr': '2a03:2267::76e5:bff:fecd:b756'}, {'netmask': 'ffff:ffff:f
-    fff:ffff::', 'addr': 'fe80::76e5:bff:fecd:b756%wlan0'}]
-
--> lib gibt keine auskunft über gültigkeit der adressen
-
-es existiert bereits eine issue dazu:
-https://bitbucket.org/al45tair/netifaces/issues/7/ipv6-deprecated-autoconf-temporary
-
-noch lesen: https://tools.ietf.org/html/rfc6724#section-10.1
+Außerdem exisiert für die libtorrent Installation kein Python Wheel, das vorkompilierte die vorkompilierte Libary enthält - der Nutzer ist hier darauf angewiesen, entweder selbst zu kompilieren oder möglicherweise alte Versionen zu nutzen, die das Betriebssystem bereitstellt. Auch das ist negativ zu werten, da es eine Hürde für unerfahrene Nutzer darstellt und somit die Verbreitung einschränkt.
 
 
 
-.. todo::
+XMPP Ansätze
+============
 
-    "Der Lösungsdokumentation sollte sich eine Beurteilung der Ergebnisse anschließen, die typischerweise auch eine Beschreibung von Testläufen enthält."
+Auch die komplexität vom XMPP und seinen Erweiterungen ist nicht zu unterschätzen.
+Es wurde auf 2 Bücher zurück gegriffen, die beide einen Einstieg in XMPP geben und von denen eines auch ein Codebeispiel für SleekXMPP verfolgt, jedoch wurde hier PEP nicht näher beleuchtet.
+Daher bezog sich die genauere Recherche in den meisten Fällen auf die häufig sehr umfassenden Protokollspezifikationen.
+
+
+TODO
+====
+
+Insgesamt wurde eine im Rahmen der erläuterten Probleme Funktionsfähige Version der gewünschten Anwendung implementiert.
 
 
 .. toctree::
