@@ -135,3 +135,43 @@ bt.del_torrent            hash              löscht Torrent mit Hash <hash>
 xmpp.get_hashes           --                liefert eine Liste mit aggregierten Hashes und gefundenen Endpunkten
 xmpp.get_shares           --                liefert eine Liste aller Kontakte und deren Shares
 ========================= ===============   ==========================================================================
+
+
+Das gui Modul
+-------------
+
+Mit dem gui Modul wurde ein Interface implementiert, über das User eine Übersicht über die gefundenen und eigenen Torrents bekommen können. Dies dient allerdings eher als Beispiel. Hier wurde keine komplette Nutzerschnittstelle geschrieben, lediglich genug Funktionalität um schnell eine Übersicht bekommen zu können.
+
+Diese Funktionen wurden gekapselt als Flask Blueprint und können somit für spätere Versionen leicht entfernt oder weiterentwickelt werden.
+
+.. code-block:: python
+   :caption: Setup des gui Blueprints (bitween/components/web/gui/__init__.py)
+
+   from flask import Blueprint
+
+   gui = Blueprint('gui', __name__, template_folder='templates', static_folder='static')
+
+   from . import views, errors
+
+Es wird ein neues Blueprint Objekt gui erstellt. Dieses wird dann wieder genutzt, um die importierten Routen zu erstellen, die im nächsten Schritt importiert werden.
+
+.. code-block:: python
+   :caption: Index Funktion des gui Blueprints (bitween/components/web/gui/views.py)
+
+   @gui.route('/', methods=['GET'])
+   def index():
+       [...]
+       return render_template('gui_index.html', torrents=handles.get_shares())
+
+Diese Beispielroute für die Index Route "/" wird nur für die GET Methode definiert. Es wird eine neue Liste der eigenen Torrents erstellt und als "torrents" zusammen mit dem Template "gui_index.html" an die Funktion render_template übergeben, die daraufhin einen String mit dem HTML Code generiert, der wiederum zurückgegeben und von Flask ausgeliefert wird.
+
+.. code-block:: python
+   :caption: Registrieren des Blueprints am app Objekt
+
+   from .gui import gui as gui_blueprint
+
+   [...]
+
+   app.register_blueprint(gui_blueprint)
+
+Registriert wird der Blueprint dann am app Objekt über die Funktion register_blueprint, mit dem importierten Blueprint als Parameter.
