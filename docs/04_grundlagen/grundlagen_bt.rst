@@ -22,7 +22,7 @@ Die Identifikation der Dateien findet laut der BitTorrent Protocol Specification
 
  "The purpose of this extension is to allow clients to join a swarm and complete a download without the need of downloading a .torrent file first. This extension instead allows clients to download the metadata from peers. It makes it possible to support magnet links, a link on a web page only containing enough information to join the swarm (the info hash)." :cite:`www.b79:online`
 
-Das in der Spezifikation beschriebene Format eines Magnet Links ist dabei wie Folgt:
+Das in der Spezifikation beschriebene Format eines Magnet Links ist dabei wie folgt:
 
  magnet:?xt=urn:btih:<info-hash>&dn=<name>&tr=<tracker-url>&x.pe=<peer-address>
 

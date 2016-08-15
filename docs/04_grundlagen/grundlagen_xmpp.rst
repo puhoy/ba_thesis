@@ -94,7 +94,7 @@ Erweiterungen
 
  'The “X” in XML and XMPP stands for “extensible,” so payload types are limited only by your imagination!' :cite:`XMPPTheDefinitiveGuide`
 
-Dadurch, dass XMPP auf der Extensible Markup Language aufbaut kann es relativ leicht um eigene Funktionen erweitert werden. Die XMPP Standards Foundation führt hierzu eine Liste der eingereichten Erweiterungen als XMPP Extension Protocols (XEP). Diese Umfassen zu diesem Zeitpunkt 379 Dokumente.
+Dadurch, dass XMPP auf der Extensible Markup Language aufbaut kann es relativ leicht um eigene Funktionen erweitert werden. Die XMPP Standards Foundation führt hierzu eine Liste der eingereichten Erweiterungen als XMPP Extension Protocols (XEP). Diese umfassen zu diesem Zeitpunkt 379 Dokumente.
 
 
 Als Möglichkeit, mit wenig Aufwand definierte Informationen an die eigenen Kontakte zu senden, soll hier eine Einführung in das Personal Eventing Protocol (XEP-0163), bzw. eine seiner Anwendungen, das auf PEP aufbauende "User Tune" (XEP-0118) gegeben werden.
