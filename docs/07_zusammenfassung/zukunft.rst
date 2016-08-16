@@ -1,30 +1,21 @@
 .. zukunft:
 
 
-Fazit und Ausblick
-~~~~~~~~~~~~~~~~~~
-
-mögliche Erweiterungen
-======================
-
- - herausfiltern wenn eine übertragung nicht funktionieren kann (ipv4/v6)
- - grafischer (Browser)-Client
- - Statistiken über Up/Downloads
- - bessere Erkennung was zu benutzen ist: IPv4/IPv6
- - Privacy: Kontrolllisten für Torrents (wem was publishen) (generelles sperren ist schon über xmpp möglich)
- - "Backup-Mode": alle Freigaben des eigenen Accounts, aber aus anderen Resourcen automatisch Downloaden
-
-- "wanted" mode - wenn user der kontaktliste torrents suchen, könnte man beim auffinden des torrents automatisch adden, um den torrent weiter zu leiten
-
- - login/user management für api
-
- - ip addresse herausfinden über:
-    xmpp
-     (kaum implementiert)
-    bt
-     (braucht erstmal gegenstellen)
-
-mögl. fix für connection probleme: wenn ipv4 funktioniert, ipv4 nutzen -> jeder hat (normalerweise) ipv4. ipv6 einzeln aktivieren im falle von DSlite oder reinem ipv6.
+Ausblick
+~~~~~~~~
 
 
-evtl besser: XMPP benutzen um Torrent Dateien zu verteilen, evtl encoded, über ähnliche mechanismen. das ganze hätte dann keine privacy mehr, man könnte wieder tracker für den einstieg benutzen. XMPP ist dann nurnoch ersatz für HTTP Server die statische Files sharen.
+Diese Erste Version der Anwendung schöpft bei weitem noch nicht das volle Potential der Möglichkeiten dieser Technik aus.
+Es sind sowohl noch Probleme zu lösen, als auch das Programm zu Erweitern.
+
+So fehlt zur Zeit Funktionalität, um mögliche Fehler bei Übertragungen zu erkennen. Sprechen mindestens 2 Teilnehmer dieselbe IP Version? Hatte der Client Probleme Ports am Router zu öffnen? In diesen Fällen sollten an den Shares Hinweise verteilt werden, sodass ein Client entscheiden kann, welche Ergebnisse überhaupt angezeigt oder mit Warnungen versehen werden. Genauso sollten "bevorzugte" Verbindungen implementiert werden. Nutzen beide Teilnehmer einen vollen IPv4 und IPv6 Stack, könnte man Verbindungen standardmäßig auf IPv6 starten, um IPv4 NAT zu umgehen.
+
+Außerdem werden die IPv4 Adressen in dieser Version ausschließlich über andere Server herausgefunden, die die eigene öffentliche IP Adresse zurückliefern. Ist ein Server aus dieser Liste nicht erreichbar, wird lange auf ein Timeout der Verbindung gewartet bevor eine nächste Anfrage gestellt wird. Hier sollte man zusätzlich auf andere Techniken zurückgreifen: BitTorrent nutzt beispielsweise eine Technik, um bei anderen Peers die IP Adresse zu erfragen. Hierfür sind natürlich andere Peers nötig - der Erste Kontakt in einer Nutzergruppe müsste also weiterhin andere Techniken nutzen.
+
+Andere mögliche Erweiterungen wären:
+
+ - grafischer Client mit Statistiken über Up/Downloads
+ - Kontrolllisten für Torrents: nicht jeder Kontakt sollte alle Shares bekommen
+ - "Backup-Mode": alle Freigaben anderer Ressourcen des eigenen Accounts automatisch Downloaden
+ - "Wanted" Listen: Kontakte können gesuchte Hashes als "Wanted" publishen. Werden diese von anderen Kontakten gefunden, werden diese Downloaden und dem ursprünglich Suchenden zur Verfügung stellen
+ - Usermanagement/Passwortgeschützter Login für die API
