@@ -4,16 +4,18 @@ XMPP
 
 Das Extensible Messaging and Presence Protocol ist im Grunde eine Technologie zum XML streamen (vgl. :cite:`XMPPTheDefinitiveGuide:streamingxml`) und kann so benutzt werden um alle möglichen Arten textbasierter Informationen zu versenden und zu empfangen.
 
-Ein Stream beginnt immer mit dem Öffnen eines <stream> Tags und endet mit dem schließenden </stream> Tag.
-Innerhalb dieses Streams können eine beliebige Menge an XML Stanzas versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also als ein XML Tag in den wiederum Tags eingebettet sein können.
+Ein Stream beginnt immer mit dem Öffnen eines Stream Tags mit "<stream>" und endet mit dem Schließen desselben mit "</stream>".
+Innerhalb dieses Streams können eine beliebige Menge an XML Elementen, die sogenannten "Stanzas", versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also als ein XML Tag in den wiederum Tags eingebettet sein können.
 
-Für die Tiefe eins des Streams, also unmittelbar dem <stream> Stanza untergeordnet, sind drei Basis-Stanzatypen definiert, die sich im default-Namespace "jabber:client" bzw. "jabber:server" befinden:
+Für die Tiefe eins des Streams, also unmittelbar dem Stream Stanza untergeordnet, sind drei Basis-Stanzatypen definiert, die sich im default-Namespace "jabber:client" bzw. "jabber:server" befinden:
 
     <message/> <presence/> <iq/>
 
 Jedes dieser Basisstanzas erfüllt unterschiedliche Funktionen.
 
-So ist mit <message> ein "Push" Mechanismus verbunden, um Nachrichten direkt an andere Teilnehmer zu verschicken, Beispielsweise::
+So ist mit dem Message Stanza ein "Push" Mechanismus verbunden, um Nachrichten direkt an andere Teilnehmer zu verschicken, Beispielsweise:
+
+.. code-block::xml
 
     <message to='jan@xmpp.kwoh.de' id='321' type='chat'>
         <body>Ich bin eine Nachricht!</body>
@@ -21,7 +23,9 @@ So ist mit <message> ein "Push" Mechanismus verbunden, um Nachrichten direkt an 
 
 Das Presence Stanza funktioniert als "Publish-Subscribe" Mechanismus.
 In der Basisfunktionalität ist dies der Verfügbarkeitsstatus: ist ein Kontakt online oder nicht. Es wird also jeder Kontakt, der die eigene Presence abonniert hat, automatisch über Statusänderungen benachrichtigt.
-Diese ist üblicherweise erweitert durch ein "<show>" und "<status>" Stanza, das eine nähere Beschreibung der Anwesenheit gibt::
+Diese ist üblicherweise erweitert durch ein Show und Status Stanza, das eine nähere Beschreibung der Anwesenheit gibt:
+
+.. code-block::xml
 
     <presence>
         <show>away</show>
@@ -118,6 +122,7 @@ Bereits in vielen Clients umgesetzt sind die auf PEP basierenden Erweiterungen "
 
 Ein übersichtliches Beispiel zur Anwendung von PEP ist in der User Tune Spezifikation gegeben.
 
+.. _tune_example:
 .. code-block:: xml
    :caption: Beispiel: Publishing an event xep-0118 :cite:`XEP-0118:online`
    :linenos:
@@ -142,7 +147,7 @@ Ein übersichtliches Beispiel zur Anwendung von PEP ist in der User Tune Spezifi
       </pubsub>
     </iq>
 
-Hier sendet User 'stpeter@jabber.org' vom Endpunkt '14793c64-[...]' ein PEP Event Stanza auf die Node 'http://jabber.org/protocol/tune', was dem Namespace des eingebetteten Stanza "tune" entspricht und keine aufrufbare URL, sondern nur ein Name für Namespace und Node ist.
+In :numref:`%s <tune_example>` sendet User 'stpeter@jabber.org' vom Endpunkt '14793c64-[...]' ein PEP Event Stanza auf die Node 'http://jabber.org/protocol/tune', was dem Namespace des eingebetteten Stanza "tune" entspricht und keine aufrufbare URL, sondern nur ein Name für Namespace und Node ist.
 
 Daraufhin werden alle User in seiner Kontaktliste, die die Presence oder den Namespace abonniert haben, das aktuelle pubsub Stanza bekommen.
 
