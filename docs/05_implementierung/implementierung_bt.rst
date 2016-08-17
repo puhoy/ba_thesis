@@ -23,7 +23,7 @@ Aufbau der Komponente
 
 Wie in Klassendiagramm :num:`_fig-classes-bt` zu sehen, leitet sich die BitTorrentClient Klasse  aus der Thread Klasse ab, die sich in der Python Standard Libary befindet und somit zum "Lieferumfang" jeder Python Installation gehört.
 
-Außerdem erbt BitTorrentClient von der Klasse Subscriber, deren implementierung im Kapitel TODO erläutert wird und die Funktionen zur Prozesskommunikation bereitstellt.
+Außerdem erbt BitTorrentClient von der Klasse Subscriber, deren Implementierung im Kapitel TODO erläutert wird und die Funktionen zur Prozesskommunikation bereitstellt.
 
 Als BitTorrent Libary wurde libtorrent verwendet.
 Über diese kann ein "session" Objekt erzeugt werden, über das Einstellungen wie die zu nutzenden Ports gemacht werden können, und das Hilfsfunktionen wie das Erstellen eines Torrent Objektes aus einem Magnet Link zur Verfügung stellt.
@@ -72,7 +72,7 @@ Die Aktivität eines Thread Objektes wird in der "run" Methode der Klasse defini
 
 
 
-In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode "handle_queue" aufrufen, danach mit der Methode "handle_alerts" die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
+In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode "handle_queue" aufrufen, danach mit der Methode "handle_alert" die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
 
 .. code-block:: python
 

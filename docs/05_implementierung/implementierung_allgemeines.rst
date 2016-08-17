@@ -46,7 +46,7 @@ tests/
    Durch das hinzufügen der __init__.py wird hier eine Automatische Testdiscovery ermöglicht. "python setup.py test", ausgeführt im Wurzelverzeichnis des Projektes würde hier Automatisch alle hinterlegten Tests ausführen.
 
 requirements.txt
-   Die requirements.txt einthält eine Liste der per pip installierbaren Abhängigkeiten des Projekts
+   Die requirements.txt enthält eine Liste der per pip installierbaren Abhängigkeiten des Projekts
 
 setup.py
    Das Setupscript enthält alle Informationen, um das Programm mit den Python Distutils bzw. pip zu installieren

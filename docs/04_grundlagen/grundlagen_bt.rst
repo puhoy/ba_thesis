@@ -13,7 +13,7 @@ Dieses nutzt, wenn keine Protokollerweiterungen genutzt werden einen "Tracker" g
 
 In deutsch etwa:
 
- "BitTorrent ist ein Protokoll zum Dateien verteilen. Es bestimmt Inhalt anhand einer URL und ist dazu entworfen sich nahtlos ins Internet zu integrieren. Der Vorteil zu HTTP ist, dass wenn multiple Downloads derselben Datei zur gleichen Zeit stattfinden, die Downloader zueinander Uploaden. Dadurch kann eine Dateiquelle sehr viele Downloader bei geringem Anstieg seiner Last haben."
+ "BitTorrent ist ein Protokoll zum Dateien verteilen. Es bestimmt Inhalt anhand einer URL und ist dazu entworfen sich nahtlos ins Internet zu integrieren. Der Vorteil zu HTTP ist, dass wenn multiple Downloads derselben Datei zur gleichen Zeit stattfinden, die Downloader zueinander uploaden. Dadurch kann eine Dateiquelle sehr viele Downloader bei geringem Anstieg seiner Last haben."
 
 
 Der Vorteil von BitTorrent als Übertragungsprotokoll ist also, dass wenn mehr als ein Kontakt dieselbe Datei zum Download anbietet, auch von mehreren Kontakten gleichzeitig heruntergeladen werden kann. Hierzu würde normalerweise der Tracker die Peers vermitteln. In Dieser Implementierung soll dies jedoch über XMPP geschehen.

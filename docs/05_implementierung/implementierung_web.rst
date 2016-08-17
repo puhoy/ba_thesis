@@ -5,11 +5,11 @@ Web
 Die Web Komponente soll nun, nachdem die Basisfunktionalität seitens der Datenübertragung implementiert ist, eine Schnittstelle für Nutzer und Frontends zur Steuerung bieten.
 
 Um das Programm auch auf entfernten Rechnern steuern zu können, wurde hier die Variante einer JsonRPC API gewählt.
-Außerdem wurde ein minimales Web Frontend Implementiert um bereits erhaltene Torrentlisten und eigene Torrents darzustellen.
+Außerdem wurde ein minimales Web Frontend implementiert um bereits erhaltene Torrentlisten und eigene Torrents darzustellen.
 Dafür wurde das Web Framework Flask, bzw. das Flask Plugin Flask-JSONRPC genutzt.
 
 Eine minimale Flask Anwendung ist dabei sehr einfach strukturiert.
-Erst wird ein Flask-Objekt erzeugt, welches dann Methoden zur verfügung stellt wie wiederum als Decorator für Funktionen genutzt werden.
+Erst wird ein Flask-Objekt erzeugt, welches dann Methoden zur Verfügung stellt, die wiederum als Decorator für Funktionen genutzt werden.
 
 .. code-block:: python
    :caption: Flask Beispiel :cite:`flask:online`

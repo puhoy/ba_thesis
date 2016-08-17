@@ -19,7 +19,7 @@ Das Programm gliedert sich in verschiedene Kernkomponenten (:num:`modules`), die
  - der XMPP Client (XmppClient)
 
     Der XMPP Client ist dafür zuständig eine Verbindung mit dem gewünschten XMPP Server herzustellen, bei jeder Aktualisierung der Torrents eine neue Übersicht über die angebotenen Shares an den Server zu übermitteln und Aktualisierungen aus der Kontaktliste zu empfangen.
-    Darüber hinaus startet der Client alle weiteren benötigten Prozesse und dient somit aus "Aufseher" über die die Startreihenfolge und eventuelle Abhängigkeiten.
+    Darüber hinaus startet der Client alle weiteren benötigten Prozesse und dient somit als "Aufseher" über die Startreihenfolge und eventuelle Abhängigkeiten.
     Als XMPP Libary wird hier die Python Bibliothek SleekXMPP verwendet.
 
  - der BitTorrent Client (BitTorrentClient)

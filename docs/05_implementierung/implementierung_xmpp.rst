@@ -189,7 +189,7 @@ Diese soll, wenn aufgerufen, eine aktuelle Liste der Torrents, verpackt in die d
 
 Hier muss darauf geachtet werden, dass nicht nur eine Liste der aktuellen Torrents gesendet wird. Es müssen außerdem die bereits empfangenen Torrents anderer Ressourcen des Eigenen Accounts mit einbezogen werden.
 
-Dazu wird die Tatsache genutzt, das nach dem senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
+Dazu wird die Tatsache genutzt, das nach dem Senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
 
 Es muss also nurnoch der eigene Useraccount aus der Liste ausgelesen und die Daten der lokalen Ressource aktualisiert werden.
 
@@ -239,4 +239,4 @@ Die IPv6 Adresse kann jedoch aus dem System ausgelesen werden. Hierfür kommt da
 Der so Konstruierte Client ist somit der Hauptteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, das wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.
 
 
-Im folgenden Kapitel wird die Web Komponente beschrieben, die einerseits eine minimale Weboberfläche zur Übersicht darstellt, aber auch eine JsonRPC API zur verfügung stellt, über die eventuelle Frontends mit der Anwendung kommunizieren können.
+Im folgenden Kapitel wird die Web Komponente beschrieben, die einerseits eine minimale Weboberfläche zur Übersicht darstellt, aber auch eine JsonRPC API zur Verfügung stellt, über die eventuelle Frontends mit der Anwendung kommunizieren können.
