@@ -3,6 +3,9 @@
 Zusammenfassung
 ~~~~~~~~~~~~~~~
 
+Insgesamt wurde eine funktionsfähige Anwendung erstellt, die wenn die erläuterten Probleme gelöst sind, durchaus Verbreitung finden kann.
+
+
 .. todo::
 
     zusammenfassung
