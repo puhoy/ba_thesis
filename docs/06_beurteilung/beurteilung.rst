@@ -34,7 +34,7 @@ Außerdem exisiert für die libtorrent Installation kein Python Wheel, das die v
 XMPP Ansätze
 ============
 
-Auch die komplexität vom XMPP und seinen Erweiterungen ist nicht zu unterschätzen.
+Auch die Komplexität vom XMPP und seinen Erweiterungen ist nicht zu unterschätzen.
 Es wurde auf 2 Bücher zurück gegriffen, die beide einen Einstieg in XMPP geben und von denen eines auch ein Codebeispiel für SleekXMPP verfolgt, jedoch wurde hier PEP nicht näher beleuchtet.
 Daher bezog sich die genauere Recherche in den meisten Fällen auf die häufig sehr umfassenden Protokollspezifikationen.
 

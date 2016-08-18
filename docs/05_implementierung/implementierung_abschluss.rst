@@ -65,7 +65,7 @@ Dokumentation
 
 Für die gesamte Anwendung wurde Dokumentation in Form von Docstrings an allen Funktionen, Methoden, Modulen und Klassen verfasst. Diese sind im reStructuredText Format gehalten.
 
-Um diese Dokumentation übersichtlich dar zu stellen, kann aus denn Docstrings mit dem Dokumentationsgenerator Sphinx (www.sphinx-doc.org :cite:`Overv9:online`) eine Dokumentation in anderen Formaten wie HTML oder PDF erstellt werden.
+Um diese Dokumentation übersichtlich dar zu stellen, kann aus den Docstrings mit dem Dokumentationsgenerator Sphinx (www.sphinx-doc.org :cite:`Overv9:online`) eine Dokumentation in anderen Formaten wie HTML oder PDF erstellt werden.
 
 Die Konfiguration von Sphinx geschieht dabei über die Datei conf.py im Verzeichnis docs.
 Mit dem Skript build_docs.sh im Wurzelverzeichnis des Projekts kann dann das automatisierte erstellen der benötigten Dokumentationsdateien angestoßen werden. Diese sind untereinander logisch verkettet und können so in späteren Formaten wie HTML verlinkt werden.
@@ -79,11 +79,12 @@ Integration in andere Dienste
 Dadurch, das dieses Projekt in Git Versioniert und auf GitHub, einem Git Hostingdienst für (hauptsächlich) OpenSource Programme entwickelt wurde, war es naheliegend, darauf basierende weiterführende Dienste zu benutzen.
 So wurden drei externe Dienste in dieses Projekt integriert:
 
-ReadTheDocs
-  um automatisch Dokumentationen in HTML aus den Docstrings des Programms zu erstellen und zu hosten. Dabei wird nach jedem "git push" auf den Server ein Webhook ausgelöst, der das erstellen einer neuen Version der Dokumentation antriggert. Zu finden ist diese Dokumentation unter http://bitween.readthedocs.io/en/develop/ und auf der angefügten CD.
+ReadTheDocs (readthedocs.io :cite:`Welco38:online`)
+  um automatisch Dokumentationen in HTML aus den Docstrings des Programms zu erstellen und zu hosten. Dabei wird nach jedem "git push" auf den Server ein Webhook ausgelöst, der das Erstellen einer neuen Version der Dokumentation antriggert. Zu finden ist diese Dokumentation unter http://bitween.readthedocs.io/en/develop/ und auf der beiliegenden CD.
 
-Travis-CI
+Travis-CI (travis-ci.org :cite:`puhoy80:online`)
   für automatisierte Unittests. Diese werden ebenfalls per Webhook vom Server ausgelöst. So wird jeder Commit automatisch getestet. Außerdem wird eine History über vergangene Tests geführt.
 
-Coveralls
+Coveralls (coveralls.io :cite:`puhoy65:online`)
   das die prozentuale Abdeckung des Codes durch die Testfälle darstellt. Dieser erhält die Testabdeckung von Travis-CI nach jedem Test. Auch hier wird eine History bis auf die Ebene einzelner Dateien erstellt. Außerdem wird grafisch dargestellt, welche Zeilen einer Datei ausgeführt wurden.
+
