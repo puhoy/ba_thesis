@@ -180,7 +180,7 @@ Außerdem wurden mit threading.Lock Sperren gegen den Zugriff aus mehreren Threa
 
 In der on_shares_publish() Methode werden dann zuerst alle bislang vorhandenen Daten gelöscht, da davon ausgegangen wird, dass in dem erhaltenen Paket alle aktuellen Daten vorhanden sind. Daraufhin wird über die gesendete Liste an Ressourcen iteriert. Jede Ressource sollte "share_items", also Informationen über Torrents, und mindestens eine IP-Adresse mit Port haben.
 
-Wurde das Datenpaket verarbeitet, wird eine Nachricht ohne Argumente auf Topic "recheck_handles" geschickt. Das wiederum hat zur Folge dass im BitTorrent Client über alle eigenen Torrents iteriert und überprüft wird, ob neue Quellen für einen der eigenen Torrents vorliegen.
+Wurde das Datenpaket verarbeitet, wird eine Nachricht ohne Argumente auf Topic "recheck_handles" geschickt. Das wiederum hat zur Folge, dass im BitTorrent Client über alle eigenen Torrents iteriert und überprüft wird, ob neue Quellen für einen der eigenen Torrents vorliegen.
 
 Auf diese Art können zur Laufzeit neue Quellen zu vorhandenen Torrents hinzugefügt werden.
 Außerdem liegt eine durchsuchbare Datenstruktur vor, die beispielsweise von Frontends benutzt werden kann um die empfangenen Torrentlisten anzuzeigen.
@@ -192,9 +192,9 @@ Versenden der Daten
 Das Versenden der Daten wird in der Methode publish_shares() abgewickelt.
 Diese soll, wenn aufgerufen, eine aktuelle Liste der Torrents, verpackt in die definierten Stanzas versenden.
 
-Hier muss darauf geachtet werden, dass nicht nur eine Liste der aktuellen Torrents gesendet wird. Es müssen außerdem die bereits empfangenen Torrents anderer Ressourcen des Eigenen Accounts mit einbezogen werden.
+Hier muss darauf geachtet werden, dass nicht nur eine Liste der aktuellen Torrents gesendet wird. Es müssen außerdem die bereits empfangenen Torrents anderer Ressourcen des eigenen Accounts mit einbezogen werden.
 
-Dazu wird die Tatsache genutzt, das nach dem Senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
+Dazu wird die Tatsache genutzt, dass nach dem Senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
 
 Es muss also nurnoch der eigene Useraccount aus der Liste ausgelesen und die Daten der lokalen Ressource aktualisiert werden.
 
