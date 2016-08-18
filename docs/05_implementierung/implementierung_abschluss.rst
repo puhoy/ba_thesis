@@ -17,7 +17,7 @@ Cmd-Client
 ----------
 
 Außerdem wurde ein Kommandozeilenclient entworfen, um die grundlegenden Funktionen der Anwendung zu bedienen: Pfade als Torrent freigeben, gefundene Freigaben auflisten und Freigaben anhand von Hashsummen Downloaden.
-Genutzt wird hierfür die Python Libary Requests, um Befehle an die JsonRPC API der Anwendung zu übermitteln.
+Genutzt wird hierfür die Python Libary Requests, um Befehle an die JSON-RPC API der Anwendung zu übermitteln.
 
 setup.py
 --------

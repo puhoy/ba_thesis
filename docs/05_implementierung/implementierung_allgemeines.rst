@@ -39,7 +39,7 @@ Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie fo
 
 **bitweenc.py**
 
-   Client für die JsonRPC API des Programms.
+   Client für die JSON-RPC API des Programms.
 
 **docs/**
 

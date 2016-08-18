@@ -6,7 +6,7 @@ Web
 
 Die Web Komponente soll nun, nachdem die Basisfunktionalität seitens der Datenübertragung implementiert ist, eine Schnittstelle für Nutzer und Frontends zur Steuerung bieten.
 
-Um das Programm auch auf entfernten Rechnern steuern zu können, wurde hier die Variante einer JsonRPC API gewählt.
+Um das Programm auch auf entfernten Rechnern steuern zu können, wurde hier die Variante einer JSON-RPC API gewählt.
 Außerdem wurde ein minimales Web Frontend implementiert um bereits erhaltene Torrentlisten und eigene Torrents darzustellen.
 Dafür wurde das Web Framework Flask, bzw. das Flask Plugin Flask-JSONRPC genutzt.
 
@@ -67,7 +67,7 @@ Dazu wird wie in Beispiel :ref:`web_init` zu sehen auf Modulebene das app-Objekt
 
 Das Modul ist unterteilt in die Submodule api und gui.
 
-Im Modul api sind die Funktionen der JsonRPC API definiert. Dieses ist wiederum unterteilt in "bt" und "xmpp", um die dort definierten Routen entsprechend ihrem Zweck aufzuteilen.
+Im Modul api sind die Funktionen der JSON-RPC API definiert. Dieses ist wiederum unterteilt in "bt" und "xmpp", um die dort definierten Routen entsprechend ihrem Zweck aufzuteilen.
 
 Das gui Modul beinhaltet Routen und Ressourcen des Web Frontends. Dieses bietet aber nur Funktionen um eigene Torrents und gesammelte Shares anzuzeigen. Es ist als Übersicht gedacht und stellt keineswegs eine komplette Schnittstelle zu allen Funktionen dar.
 
@@ -92,7 +92,7 @@ Diese wird mit dem app Objekt und einem Prefix für die gewünschten Routen init
 Die entsprechenden Funktionen werden dann aus dem Submodul importiert.
 
 .. code-block:: python
-   :caption: Definition einer JsonRPC Funktion (bitween/components/web/api/__init__.py)
+   :caption: Definition einer JSON-RPC Funktion (bitween/components/web/api/__init__.py)
 
    from .. import jsonrpc
 

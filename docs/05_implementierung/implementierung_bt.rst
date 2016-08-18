@@ -51,7 +51,7 @@ Subscriber wird hier mit "autosubscribe=True" erstellt. Dies bedeutet, dass alle
 
 Danach wird überprüft, ob eine SQLite Datenbank in Homeverzeichnis des Nutzers existiert. Der Dateiname ist festgelegt auf ".bitween.db". Ist diese Datei nicht präsent, wird sie erzeugt. Dazu wird in der Methode setup_db() eine neue Tabelle "torrents" mit den Spalten "magnetlink", "torrent", "status" und "save_path" angelegt. Diese werden benötigt um die Torrents zu persistieren.
 
-Als nächstes wird das session-Objekt erzeugt und je nach geladener Konfiguration Einstellungen gemacht: Ports auf denen BitTorrent arbeiten soll werden festgelegt (oder, wenn nicht gesetzt, dynamisch von der Libary gewählt), UPNP und NATPMP werden aktiviert wenn gewünscht. Diese Techniken werden benutzt um automatisch Ports in der NAT Table zu setzen und wird üblicherweise für den Betrieb hinter einem DSL Router benötigt.
+Als nächstes wird das session Objekt erzeugt und je nach geladener Konfiguration Einstellungen gemacht: Ports auf denen BitTorrent arbeiten soll werden festgelegt (oder, wenn nicht gesetzt, dynamisch von der Libary gewählt), UPNP und NATPMP werden aktiviert wenn gewünscht. Diese Techniken werden benutzt um automatisch Ports in der NAT Table zu setzen und werden üblicherweise für den Betrieb hinter einem DSL Router benötigt.
 
 Zu guter Letzt werden die in der SQLite Datenbank vorhandenen Torrents geladen und mit dem session Objekt verknüpft.
 
@@ -61,7 +61,7 @@ Danach ist der BitTorrentClient für den Start vorbereitet.
 Der Run-Loop
 ------------
 
-Die Aktivität eines Thread Objektes wird in der run() Methode der Klasse definiert. Diese kann dann nach dem erzeugen des Objektes mit start() gestartet werden.
+Die Aktivität eines Thread Objektes wird in der run() Methode der Klasse definiert. Diese kann dann nach dem Erzeugen des Objektes mit start() gestartet werden.
 
 
 .. _fig-bt_run_loop_1:

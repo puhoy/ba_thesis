@@ -14,7 +14,7 @@ Entwurf
    Modulübersicht
 
 
-Das Programm gliedert sich in verschiedene Kernkomponenten (:num:`modules`), die in den folgenden Kapiteln besprochen werden:
+Das Programm gliedert sich in verschiedene Kernkomponenten (Abbildung :num:`modules`), die in den folgenden Kapiteln besprochen werden:
 
  - der XMPP Client (XmppClient)
 
@@ -30,22 +30,21 @@ Das Programm gliedert sich in verschiedene Kernkomponenten (:num:`modules`), die
 
  - eine Nutzerschnittstelle zur Bedienung (Web)
 
-    Die JsonRPC API des Web Moduls dient als Schnittstelle für Frontends.
+    Die JSON-RPC API des Web Moduls dient als Schnittstelle für Frontends.
     Da das Programm theoretisch als Daemon auf einem entfernten Rechner laufen könnte, öffnet es einen Port zur Steuerung.
-    Hier wurde mit Hilfe des Frameworks Flask ein minimales Webinterface und eine JSONRPC Schnittstelle für andere externe Anwendungen entwickelt.
+    Hier wurde mit Hilfe des Frameworks Flask ein minimales Webinterface und eine JSON-RPC Schnittstelle für andere externe Anwendungen entwickelt.
 
 
  - ein Modul zur IPC (Subscriber)
 
-    Da alle genannten Module in eigenen nebenläufigen Threads laufen wird eine Komponente zur Inter Process Communication benötigt.
-    Hierzu wurde eine Publish-Subscribe Pattern implementiert, die das zuweisen der Nachrichten zu Subscribern übernimmt. Außerdem dient es als Basisklasse, von der alle Klassen, deren Objekte Nachrichten empfangen, abgeleitet werden. Dazu wurde eine einfache Scheduling Funktion Implementiert.
+    Da alle genannten Module in eigenen nebenläufigen Threads laufen, wird eine Komponente zur Inter-Process Communication benötigt.
+    Hierzu wurde eine Publish-Subscribe Pattern implementiert, die das Zuweisen der Nachrichten zu Subscribern übernimmt. Außerdem dient es als Basisklasse, von der alle Klassen, deren Objekte Nachrichten empfangen, abgeleitet werden. Dazu wurde eine einfache Scheduling Funktion implementiert.
 
 
 
-Außerdem Klassen zur Abstrahierung der Daten zur Laufzeit:
+Außerdem wurden Klassen zur Abstrahierung der Daten zur Laufzeit geschrieben:
 
     - Addresses für die eigenen IP-Adressen und BitTorrent Ports
     - Handles für die einzelnen Torrent Handles
     - ContactShares für alle empfangenen Shares
-
 

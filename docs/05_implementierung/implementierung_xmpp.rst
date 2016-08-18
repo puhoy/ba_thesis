@@ -234,7 +234,7 @@ Allerdings fehlt noch jegliche Art der Interaktion mit anderen Komponenten der A
 
 Daher wird im Konstruktor noch ein Scheduler hinzugefügt, der zyklisch die vom Subscriber geerbte Message Queue verarbeitet. Dies Erfolgt auf dieselbe Art wie schon im BitTorrent Client: alle mit "on_" beginnenden Methoden werden automatisch als Topic abonniert und werden in der verknüpften Methode aufgerufen wenn die entsprechenden Nachrichten vorliegen.
 
-Außerdem werden im Konstruktor die anderen Komponenten der Anwendung gestartet: der BitTorrent Client und eine JsonRPC API mit einem Web Frontend zur Übersicht über die Torrents, das im Kapitel :ref:`web` näher beschrieben wird.
+Außerdem werden im Konstruktor die anderen Komponenten der Anwendung gestartet: der BitTorrent Client und eine JSON-RPC API mit einem Web Frontend zur Übersicht über die Torrents, das im Kapitel :ref:`web` näher beschrieben wird.
 
 Da die eigene IP Adresse Teil der zu versendenden Datenpakete ist, wird hier außerdem ein Prozess angestoßen, der die eigene IPv4 Adresse herausfinden soll. Da diese hinter einem DSL Router im lokalen Netz nicht bekannt ist, wurde hier das Modul ipgetter genutzt. In diesem sind eine Reihe an Servern hinterlegt, die die IP zurück geben, von der die Anfrage kommt.
 
@@ -244,4 +244,4 @@ Die IPv6 Adresse kann jedoch aus dem System ausgelesen werden. Hierfür kommt da
 Der so konstruierte Client ist somit der Hauptteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, dass wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.
 
 
-Im folgenden Kapitel wird die Web Komponente beschrieben, die einerseits eine minimale Weboberfläche zur Übersicht darstellt, aber auch eine JsonRPC API zur Verfügung stellt, über die eventuelle Frontends mit der Anwendung kommunizieren können.
+Im folgenden Kapitel wird die Web Komponente beschrieben, die einerseits eine minimale Weboberfläche zur Übersicht darstellt, aber auch eine JSON-RPC API zur Verfügung stellt, über die eventuelle Frontends mit der Anwendung kommunizieren können.
