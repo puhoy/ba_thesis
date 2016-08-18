@@ -18,4 +18,4 @@ Andere mögliche Erweiterungen wären:
  - Kontrolllisten für Torrents: nicht jeder Kontakt sollte alle Shares bekommen
  - "Backup-Mode": alle Freigaben anderer Ressourcen des eigenen Accounts automatisch Downloaden
  - "Wanted" Listen: Kontakte können gesuchte Hashes als "Wanted" publishen. Werden diese von anderen Kontakten gefunden, werden diese Downloaden und dem ursprünglich Suchenden zur Verfügung stellen
- - Usermanagement/Passwortgeschützter Login für die API
+ - Usermanagement/passwortgeschützter Login für die API
