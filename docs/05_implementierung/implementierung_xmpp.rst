@@ -1,3 +1,6 @@
+
+.. _xmpp:
+
 XMPP
 ====
 
@@ -5,7 +8,7 @@ Im vorigen Kapitel BitTorrent wurde die Implementierung eines BitTorrent Clients
 
 Die XMPP Komponente muss nun also diese Liste inklusive der eigenen IP Adressen an alle Kontakte verteilen und außerdem eine Liste der empfangenen Torrents und der entsprechenden Quellen führen.
 
-Das hier verwendete Python Modul sleekxmpp bietet hier die Möglichkeit diese Funktionen in einem Plugin zu implementieren, das in einem ansonsten übersichtlichem XMPP Client geladen werden kann.
+Das hier verwendete Python Modul SleekXMPP bietet hier die Möglichkeit diese Funktionen in einem Plugin zu implementieren, das in einem ansonsten übersichtlichem XMPP Client geladen werden kann.
 
 Die folgenden Kapitel beschreiben die Stanzas in denen die benötigten Informationen übertragen werden sollen sowie des Aufbau des Plugins.
 Danach wird das Einbinden in den XMPP Client erläutert.
@@ -38,8 +41,10 @@ Daraus ergibt sich folgende Struktur der Daten (hier als Beispiel in Pseudo-XML)
       </1. Ressource>
       ...
       <n. Ressource>
+
          <Addressen> ... </Addressen>
          <Shares> ... </Shares>
+
       </n. Ressource>
    </Ressourcen>
 
@@ -54,7 +59,7 @@ Diese logische Verschachtelung wurde in den folgenden Stanzas abgebildet.
 
 Jede Stanzaklasse wurde von ElementBase abgeleitet, der Basisklasse für Stanzas aus SleekXMPP. Mithilfe dieser können die XML Elemente einfach als Klassen und Attribute von Klassen behandelt werden, ohne das XML als String behandelt werden muss.
 
-Das "äußerste" Stanza ist das UserShareStanza. Diesem Container Stanza können über die Methode add_resource Ressourcen, also angemeldete XMPP Clients als Endpunkte, hinzugefügt werden. In diesem ResourceStanza können nun per add_address und add_share AddressStanzas und ShareItems eingebettet werden.
+Das "äußerste" Stanza ist das UserShareStanza. Diesem Container Stanza können über die Methode add_resource() Ressourcen, also angemeldete XMPP Clients als Endpunkte, hinzugefügt werden. In diesem ResourceStanza können nun per add_address() und add_share() AddressStanzas und ShareItems eingebettet werden.
 
 
 Die Verknüpfung der jeweiligen Stanzas erfolgt dabei aus dem jeweils übergeordnetem Stanza.
@@ -72,7 +77,7 @@ Die Verknüpfung der jeweiligen Stanzas erfolgt dabei aus dem jeweils übergeord
            resource_stanza['resource'] = resource
            return resource_stanza
 
-Hier wird in der Methode add_resource ein neues ResourceStanza erzeugt.
+Hier wird in der Methode add_resource() ein neues ResourceStanza erzeugt.
 "ResourceStanza(None, self)" verknüpft das neu erstellte Stanza mit "self", dem UserSharesStanza.
 
 Der Namespace ist hier Erkennungsmerkmal aller zum Plugin gehörigen Stanzas und wird genutzt um eingehende Stanzas dem Plugin zu zu ordnen.
@@ -96,13 +101,13 @@ Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexX
    Klassendiagramm XMPP Erweiterung
 
 
-Hier wird eine neue Klasse UserShares erstellt und die Methoden plugin_init und plugin_end überschrieben. Diese werden später vom Client beim starten bzw. beenden des Plugins ausgeführt.
+Hier wird eine neue Klasse UserShares erstellt und die Methoden plugin_init() und plugin_end() überschrieben. Diese werden später vom Client beim starten bzw. beenden des Plugins ausgeführt.
 
-Außerdem wurden hier die Methoden publish_shares und stop implementiert.
+Außerdem wurden hier die Methoden publish_shares() und stop() implementiert.
 
-publish_shares wird aufgerufen sobald der Client startet, außerdem wenn Änderungen an den Torrents oder des BitTorrent Clients stattfinden, beispielsweise falls ein neuer Torrent hinzugefügt wird oder sich der NAT Port ändert.
+publish_shares() wird aufgerufen sobald der Client startet, außerdem wenn Änderungen an den Torrents oder des BitTorrent Clients stattfinden, beispielsweise falls ein neuer Torrent hinzugefügt wird oder sich der NAT Port ändert.
 
-on_shares_publish hingegen stellt das Gegenstück zu publish_shares dar: diese Methode soll das Empfangen der Daten abwickeln.
+on_shares_publish() hingegen stellt das Gegenstück zu publish_shares() dar: diese Methode soll das Empfangen der Daten abwickeln.
 
 Hier soll ein Plugin implementiert werden, das auf dem bereits in den Grundlagen beschriebenen Personal Eventing Protocol (PEP) aufsetzt.
 
@@ -128,20 +133,20 @@ Start des Plugins
       self.xmpp['xep_0163'].register_pep('shares', UserSharesStanza)
       self.xmpp.add_event_handler('shares_publish', self.on_shares_publish)
 
-Wird das Plugin vom Client geladen, wird zuerst die plugin_init Methode aufgerufen.
+Wird das Plugin vom Client geladen, wird zuerst die plugin_init() Methode aufgerufen.
 In dieser werden die vom Plugin genutzten Stanzas registriert und das UserShares Stanza unter dem Namen "shares" im PEP Plugin registriert.
-Das PEP Plugin wird daraufhin den Namespace des UserShares Stanzas als unterstütztes Feature der Service Discovery hinzufügen. Auf diese Art werden nur solche Clients die Informationen erhalten, die das Plugin unterstützen. Außerdem werden in register_pep die Events "shares_publish" und "shares_retract" angelegt.
+Das PEP Plugin wird daraufhin den Namespace des UserShares Stanzas als unterstütztes Feature der Service Discovery hinzufügen. Auf diese Art werden nur solche Clients die Informationen erhalten, die das Plugin unterstützen. Außerdem werden in register_pep() die Events "shares_publish" und "shares_retract" angelegt.
 
-Als nächstes wird ein Event Handler für shares_publish registriert. In dieser Methode "on_shares_publish" soll das Empfangen und Einpflegen der Daten erfolgen.
+Als nächstes wird ein Event Handler für shares_publish registriert. In der damit verknüpften Methode on_shares_publish() soll das Empfangen und Einpflegen der Daten erfolgen.
 
 
 Empfangen von Daten
 -------------------
 
-Wird nun ein UserShareStanza empfangen, wird über den Namespace identifiziert dass UserShare Plugin dafür zuständig ist, und die zugehörige Methode on_shares_publish wird mit dem Stanza als erstem Argument aufgerufen.
+Wird nun ein UserShareStanza empfangen, wird über den Namespace identifiziert dass UserShare Plugin dafür zuständig ist, und die zugehörige Methode on_shares_publish() wird mit dem Stanza als erstem Argument aufgerufen.
 
-Diese Informationen werden in einem Objekt der Klasse ContactShares der models gehalten.
-Diese dient als Wrapper um ein Python Dictionary und bietet einige von der Datenstruktur abstrahierte Funktionen wie "get_resource(jid, resource)", die für einen bestimmten User die Daten einer bestimmten Ressource liefert.
+Diese Informationen werden in einem Objekt der Klasse ContactShares der Models gehalten.
+Diese dient als Wrapper um ein Python Dictionary und bietet einige von der Datenstruktur abstrahierte Funktionen wie get_resource(jid, resource), die für einen bestimmten User die Daten einer bestimmten Ressource liefert.
 Außerdem wurden mit threading.Lock Sperren gegen den Zugriff aus mehreren Threads zur gleichen Zeit implementiert.
 
 .. code-block:: python
@@ -173,7 +178,7 @@ Außerdem wurden mit threading.Lock Sperren gegen den Zugriff aus mehreren Threa
 
         publish('recheck_handles')
 
-In der on_shares_publish Methode werden dann zuerst alle bislang vorhandenen Daten gelöscht, da davon ausgegangen wird, dass in dem erhaltenen Paket alle aktuellen Daten vorhanden sind. Daraufhin wird über die gesendete Liste an Ressourcen iteriert. Jede Ressource sollte "share_items", also Informationen über Torrents, und mindestens eine IP-Adresse mit Port haben.
+In der on_shares_publish() Methode werden dann zuerst alle bislang vorhandenen Daten gelöscht, da davon ausgegangen wird, dass in dem erhaltenen Paket alle aktuellen Daten vorhanden sind. Daraufhin wird über die gesendete Liste an Ressourcen iteriert. Jede Ressource sollte "share_items", also Informationen über Torrents, und mindestens eine IP-Adresse mit Port haben.
 
 Wurde das Datenpaket verarbeitet, wird eine Nachricht ohne Argumente auf Topic "recheck_handles" geschickt. Das wiederum hat zur Folge dass im BitTorrent Client über alle eigenen Torrents iteriert und überprüft wird, ob neue Quellen für einen der eigenen Torrents vorliegen.
 
@@ -184,7 +189,7 @@ Außerdem liegt eine durchsuchbare Datenstruktur vor, die beispielsweise von Fro
 Versenden der Daten
 -------------------
 
-Das Versenden der Daten wird in der Methode publish_shares abgewickelt.
+Das Versenden der Daten wird in der Methode publish_shares() abgewickelt.
 Diese soll, wenn aufgerufen, eine aktuelle Liste der Torrents, verpackt in die definierten Stanzas versenden.
 
 Hier muss darauf geachtet werden, dass nicht nur eine Liste der aktuellen Torrents gesendet wird. Es müssen außerdem die bereits empfangenen Torrents anderer Ressourcen des Eigenen Accounts mit einbezogen werden.
@@ -220,23 +225,23 @@ ClientXMPP bringt hierbei schon alle zum Verbinden benötigten Voraussetzungen m
         self.register_plugin('shares', module=share_plugin)
 
 Danach werden die benötigten Erweiterungen registriert, die bereits Teil von SleekXMPP sind: Service Discovery, Entity Caps und PEP.
-Auch das UserShares Modul wird, wie die anderen Plugins, über register_plugin registriert. Hier wird allerdings noch auf das vorher importierte Modul verwiesen, da dieses nicht Teil von SleekXMPP ist.
+Auch das UserShares Modul wird, wie die anderen Plugins, über register_plugin() registriert. Hier wird allerdings noch auf das vorher importierte Modul verwiesen, da dieses nicht Teil von SleekXMPP ist.
 
-Außerdem wird im Konstruktor das "session_start" Event mit einer Methode "start" der Klasse verknüpft. Hier wird nach dem Verbinden die eigene Präsenz gesendet und der Roster, also die Kontaktliste, empfangen.
+Außerdem wird im Konstruktor das "session_start" Event mit einer Methode start() der Klasse verknüpft. Hier wird nach dem Verbinden die eigene Präsenz gesendet und der Roster, also die Kontaktliste, empfangen.
 
 In dieser Grundkonfiguration wäre der Client grundsätzlich schon betriebsbereit.
 Allerdings fehlt noch jegliche Art der Interaktion mit anderen Komponenten der Anwendung.
 
 Daher wird im Konstruktor noch ein Scheduler hinzugefügt, der zyklisch die vom Subscriber geerbte Message Queue verarbeitet. Dies Erfolgt auf dieselbe Art wie schon im BitTorrent Client: alle mit "on_" beginnenden Methoden werden automatisch als Topic abonniert und werden in der verknüpften Methode aufgerufen wenn die entsprechenden Nachrichten vorliegen.
 
-Außerdem werden im Konstruktor die anderen Komponenten der Anwendung gestartet: der BitTorrent Client und eine JsonRPC API mit einem Web Frontend zur Übersicht über die Torrents, das im Kapitel "Web" näher beschrieben wird.
+Außerdem werden im Konstruktor die anderen Komponenten der Anwendung gestartet: der BitTorrent Client und eine JsonRPC API mit einem Web Frontend zur Übersicht über die Torrents, das im Kapitel :ref:`web` näher beschrieben wird.
 
-Da die eigene IP Adresse Teil der zu versendenden Datenpakete ist, wird hier außerdem ein Prozess angestoßen, der die eigene IPv4 Adresse herausfinden soll. Da diese hinter einem DSL Router im Lokalen Netz nicht bekannt ist, wurde hier das Modul ipgetter genutzt. In diesem sind eine Reihe an Servern hinterlegt, die die IP zurück geben, von der die Anfrage kommt.
+Da die eigene IP Adresse Teil der zu versendenden Datenpakete ist, wird hier außerdem ein Prozess angestoßen, der die eigene IPv4 Adresse herausfinden soll. Da diese hinter einem DSL Router im lokalen Netz nicht bekannt ist, wurde hier das Modul ipgetter genutzt. In diesem sind eine Reihe an Servern hinterlegt, die die IP zurück geben, von der die Anfrage kommt.
 
 Die IPv6 Adresse kann jedoch aus dem System ausgelesen werden. Hierfür kommt das Modul netifaces zum Einsatz, das Betriebssystemumabhängig die momentanen IP Adressen auslesen kann.
 
 
-Der so Konstruierte Client ist somit der Hauptteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, das wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.
+Der so konstruierte Client ist somit der Hauptteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, dass wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.
 
 
 Im folgenden Kapitel wird die Web Komponente beschrieben, die einerseits eine minimale Weboberfläche zur Übersicht darstellt, aber auch eine JsonRPC API zur Verfügung stellt, über die eventuelle Frontends mit der Anwendung kommunizieren können.

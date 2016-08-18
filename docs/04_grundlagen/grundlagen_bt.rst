@@ -3,7 +3,7 @@ BitTorrent
 ==========
 
 Für die Datenübertragung soll das BitTorrent Protokoll genutzt werden.
-Dieses nutzt, wenn keine Protokollerweiterungen genutzt werden einen "Tracker" genannten Server zur Vermittlung der Teilnehmer ("Peers").
+Dieses nutzt, wenn keine Protokollerweiterungen genutzt werden, einen "Tracker" genannten Server zur Vermittlung der Teilnehmer ("Peers").
 
 .. epigraph::
 
@@ -11,7 +11,7 @@ Dieses nutzt, wenn keine Protokollerweiterungen genutzt werden einen "Tracker" g
 
  -- :cite:`www.b44:online`
 
-In deutsch etwa:
+Sinngemäß übersetzt:
 
  "BitTorrent ist ein Protokoll zum Dateien verteilen. Es bestimmt Inhalt anhand einer URL und ist dazu entworfen sich nahtlos ins Internet zu integrieren. Der Vorteil zu HTTP ist, dass wenn multiple Downloads derselben Datei zur gleichen Zeit stattfinden, die Downloader zueinander uploaden. Dadurch kann eine Dateiquelle sehr viele Downloader bei geringem Anstieg seiner Last haben."
 
@@ -28,4 +28,4 @@ Das in der Spezifikation beschriebene Format eines Magnet Links ist dabei wie fo
 
 Da kein Tracker benötigt wird um Informationen zu verteilen und dynamisch Peer Adressen hinzugefügt werden sollen, wird hier also nur der Info Hash benötigt. Dieser ist der SHA-1 Hash des info dict des torrent-Files.
 
-Da in der zur Implementierung genutzten Libary (libtorrent) die Möglichkeit besteht, einen neuen Torrent auf Basis eines Magnet Links anzulegen der nur einen Info Hash enthält und später dynamisch Peer Adressen hinzu zu fügen, ist es möglich das komplette Peer Management zur Laufzeit abzuwickeln.
+Da in der zur Implementierung genutzten Libary (libtorrent) die Möglichkeit besteht, einen neuen Torrent auf Basis eines Magnet Links anzulegen, der nur einen Info Hash enthält, und später dynamisch Peer Adressen hinzu zu fügen, ist es möglich das komplette Peer Management zur Laufzeit abzuwickeln.

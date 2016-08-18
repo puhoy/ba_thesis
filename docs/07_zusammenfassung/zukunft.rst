@@ -1,6 +1,6 @@
 .. zukunft:
 
-
+.. _ausblick:
 Ausblick
 ~~~~~~~~
 

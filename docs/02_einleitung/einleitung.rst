@@ -29,12 +29,8 @@ Das Herstellen der Verbindung zwischen den Clients sowie die eigentliche Datenü
 
 Dazu wurde ein XMPP- und BitTorrent Client in Python implementiert, der dazu dient die für den Datenaustausch wichtigen Informationen unter den Teilnehmern zu verteilen und gegebenenfalls die Datenübertragungen abzuwickeln.
 
-
-
-.. todo::
-
-    - was ich in welchem Kapitel beschreibe
-
-    "kurze Erörterung der Randbedingungen, die insbesondere darlegt, was vorgegeben und daher "nur" genutzt und was eigenständig entwickelt wurde. Außerdem soll in der Einleitung der weitere Aufbau der Arbeit beschrieben werden"
+Diese Thesis geht im Kapitel :ref:`planung` auf die Anforderungen an das Programm und das Konzept ein. Darauf Folgt das Kapitel :ref:`grundlagen`, in dem das benötigte Wissen über XMPP und dessen Erweiterungen, sowie BitTorrent vermittelt wird.
+Das Kapitel :ref:`implementierung` unterteilt sich in Kapitel zum Entwurf der Anwendung und zur konkreten Umsetzung der einzelnen Komponenten.
+Darauf folgt die Beurteilung der Ergebnisse im Kapitel :ref:`beurteilung` und eine Zusammenfassung mit Ausblick auf Erweiterungsmöglichkeiten in Kapitel :ref:`zusammenfassung`.
 
 

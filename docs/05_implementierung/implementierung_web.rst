@@ -1,4 +1,6 @@
 
+.. _web:
+
 Web
 ===
 
@@ -24,7 +26,7 @@ Erst wird ein Flask-Objekt erzeugt, welches dann Methoden zur Verfügung stellt,
     if __name__ == "__main__":
         app.run()
 
-In diesem Beispiel wird ein Objekt "app" der Klasse Flask erzeugt. Daraufhin wird die Funktion hello mit app.route("/") dekoriert, was zur Folge hat, das wenn die Anwendung mit app.run() lokal gestartet wird, beim Aufruf von "http://localhost:5000/" in einem Browser der String "Hello World!" ausgegeben wird. 5000 ist hier der Standardport von Flask und kann bei Bedarf angepasst werden.
+In diesem Beispiel wird ein Objekt "app" der Klasse Flask erzeugt. Daraufhin wird die Funktion hello() mit @app.route("/") dekoriert, was zur Folge hat, das wenn die Anwendung mit app.run() lokal gestartet wird, beim Aufruf von "http://localhost:5000/" in einem Browser der String "Hello World!" ausgegeben wird. 5000 ist hier der Standardport von Flask und kann bei Bedarf angepasst werden.
 
 
 Aufbau der Komponente
@@ -39,6 +41,7 @@ Aufbau der Komponente
 
 Da auch dieser Teil parallel zum XmppClient und dem BitTorrentClient laufen muss, soll das app-Objekt in einem neuen Thread gestartet werden.
 
+.. _web_init:
 .. code-block:: python
 
    app = Flask(__name__)
@@ -54,7 +57,7 @@ Da auch dieser Teil parallel zum XmppClient und dem BitTorrentClient laufen muss
        def run(self):
            app.run(host=self.api_host, port=self.api_port)
 
-Dazu wird wie in Beispiel TODO zu sehen auf Modulebene das app-Objekt erstellt und in einer Klasse genutzt, die später wiederum zusammen mit den anderen Komponenten im XMPP Client als Thread gestartet werden kann.
+Dazu wird wie in Beispiel :ref:`web_init` zu sehen auf Modulebene das app-Objekt erstellt und in einer Klasse genutzt, die später wiederum zusammen mit den anderen Komponenten im XMPP Client als Thread gestartet werden kann.
 
 .. figure:: resources/packages_web.png
    :align: center
@@ -119,7 +122,7 @@ Aufgerufen werden die so implementierten Funktionen dann mit einem HTTP POST auf
       "id": "1234"
     }
 
-In diesem Beispiel wird oben beschriebene Methode "Api.versions" ohne Parameter aufgerufen. Die ID ist eine zufällige Nummer, die der Antwort ebenfalls als id angehangen wird, um den Aufruf zuordnen zu können.
+In diesem Beispiel wird oben beschriebene Methode "Api.versions" ohne Parameter aufgerufen. Die ID ist eine zufällige Nummer, die der Antwort ebenfalls als "id" angehangen wird, um den Aufruf zuordnen zu können.
 
 Auf diese Art wurden folgende Funktionen eingefügt:
 
@@ -154,7 +157,7 @@ Hier soll deshalb nur ein kurzer Überblick über das bisherige Vorgehen gegeben
 
    from . import views, errors
 
-Es wird ein neues Blueprint Objekt gui erstellt. Dieses wird benötigt um im nächsten Schritt die Routen zu importieren, da diese wiederum mit der gui.route Funktion dekoriert werden.
+Es wird ein neues Blueprint Objekt gui erstellt. Dieses wird benötigt um im nächsten Schritt die Routen zu importieren, da diese wiederum mit der gui.route() Funktion dekoriert werden.
 
 .. code-block:: python
    :caption: Index Funktion des gui Blueprints (bitween/components/web/gui/views.py)
@@ -164,7 +167,7 @@ Es wird ein neues Blueprint Objekt gui erstellt. Dieses wird benötigt um im nä
        [...]
        return render_template('gui_index.html', torrents=handles.get_shares())
 
-Diese Beispielroute für die Index Route "/" wird nur für die GET Methode definiert. Es wird eine neue Liste der eigenen Torrents erstellt und als "torrents" zusammen mit dem Template "gui_index.html" (im Unterordner "templates") an die Funktion render_template übergeben, die daraufhin einen String mit dem HTML Code generiert, der wiederum zurückgegeben und von Flask ausgeliefert wird.
+Diese Beispielroute für die Index Route "/" wird nur für die GET Methode definiert. Es wird eine neue Liste der eigenen Torrents erstellt und als "torrents" zusammen mit dem Template "gui_index.html" (im Unterordner "templates") an die Funktion render_template() übergeben, die daraufhin einen String mit dem HTML Code generiert, der wiederum zurückgegeben und von Flask ausgeliefert wird.
 
 .. code-block:: python
    :caption: Registrieren des Blueprints am app Objekt
@@ -175,6 +178,6 @@ Diese Beispielroute für die Index Route "/" wird nur für die GET Methode defin
 
    app.register_blueprint(gui_blueprint)
 
-Registriert wird der Blueprint dann am app Objekt über die Funktion register_blueprint, mit dem importierten Blueprint als Parameter.
+Registriert wird der Blueprint dann am app Objekt über die Funktion register_blueprint(), mit dem importierten Blueprint als Parameter.
 
 

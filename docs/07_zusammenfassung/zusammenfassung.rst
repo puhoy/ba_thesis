@@ -1,4 +1,4 @@
-.. zusammenfassung:
+.. _zusammenfassung:
 
 Zusammenfassung
 ~~~~~~~~~~~~~~~

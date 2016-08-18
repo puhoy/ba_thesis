@@ -1,5 +1,6 @@
 .. 06_beurteilung:
 
+.. _beurteilung:
 
 Beurteilung der Ergebnisse
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

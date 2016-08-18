@@ -1,5 +1,6 @@
 .. 04_planung:
 
+.. _planung:
 
 Planung
 ~~~~~~~

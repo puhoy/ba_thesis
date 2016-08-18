@@ -24,7 +24,7 @@ setup.py
 
 Um diese Anwendung mit den Python setuptools, bzw. dem Paketmanager pip installierbar zu machen, wurde außerdem eine Datei setup.py im Wurzelverzeichnis des Projekts angelegt.
 
-Hier werden der Funktion "setup" der Python setuptools einige Informationen über das Programm übergeben.
+Hier werden der Funktion setup() der Python setuptools einige Informationen über das Programm übergeben.
 
 .. code-block:: python
    :caption: Ausschnitt aus setup.py

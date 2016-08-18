@@ -147,9 +147,9 @@ Ein übersichtliches Beispiel zur Anwendung von PEP ist in der User Tune Spezifi
       </pubsub>
     </iq>
 
-In :numref:`%s <tune_example>` sendet User 'stpeter@jabber.org' vom Endpunkt '14793c64-[...]' ein PEP Event Stanza auf die Node 'http://jabber.org/protocol/tune', was dem Namespace des eingebetteten Stanza "tune" entspricht und keine aufrufbare URL, sondern nur ein Name für Namespace und Node ist.
+In :ref:`%s <tune_example>` sendet User 'stpeter@jabber.org' vom Endpunkt '14793c64-[...]' ein PEP Event Stanza auf die Node 'http://jabber.org/protocol/tune', was dem Namespace des eingebetteten Stanza "tune" entspricht und keine aufrufbare URL, sondern nur ein Name für Namespace und Node ist.
 
 Daraufhin werden alle User in seiner Kontaktliste, die die Presence oder den Namespace abonniert haben, das aktuelle pubsub Stanza bekommen.
 
 
-Im Kapitel Implementierung/XMPP wird beschrieben, wie eine eigene PEP Erweiterung die für BitTorrent benötigten Informationen einbetten kann.
+Im Kapitel :ref:`xmpp` Implementierung/XMPP wird beschrieben, wie eine eigene PEP Erweiterung die für BitTorrent benötigten Informationen einbetten kann.
