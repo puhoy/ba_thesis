@@ -72,7 +72,7 @@ Die Aktivität eines Thread Objektes wird in der run() Methode der Klasse defini
    :alt: BitTorrent run() Loop (1)
    :width: 40%
 
-   BitTorrent run() Loop (1) (Fortsetzung in :ref:`end_run`)
+   BitTorrent run() Loop (1) (Fortsetzung in Abb. :ref:`fig-bt_run_loop_2`)
 
 
 In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode handle_queue() aufrufen, danach mit der Methode handle_alert() die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
