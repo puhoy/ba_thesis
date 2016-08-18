@@ -1,26 +1,7 @@
-.. _zusammenfassung:
-
-
-
-
-Zusammenfassung
-~~~~~~~~~~~~~~~
-
-In der Thesis wurde untersucht, ob es sinnvoll ist, Dateiübertragungen des XMPP Protokolls Out-Of-Band über das BitTorrent Protokoll abzuwickeln.
-Dazu wurde ein XMPP und BitTorrent Client entworfen und implementiert.
-
-Daraus zeigten sich, neben einigen "Kinderkrankheiten" dieser frühen Version der Anwendung, auch generelle probleme dieser Art der Datenübertragung.
-Durch die serverlose Datenübertragung fehlt hier eine Instanz, die als Bindeglied zwischen den Clients dient. Das hat zur Folge, dass die Clients sehr genau konfiguriert sein müssen: alle Teilnehmer müssen dasselbe Internet Protocol sprechen, gegebenenfalls die Ports am Router konfiguriert und Firewalls eingestellt werden.
-Ein Server hingegen könnte als Brücke zwischen IPv4 und IPv6 dienen und über holepunching Methoden Ports öffnen.
-
-Der entfallende Server ist somit Vor- und Nachteil zugleich: einerseits entfällt hier zentrale Infrastruktur, was das Netzwerk im ganzen ausfallsicherer und schneller machen kann, andererseits entfällt auch ein "Ansprechpartner" der Verbindungen vermittelt.
-Demzufolge stellt die Datenübertragung per BitTorrent in gut konfigurierter Umgebung eine Verbesserung gegenüber der Übertragung über Server dar, für den Laien allerdings muss das Programm noch sehr viel mehr Funktion mitbringen um mögliche Verbindungsfehler aufzufangen.
-
 
 .. _ausblick:
 Ausblick
-========
-
+~~~~~~~~
 
 Diese Erste Version der Anwendung schöpft bei weitem noch nicht das volle Potential der Möglichkeiten dieser Technik aus.
 Es sind sowohl noch Probleme zu lösen, als auch das Programm zu Erweitern.
@@ -38,5 +19,19 @@ Andere mögliche Erweiterungen wären:
  - Usermanagement/passwortgeschützter Login für die API
  - Implementierung einer nativen Python BitTorrent Bibliothek, um für einfache Installation nicht auf das vorkompilierte libtorrent angewiesen zu sein.
 
+
+.. _zusammenfassung:
+Zusammenfassung
+~~~~~~~~~~~~~~~
+
+In der Thesis wurde untersucht, ob es sinnvoll ist, Dateiübertragungen des XMPP Protokolls Out-Of-Band über das BitTorrent Protokoll abzuwickeln.
+Dazu wurde ein XMPP und BitTorrent Client entworfen und implementiert.
+
+Daraus zeigten sich, neben einigen "Kinderkrankheiten" dieser frühen Version der Anwendung, auch generelle probleme dieser Art der Datenübertragung.
+Durch die serverlose Datenübertragung fehlt hier eine Instanz, die als Bindeglied zwischen den Clients dient. Das hat zur Folge, dass die Clients sehr genau konfiguriert sein müssen: alle Teilnehmer müssen dasselbe Internet Protocol sprechen, gegebenenfalls die Ports am Router konfiguriert und Firewalls eingestellt werden.
+Ein Server hingegen könnte als Brücke zwischen IPv4 und IPv6 dienen und über holepunching Methoden Ports öffnen.
+
+Der entfallende Server ist somit Vor- und Nachteil zugleich: einerseits entfällt hier zentrale Infrastruktur, was das Netzwerk im ganzen ausfallsicherer und schneller machen kann, andererseits entfällt auch ein "Ansprechpartner" der Verbindungen vermittelt.
+Demzufolge stellt die Datenübertragung per BitTorrent in gut konfigurierter Umgebung eine Verbesserung gegenüber der Übertragung über Server dar, für den Endanwender allerdings muss das Programm noch sehr viel mehr Funktion mitbringen um mögliche Verbindungsfehler aufzufangen.
 
 

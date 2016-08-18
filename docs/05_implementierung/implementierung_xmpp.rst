@@ -4,13 +4,13 @@
 XMPP
 ====
 
-Im vorigen Kapitel BitTorrent wurde die Implementierung eines BitTorrent Clients beschrieben, der eine Liste der zu verteilenden Torrents generiert, und der andererseits die IP Adressen und Ports der zu Downloadenden Torrents benötigt.
+Im vorigen Kapitel BitTorrent wurde die Implementierung eines BitTorrent Clients beschrieben, der eine Liste der zu verteilenden Torrents generiert, und der andererseits die IP Adressen und Ports der zu downloadenden Torrents benötigt.
 
 Die XMPP Komponente muss nun also diese Liste inklusive der eigenen IP Adressen an alle Kontakte verteilen und außerdem eine Liste der empfangenen Torrents und der entsprechenden Quellen führen.
 
 Das hier verwendete Python Modul SleekXMPP bietet hier die Möglichkeit diese Funktionen in einem Plugin zu implementieren, das in einem ansonsten übersichtlichem XMPP Client geladen werden kann.
 
-Die folgenden Kapitel beschreiben die Stanzas in denen die benötigten Informationen übertragen werden sollen sowie des Aufbau des Plugins.
+Die folgenden Kapitel beschreiben die Stanzas, in denen die benötigten Informationen übertragen werden sollen, sowie den Aufbau des Plugins.
 Danach wird das Einbinden in den XMPP Client erläutert.
 
 
@@ -19,7 +19,7 @@ Benötigte Stanzas
 
 Die benötigten Informationen umfassen mehrere gekapselte Elemente.
 
-Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur gleichen Zeit online ist. Diese wiederum haben sehr wahrscheinlich unterschiedliche IP Adressen, Ports und bieten verschiedene Torrents an.
+Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur gleichen Zeit online ist. Diese wiederum haben sehr wahrscheinlich unterschiedliche IP Adressen und Ports, und bieten verschiedene Torrents an.
 
 Daraus ergibt sich folgende Struktur der Daten (hier als Beispiel in Pseudo-XML):
 
@@ -80,7 +80,7 @@ Die Verknüpfung der jeweiligen Stanzas erfolgt dabei aus dem jeweils übergeord
 Hier wird in der Methode add_resource() ein neues ResourceStanza erzeugt.
 "ResourceStanza(None, self)" verknüpft das neu erstellte Stanza mit "self", dem UserSharesStanza.
 
-Der Namespace ist hier Erkennungsmerkmal aller zum Plugin gehörigen Stanzas und wird genutzt um eingehende Stanzas dem Plugin zu zu ordnen.
+Der Namespace ist hier Erkennungsmerkmal aller zum Plugin gehörigen Stanzas und wird genutzt um eingehende Stanzas dem Plugin zuzuordnen.
 
 Diese Stanzastruktur wird vom im folgenden Kapitel beschriebenen Plugin benutzt.
 
@@ -90,7 +90,7 @@ Aufbau des Plugins
 
 Im SleekXMPP Plugin wird nun die beschriebene Datenstruktur benutzt, um die zu verteilenden Daten zu senden bzw. auszulesen.
 
-Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexXMPP Klasse BasePlugin abgeleitet wird und in dieser die benötigten Methoden überschrieben werden.
+Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleekXMPP Klasse BasePlugin abgeleitet wird und in dieser die benötigten Methoden überschrieben werden.
 
 
 .. figure:: resources/classes_usershares.png
@@ -101,7 +101,7 @@ Jedes SleekXMPP Plugin wird implementiert, indem eine neue Klasse aus der SleexX
    Klassendiagramm XMPP Erweiterung
 
 
-Hier wird eine neue Klasse UserShares erstellt und die Methoden plugin_init() und plugin_end() überschrieben. Diese werden später vom Client beim starten bzw. beenden des Plugins ausgeführt.
+Hier wird eine neue Klasse UserShares erstellt und die Methoden plugin_init() und plugin_end() überschrieben. Diese werden später vom Client beim Starten bzw. Beenden des Plugins ausgeführt.
 
 Außerdem wurden hier die Methoden publish_shares() und stop() implementiert.
 
