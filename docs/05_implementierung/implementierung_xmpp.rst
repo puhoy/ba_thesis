@@ -4,7 +4,7 @@
 XMPP
 ====
 
-Im vorigen Kapitel BitTorrent wurde die Implementierung eines BitTorrent Clients beschrieben, der eine Liste der zu verteilenden Torrents generiert, und der andererseits die IP Adressen und Ports der zu downloadenden Torrents benötigt.
+Im vorigen Kapitel :ref:`bittorrent` wurde die Implementierung eines BitTorrent Clients beschrieben, der eine Liste der zu verteilenden Torrents generiert, und der andererseits die IP Adressen und Ports der zu downloadenden Torrents benötigt.
 
 Die XMPP Komponente muss nun also diese Liste inklusive der eigenen IP Adressen an alle Kontakte verteilen und außerdem eine Liste der empfangenen Torrents und der entsprechenden Quellen führen.
 
@@ -109,11 +109,11 @@ publish_shares() wird aufgerufen sobald der Client startet, außerdem wenn Ände
 
 on_shares_publish() hingegen stellt das Gegenstück zu publish_shares() dar: diese Methode soll das Empfangen der Daten abwickeln.
 
-Hier soll ein Plugin implementiert werden, das auf dem bereits in den Grundlagen beschriebenen Personal Eventing Protocol (PEP) aufsetzt.
+Hier soll ein Plugin implementiert werden, das auf dem bereits in Kapitel :ref:`grundlagen` beschriebenen Personal Eventing Protocol (PEP) aufsetzt.
 
-Aufgrund der Funktionalität vom PEP müssen Informationen nur gesendet werden, wenn sich etwas an den zu verteilenden Daten ändert. Der XMPP Server wird selbst dafür sorgen, das Clients die zur Laufzeit erst online gehen die aktuellen Daten bekommen und im Falle von Aktualisierungen alle betreffenden Clients ein Update erhalten.
+Aufgrund der Funktionalität vom PEP müssen Informationen nur gesendet werden, wenn sich etwas an den zu verteilenden Daten ändert. Der XMPP Server wird selbst dafür sorgen, das Clients, die zur Laufzeit erst online gehen, die aktuellen Daten bekommen und im Falle von Aktualisierungen alle betreffenden Clients ein Update erhalten.
 
-Dabei muss beachtet werden, das eine Limitierung vom PEP umgangen werden muss: es werden keine multiplen Ressourcen pro Account unterstützt. Da allerdings bei der Anmeldung eine Liste der bisherigen veröffentlichen Daten von Server gesendet wird - auch an den eigenen Account - kann diese Liste einfach erweitert werden um die neue Ressource.
+Dabei muss beachtet werden, das eine Limitierung vom PEP umgangen werden muss: es werden keine multiplen Ressourcen pro Account unterstützt. Da allerdings bei der Anmeldung eine Liste der bisherigen veröffentlichten Daten vom Server gesendet wird, auch an den eigenen Account, kann diese Liste einfach um die neue Ressource erweitert werden.
 
 
 Start des Plugins
@@ -143,7 +143,7 @@ Als nächstes wird ein Event Handler für shares_publish registriert. In der dam
 Empfangen von Daten
 -------------------
 
-Wird nun ein UserShareStanza empfangen, wird über den Namespace identifiziert dass UserShare Plugin dafür zuständig ist, und die zugehörige Methode on_shares_publish() wird mit dem Stanza als erstem Argument aufgerufen.
+Wird nun ein UserShare Stanza empfangen, wird über den Namespace identifiziert, dass das UserShare Plugin dafür zuständig ist, und die zugehörige Methode on_shares_publish() wird mit dem Stanza als erstem Argument aufgerufen.
 
 Diese Informationen werden in einem Objekt der Klasse ContactShares der Models gehalten.
 Diese dient als Wrapper um ein Python Dictionary und bietet einige von der Datenstruktur abstrahierte Funktionen wie get_resource(jid, resource), die für einen bestimmten User die Daten einer bestimmten Ressource liefert.

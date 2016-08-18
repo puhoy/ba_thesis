@@ -28,7 +28,7 @@ In der Thesis wurde untersucht, ob es sinnvoll ist, Dateiübertragungen des XMPP
 Dazu wurde ein XMPP und BitTorrent Client entworfen und implementiert.
 
 Daraus zeigten sich, neben einigen "Kinderkrankheiten" dieser frühen Version der Anwendung, auch generelle probleme dieser Art der Datenübertragung.
-Durch die serverlose Datenübertragung fehlt hier eine Instanz, die als Bindeglied zwischen den Clients dient. Das hat zur Folge, dass die Clients sehr genau konfiguriert sein müssen: alle Teilnehmer müssen dasselbe Internet Protocol sprechen, gegebenenfalls die Ports am Router konfiguriert und Firewalls eingestellt werden.
+Durch die serverlose Datenübertragung fehlt hier eine Instanz, die als Bindeglied zwischen den Clients dient. Das hat zur Folge, dass die Clients sehr genau konfiguriert sein müssen: alle Teilnehmer müssen dasselbe Internet Protocol sprechen, sowie gegebenenfalls die Ports am Router konfiguriert und Firewalls eingestellt werden.
 Ein Server hingegen könnte als Brücke zwischen IPv4 und IPv6 dienen und über holepunching Methoden Ports öffnen.
 
 Der entfallende Server ist somit Vor- und Nachteil zugleich: einerseits entfällt hier zentrale Infrastruktur, was das Netzwerk im ganzen ausfallsicherer und schneller machen kann, andererseits entfällt auch ein "Ansprechpartner" der Verbindungen vermittelt.
