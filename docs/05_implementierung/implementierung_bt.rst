@@ -14,6 +14,7 @@ Aufbau der Komponente
 ---------------------
 
 .. _fig-classes-bt:
+
 .. figure:: resources/classes_bt.png
    :align: center
    :alt: Klassendiagramm BitTorrent
@@ -22,7 +23,7 @@ Aufbau der Komponente
    Klassendiagramm BitTorrent
 
 
-Wie in Klassendiagramm :num:`_fig-classes-bt` zu sehen, leitet sich die BitTorrentClient Klasse  aus der Thread Klasse ab, die sich in der Python Standard Libary befindet und somit zum Lieferumfang jeder Python Installation gehört.
+Wie in Diagramm :num:`fig-classes-bt` zu sehen, leitet sich die BitTorrentClient Klasse  aus der Thread Klasse ab, die sich in der Python Standard Libary befindet und somit zum Lieferumfang jeder Python Installation gehört.
 
 Außerdem erbt BitTorrentClient von der Klasse Subscriber, deren Implementierung im Kapitel :ref:`ipc` erläutert wird und die Funktionen zur Prozesskommunikation bereitstellt.
 

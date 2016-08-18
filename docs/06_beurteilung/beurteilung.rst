@@ -18,6 +18,8 @@ Zum Teil werden diese Probleme aufgefangen, wenn sich die Teilnehmerzahlen erhö
 Aus diesem Grund ist der Erfolg dieser Art der Datenübertragung zu einem gewissen Grad von der Homogenität und Funktionalität des genutzen Netzwerks der Teilnehmer abhängig.
 
 
+Ebenfalls entfällt mit einem Server eine Instanz bei der IP Adressen erfragt werden können. Als Ersatz kam hier ipgetter zum Einsatz, das lediglich aus einer Reihe hinterlegter Server einen zufälligen auswählt und die IP erfragt. Ist dieser Server nicht erreichbar, kommt es hier zu Wartezeiten beim starten des Programms.
+
 libtorrent
 ==========
 
@@ -40,7 +42,10 @@ Es wurde auf 2 Bücher zurück gegriffen, die beide einen Einstieg in XMPP geben
 Daher bezog sich die genauere Recherche in den meisten Fällen auf die häufig sehr umfassenden Protokollspezifikationen.
 
 
+Threading
+=========
 
+Während des Testens war es auffällig, das sich die Anwendung in einigen nicht reproduzierbaren Fällen nicht komplett herunterfahren ließ. Hier wurden die Threads des BitTorrent Client und der API Schnittstelle beendet, jedoch lief der XMPP Client weiter. Der Prozess musste in diesen Fällen von Hand beendet werden. Da die BitTorrent Komponente immer kontrolliert herunter gefahren wurde, wurden dabei aber alle zu speichernden Daten in die zugehörige Datenbank geschrieben, sodass kein Datenverlust auftrat.
 
 .. toctree::
 
