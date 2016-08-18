@@ -32,6 +32,7 @@ Wird daraufhin die Methode publish eines Objekts der Subscriber Klasse oder die 
 
 .. _concept_pubsub:
 .. figure:: resources/pubsub_concept.png
+   :alt: PubSub Konzept
    :align: center
    :alt: Pubsub Konzept
 

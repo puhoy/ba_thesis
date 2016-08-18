@@ -194,7 +194,7 @@ Diese soll, wenn aufgerufen, eine aktuelle Liste der Torrents, verpackt in die d
 
 Hier muss darauf geachtet werden, dass nicht nur eine Liste der aktuellen Torrents gesendet wird. Es müssen außerdem die bereits empfangenen Torrents anderer Ressourcen des eigenen Accounts mit einbezogen werden.
 
-Dazu wird die Tatsache genutzt, dass nach dem Senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
+Dazu wird die Tatsache genutzt, dass nach dem Senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur, in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
 
 Es muss also nurnoch der eigene Useraccount aus der Liste ausgelesen und die Daten der lokalen Ressource aktualisiert werden.
 
@@ -215,7 +215,7 @@ Aufbau des Clients
 
 Das beschriebene Plugin soll nun von einem XMPP Client genutzt werden. Hierfür wird eine neue Klasse XmppClient aus der SleekXMPP Klasse ClientXMPP und der bereits im BitTorrent Client genutzten Klasse Subscriber abgeleitet.
 
-ClientXMPP bringt hierbei schon alle zum Verbinden benötigten Voraussetzungen mit. Initalisiert wird das Objekt im XmppClient Konstruktor mit der JID und den benötigten Passwort.
+ClientXMPP bringt hierbei schon alle zum Verbinden benötigten Voraussetzungen mit. Initalisiert wird das Objekt im XmppClient Konstruktor mit der JID und dem benötigten Passwort.
 
 .. code-block:: python
 
@@ -232,7 +232,7 @@ Außerdem wird im Konstruktor das "session_start" Event mit einer Methode start(
 In dieser Grundkonfiguration wäre der Client grundsätzlich schon betriebsbereit.
 Allerdings fehlt noch jegliche Art der Interaktion mit anderen Komponenten der Anwendung.
 
-Daher wird im Konstruktor noch ein Scheduler hinzugefügt, der zyklisch die vom Subscriber geerbte Message Queue verarbeitet. Dies Erfolgt auf dieselbe Art wie schon im BitTorrent Client: alle mit "on_" beginnenden Methoden werden automatisch als Topic abonniert und werden in der verknüpften Methode aufgerufen wenn die entsprechenden Nachrichten vorliegen.
+Daher wird im Konstruktor noch ein Scheduler hinzugefügt, der zyklisch die vom Subscriber geerbte Message Queue verarbeitet. Dies erfolgt auf dieselbe Art wie schon im BitTorrent Client: alle mit "on_" beginnenden Methoden werden automatisch als Topic abonniert und werden in der verknüpften Methode aufgerufen, wenn die entsprechenden Nachrichten vorliegen.
 
 Außerdem werden im Konstruktor die anderen Komponenten der Anwendung gestartet: der BitTorrent Client und eine JSON-RPC API mit einem Web Frontend zur Übersicht über die Torrents, das im Kapitel :ref:`web` näher beschrieben wird.
 
