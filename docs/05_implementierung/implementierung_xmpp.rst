@@ -238,7 +238,7 @@ Außerdem werden im Konstruktor die anderen Komponenten der Anwendung gestartet:
 
 Da die eigene IP Adresse Teil der zu versendenden Datenpakete ist, wird hier außerdem ein Prozess angestoßen, der die eigene IPv4 Adresse herausfinden soll. Da diese hinter einem DSL Router im lokalen Netz nicht bekannt ist, wurde hier das Modul ipgetter genutzt. In diesem sind eine Reihe an Servern hinterlegt, die die IP zurück geben, von der die Anfrage kommt.
 
-Die IPv6 Adresse kann jedoch aus dem System ausgelesen werden. Hierfür kommt das Modul netifaces zum Einsatz, das Betriebssystemumabhängig die momentanen IP Adressen auslesen kann.
+Die IPv6 Adresse kann jedoch aus dem System ausgelesen werden. Hierfür kommt das Modul netifaces zum Einsatz, das betriebssystemunabhängig die momentanen IP Adressen auslesen kann.
 
 
 Der so konstruierte Client ist somit der Hauptteil der Anwendung. Aus ihm heraus werden die anderen Teile der Anwendung kontrolliert gestartet. Dadurch, dass wesentliche Funktionalität in das Plugin ausgelagert wurde, ist er übersichtlich, aber um neue Funktionen erweiterbar ohne die Funktion des Plugins zu beeinflussen.

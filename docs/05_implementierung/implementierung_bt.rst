@@ -72,8 +72,7 @@ Die Aktivität eines Thread Objektes wird in der run() Methode der Klasse defini
    :alt: BitTorrent run() Loop (1)
    :width: 40%
 
-   BitTorrent run() Loop (1)
-
+   BitTorrent run() Loop (1) (Fortsetzung in :ref:`end_run`)
 
 
 In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode handle_queue() aufrufen, danach mit der Methode handle_alert() die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
@@ -102,6 +101,8 @@ Ein Beispiel zur Funktion:
 So können alle Funktionen die mit "on_" beginnen "von außen" genutzt werden. Beispielsweise kann ein neuer Torrent per SHA1 Hash über die Methode on_add_hash() hinzugefügt werden. In dieser würde dann ein neuer Torrent angelegt und entsprechende IP-Adressen und Ports hinzugefügt, unter denen der Torrent zu finden ist. Dazu müssen natürlich in der XMPP Komponente die entsprechenden Informationen gesammelt worden sein.
 
 In der handle_alert() Methode wird jeweils eine Meldung der Session verarbeitet. So wird zum Beispiel bei einem "torrent_update_alert" eine Nachricht mit topic "publish_shares" erzeugt, was den XMPP Client veranlassen würde, eine Liste der aktuellen Torrents zu senden. Ein "portmap_alert" wäre zu erwarten, wenn ein Port per NAT gemapped wurde. In diesem Fall würde eine Nachricht auf topic "set_port" mit dem externen Port als Argument erzeugt.
+
+.. _end_run:
 
 Beenden des Run-Loops
 ---------------------
