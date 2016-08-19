@@ -11,8 +11,8 @@ Während der Implementierung traten eine ganze Reihe an Problemen größerer und
 Vor- und Nachteile der Serverlosen Dateiübertragung
 ===================================================
 
-Durch die serverlose Dateiübertragung per BitTorrent umgeht man zwar potentiell langsame Server, verliert aber auch einen "Mittelsmann" für die Übertragung. Befinden sich beispielsweise beide Teilnehmer hinter einem DSL Router, müssen beide auf Techniken zum Port öffnen unterstützen (oder manuell Ports öffnen) um eine Kommunikation in beide Richtungen zu ermöglichen.
-Außerdem, als im nachhinein offensichtliches Beispiel, müssen beide Parteien dasselbe Protokoll sprechen. Hat ein Teilnehmer eine IPv4 Adresse und ein anderer eine IPv6 Adresse, werden diese zwar gegenseitig ihre Torrentlisten erhalten. Allerdings wird nie eine Datenübertragung zustande kommen, da diese vom XMPP Server übermittelt wird.
+Durch die serverlose Dateiübertragung per BitTorrent umgeht man zwar potentiell langsame Server, verliert aber auch einen "Mittelsmann" für die Übertragung. Befinden sich beispielsweise beide Teilnehmer hinter einem DSL Router, müssen beide Techniken zum Port öffnen unterstützen (oder manuell Ports öffnen) um eine Kommunikation in beide Richtungen zu ermöglichen.
+Außerdem müssen nätürlich beide Parteien dasselbe Protokoll sprechen. Hat ein Teilnehmer eine IPv4 Adresse und ein anderer eine IPv6 Adresse, werden diese zwar gegenseitig ihre Torrentlisten erhalten. Allerdings wird nie eine Datenübertragung zustande kommen, da diese vom XMPP Server übermittelt wird.
 Zum Teil werden diese Probleme aufgefangen, wenn sich die Teilnehmerzahlen erhöhen, aber trotzdem werden die Übertragungen aufgrund der Beschränkung auf die bekannten Kontakte nie so reibungsfrei laufen wie "echte" BitTorrent Dateiübertragungen, bei denen ein Tracker oder das Torrent Netz selbst andere Teilnehmer vermittelt und daher viel mehr Endpunkte vorhanden sind.
 
 Aus diesem Grund ist der Erfolg dieser Art der Datenübertragung zu einem gewissen Grad von der Homogenität und Funktionalität des genutzen Netzwerks der Teilnehmer abhängig.
