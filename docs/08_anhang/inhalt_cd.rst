@@ -12,4 +12,4 @@ Inhaltsverzeichnis der CD
 
     Übersicht der Topics und Abonnenten
 
-
+    Snapshots der Webseiten
