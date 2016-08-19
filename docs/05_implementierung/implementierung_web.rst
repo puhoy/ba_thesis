@@ -8,7 +8,7 @@ Die Web Komponente soll nun, nachdem die Basisfunktionalität seitens der Daten�
 
 Um das Programm auch auf entfernten Rechnern steuern zu können, wurde hier die Variante einer JSON-RPC API gewählt.
 Außerdem wurde ein minimales Web Frontend implementiert um bereits erhaltene Torrentlisten und eigene Torrents darzustellen.
-Dafür wurde das Web Framework Flask, bzw. das Flask Plugin Flask-JSONRPC genutzt.
+Dafür wurde das Web Framework Flask bzw. das Flask Plugin Flask-JSONRPC genutzt.
 
 Eine minimale Flask Anwendung ist dabei sehr einfach strukturiert.
 Erst wird ein Flask-Objekt erzeugt, welches dann Methoden zur Verfügung stellt, die wiederum als Decorator für Funktionen genutzt werden.
@@ -26,7 +26,7 @@ Erst wird ein Flask-Objekt erzeugt, welches dann Methoden zur Verfügung stellt,
     if __name__ == "__main__":
         app.run()
 
-In diesem Beispiel wird ein Objekt "app" der Klasse Flask erzeugt. Daraufhin wird die Funktion hello() mit @app.route("/") dekoriert, was zur Folge hat, das wenn die Anwendung mit app.run() lokal gestartet wird, beim Aufruf von "http://localhost:5000/" in einem Browser der String "Hello World!" ausgegeben wird. 5000 ist hier der Standardport von Flask und kann bei Bedarf angepasst werden.
+In diesem Beispiel wird ein Objekt "app" der Klasse Flask erzeugt. Daraufhin wird die Funktion hello() mit @app.route("/") dekoriert, was zur Folge hat, dass wenn die Anwendung mit app.run() lokal gestartet wird, beim Aufruf von "http://localhost:5000/" in einem Browser der String "Hello World!" ausgegeben wird. 5000 ist hier der Standardport von Flask und kann bei Bedarf angepasst werden.
 
 
 Aufbau der Komponente
@@ -58,7 +58,7 @@ Da auch dieser Teil parallel zum XmppClient und dem BitTorrentClient laufen muss
        def run(self):
            app.run(host=self.api_host, port=self.api_port)
 
-Dazu wird wie in :ref:`web_init` zu sehen auf Modulebene das app-Objekt erstellt und in einer Klasse genutzt, die später wiederum zusammen mit den anderen Komponenten im XMPP Client als Thread gestartet werden kann.
+Dazu wird, wie in :ref:`web_init` zu sehen, auf Modulebene das app-Objekt erstellt und in einer Klasse genutzt, die später wiederum zusammen mit den anderen Komponenten im XMPP Client als Thread gestartet werden kann.
 
 .. figure:: resources/packages_web.png
    :align: center
@@ -111,7 +111,7 @@ Die entsprechenden Funktionen werden dann aus dem Submodul importiert.
 Das Submodul importiert dann das jsonrpc Objekt. Hier ist wichtig zu beachten, dass diese Imports erst nach dem Erstellen des Objektes im übergeordneten Modul auszuführen sind.
 Die Funktion selbst implementiert die Abfrage der verwendeten libtorrent und SleekXMPP Funktionen. Dazu wird ein Dictionary erstellt, das als JSON String zurückgegeben und von Flask versendet werden kann.
 
-Aufgerufen werden die so implementierten Funktionen dann mit einem HTTP POST auf die Route "http://ip:port/api", mit einem JSON Payload in folgendem Format:
+Aufgerufen werden die so implementierten Funktionen dann mit einem HTTP POST auf die Route "http://ip:port/api" mit einem JSON Payload in folgendem Format:
 
 .. code-block:: JSON
    :caption: Format des JSON Payloads
@@ -123,7 +123,7 @@ Aufgerufen werden die so implementierten Funktionen dann mit einem HTTP POST auf
       "id": "1234"
     }
 
-In diesem Beispiel wird oben beschriebene Methode "Api.versions" ohne Parameter aufgerufen. Die ID ist eine zufällige Nummer, die der Antwort ebenfalls als "id" angehangen wird, um den Aufruf zuordnen zu können.
+In diesem Beispiel wird die oben beschriebene Methode "Api.versions" ohne Parameter aufgerufen. Die ID ist eine zufällige Nummer, die der Antwort ebenfalls als "id" angehangen wird, um den Aufruf zuordnen zu können.
 
 Auf diese Art wurden folgende Funktionen eingefügt:
 
