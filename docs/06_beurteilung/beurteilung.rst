@@ -13,12 +13,12 @@ Vor- und Nachteile der Serverlosen Dateiübertragung
 
 Durch die serverlose Dateiübertragung per BitTorrent umgeht man zwar potentiell langsame Server, verliert aber auch einen "Mittelsmann" für die Übertragung. Befinden sich beispielsweise beide Teilnehmer hinter einem DSL Router, müssen beide Techniken zum Port öffnen unterstützen (oder manuell Ports öffnen) um eine Kommunikation in beide Richtungen zu ermöglichen.
 Außerdem müssen nätürlich beide Parteien dasselbe Protokoll sprechen. Hat ein Teilnehmer eine IPv4 Adresse und ein anderer eine IPv6 Adresse, werden diese zwar gegenseitig ihre Torrentlisten erhalten. Allerdings wird nie eine Datenübertragung zustande kommen, da diese vom XMPP Server übermittelt wird.
-Zum Teil werden diese Probleme aufgefangen, wenn sich die Teilnehmerzahlen erhöhen, aber trotzdem werden die Übertragungen aufgrund der Beschränkung auf die bekannten Kontakte nie so reibungsfrei laufen wie "echte" BitTorrent Dateiübertragungen, bei denen ein Tracker oder das Torrent Netz selbst andere Teilnehmer vermittelt und daher viel mehr Endpunkte vorhanden sind.
+Zum Teil werden diese Probleme aufgefangen, wenn sich die Teilnehmerzahl erhöht, aber trotzdem werden die Übertragungen aufgrund der Beschränkung auf die bekannten Kontakte nie so reibungsfrei laufen wie "echte" BitTorrent Dateiübertragungen, bei denen ein Tracker oder das Torrent Netz selbst andere Teilnehmer vermittelt und daher viel mehr Endpunkte vorhanden sind.
 
 Aus diesem Grund ist der Erfolg dieser Art der Datenübertragung zu einem gewissen Grad von der Homogenität und Funktionalität des genutzen Netzwerks der Teilnehmer abhängig.
 
 
-Ebenfalls entfällt mit einem Server eine Instanz bei der IP Adressen erfragt werden können. Als Ersatz kam hier ipgetter zum Einsatz, das lediglich aus einer Reihe hinterlegter Server einen zufälligen auswählt und die IP erfragt. Ist dieser Server nicht erreichbar, kommt es hier zu Wartezeiten beim starten des Programms.
+Ebenfalls entfällt mit einem Server eine Instanz, bei der IP Adressen erfragt werden können. Als Ersatz kam hier ipgetter zum Einsatz, das lediglich aus einer Reihe hinterlegter Server einen zufälligen auswählt und die IP erfragt. Ist dieser Server nicht erreichbar, kommt es hier zu Wartezeiten beim Starten des Programms.
 
 libtorrent
 ==========
@@ -27,10 +27,10 @@ Die libtorrent Libary, die sich selbst als "feature complete" :cite:`www.l3:onli
 
 Dazu kommt eine asynchrone Arbeitsweise, bei der viele Funktionen nur Alerts auslösen, die dann das Ergebnis enthalten und die das Debugging und Tests erheblich verkomplizieren.
 
-Außerdem existieren Inkompatibilitäten zwischen den Versionen, die in den Changelogs nicht gefunden wurden. So ändert sich Beispielsweise die Codecerkennung bei Magnet Links zwischen Version 0.16.13 (in den Ubuntu 14.04 Paketquellen) und Version 1.1.0 (zu diesem Zeitpunkt aktuell). Da hier keine Warnung gegeben wird, sondern nur ein Torrent mit invalidem Hash angelegt wird, ging viel Zeit in der Fehlersuche verloren.
+Außerdem existieren Inkompatibilitäten zwischen den Versionen, die in den Changelogs nicht gefunden wurden. So ändert sich beispielsweise die Codecerkennung bei Magnet Links zwischen Version 0.16.13 (in den Ubuntu 14.04 Paketquellen) und Version 1.1.0 (zu diesem Zeitpunkt aktuell). Da hier keine Warnung gegeben wird, sondern nur ein Torrent mit invalidem Hash angelegt wird, war die Fehlersuche sehr zeitaufwändig.
 Zur Lösung wurden zwei Funktionen zum Umwandeln nach UTF-8 aus dem ebenfalls auf libtorrent aufbauenden BitTorrent Client Deluge übernommen. (siehe bitween/components/bt/helpers.py)
 
-Außerdem exisiert für die libtorrent Installation kein Python Wheel, das die vorkompilierte Libary enthält - der Nutzer ist hier darauf angewiesen, entweder selbst zu kompilieren oder möglicherweise alte Versionen zu nutzen, die das Betriebssystem bereitstellt. Auch das ist negativ zu werten, da es eine Hürde für unerfahrene Nutzer darstellt und somit die Verbreitung einschränkt.
+Außerdem exisiert für die libtorrent Installation kein Python Wheel, das die vorkompilierte Libary enthält. Der Nutzer ist hier darauf angewiesen, entweder selbst zu kompilieren oder möglicherweise alte Versionen zu nutzen, die das Betriebssystem bereitstellt. Auch das ist negativ zu werten, da es eine Hürde für unerfahrene Nutzer darstellt und somit die Verbreitung einschränkt.
 
 
 
