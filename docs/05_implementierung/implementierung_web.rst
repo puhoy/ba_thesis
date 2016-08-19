@@ -43,6 +43,7 @@ Da auch dieser Teil parallel zum XmppClient und dem BitTorrentClient laufen muss
 
 .. _web_init:
 .. code-block:: python
+   :caption: Web initalization
 
    app = Flask(__name__)
 
@@ -57,7 +58,7 @@ Da auch dieser Teil parallel zum XmppClient und dem BitTorrentClient laufen muss
        def run(self):
            app.run(host=self.api_host, port=self.api_port)
 
-Dazu wird wie in Beispiel :ref:`web_init` zu sehen auf Modulebene das app-Objekt erstellt und in einer Klasse genutzt, die später wiederum zusammen mit den anderen Komponenten im XMPP Client als Thread gestartet werden kann.
+Dazu wird wie in :ref:`web_init` zu sehen auf Modulebene das app-Objekt erstellt und in einer Klasse genutzt, die später wiederum zusammen mit den anderen Komponenten im XMPP Client als Thread gestartet werden kann.
 
 .. figure:: resources/packages_web.png
    :align: center

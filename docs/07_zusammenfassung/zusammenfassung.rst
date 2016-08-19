@@ -3,7 +3,7 @@
 Ausblick
 ~~~~~~~~
 
-Diese Erste Version der Anwendung schöpft bei weitem noch nicht das volle Potential der Möglichkeiten dieser Technik aus.
+Diese erste Version der Anwendung schöpft bei weitem noch nicht das volle Potential der Möglichkeiten dieser Technik aus.
 Es sind sowohl noch Probleme zu lösen, als auch das Programm zu Erweitern.
 
 So fehlt zur Zeit Funktionalität, um mögliche Fehler bei Übertragungen zu erkennen. Sprechen mindestens 2 Teilnehmer dieselbe IP Version? Hatte der Client Probleme Ports am Router zu öffnen? In diesen Fällen sollten an den Shares Hinweise verteilt werden, sodass ein Client entscheiden kann, welche Ergebnisse überhaupt angezeigt oder mit Warnungen versehen werden. Genauso sollten "bevorzugte" Verbindungen implementiert werden. Nutzen beide Teilnehmer einen vollen IPv4 und IPv6 Stack, könnte man Verbindungen standardmäßig auf IPv6 starten, um IPv4 NAT zu umgehen.
@@ -27,11 +27,9 @@ Zusammenfassung
 In der Thesis wurde untersucht, ob es sinnvoll ist, Dateiübertragungen des XMPP Protokolls Out-Of-Band über das BitTorrent Protokoll abzuwickeln.
 Dazu wurde ein XMPP und BitTorrent Client entworfen und implementiert.
 
-Daraus zeigten sich, neben einigen "Kinderkrankheiten" dieser frühen Version der Anwendung, auch generelle probleme dieser Art der Datenübertragung.
+Daraus zeigten sich, neben einigen "Kinderkrankheiten" dieser frühen Version der Anwendung, auch generelle Probleme dieser Art der Datenübertragung.
 Durch die serverlose Datenübertragung fehlt hier eine Instanz, die als Bindeglied zwischen den Clients dient. Das hat zur Folge, dass die Clients sehr genau konfiguriert sein müssen: alle Teilnehmer müssen dasselbe Internet Protocol sprechen, sowie gegebenenfalls die Ports am Router konfiguriert und Firewalls eingestellt werden.
 Ein Server hingegen könnte als Brücke zwischen IPv4 und IPv6 dienen und über holepunching Methoden Ports öffnen.
 
-Der entfallende Server ist somit Vor- und Nachteil zugleich: einerseits entfällt hier zentrale Infrastruktur, was das Netzwerk im ganzen ausfallsicherer und schneller machen kann, andererseits entfällt auch ein "Ansprechpartner" der Verbindungen vermittelt.
-Demzufolge stellt die Datenübertragung per BitTorrent in gut konfigurierter Umgebung eine Verbesserung gegenüber der Übertragung über Server dar, für den Endanwender allerdings muss das Programm noch sehr viel mehr Funktion mitbringen um mögliche Verbindungsfehler aufzufangen.
-
-
+Der entfallende Server ist somit Vor- und Nachteil zugleich: einerseits entfällt hier zentrale Infrastruktur, was das Netzwerk im ganzen ausfallsicherer und schneller machen kann, andererseits entfällt auch ein "Ansprechpartner" der Verbindungen vermittelt oder als Proxyserver dienen kann.
+Demzufolge stellt die Datenübertragung per BitTorrent in gut konfigurierter Umgebung eine Verbesserung gegenüber der Übertragung über Server dar, für den Endanwender allerdings müsste das Programm noch sehr viel mehr Funktion zur Fehlererkennung mitbringen um mögliche Verbindungsfehler aufzufangen.

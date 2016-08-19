@@ -205,15 +205,16 @@ Danach wird die bereits erläuterte Struktur aus Stanzas entsprechend der Daten 
 Aufbau des Clients
 ------------------
 
+.. _classes_xmpp:
 .. figure:: resources/classes_xmpp.png
    :align: center
    :alt: Klassendiagramm XMPP
-   :width: 40%
+   :width: 30%
 
    Klassendiagramm XMPP
 
 
-Das beschriebene Plugin soll nun von einem XMPP Client genutzt werden. Hierfür wird eine neue Klasse XmppClient aus der SleekXMPP Klasse ClientXMPP und der bereits im BitTorrent Client genutzten Klasse Subscriber abgeleitet.
+Das beschriebene Plugin soll nun von einem XMPP Client genutzt werden. Hierfür wird eine neue Klasse XmppClient aus der SleekXMPP Klasse ClientXMPP und der bereits im BitTorrent Client genutzten Klasse Subscriber abgeleitet. (Abb. :ref:`classes_xmpp`)
 
 ClientXMPP bringt hierbei schon alle zum Verbinden benötigten Voraussetzungen mit. Initalisiert wird das Objekt im XmppClient Konstruktor mit der JID und dem benötigten Passwort.
 

@@ -102,16 +102,3 @@ Das wird von der bereits erläuterten Klasse BitTorrentClient und XmppClient gen
 Eine Übersicht über alle Topics und deren Subscriber befindet sich im Anhang.
 
 
-.. _overview:
-
-.. figure:: resources/pubsub_overview.png
-   :align: center
-   :alt: Signalübersicht
-
-   Übersicht der Publisher, Topics und Subscriber
-
-
-
-.. todo::
-
-    übersicht aktualisieren und in anhang packen, hier entfernen
