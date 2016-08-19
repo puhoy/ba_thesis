@@ -5,11 +5,11 @@
 Inter-Process Communication
 ===========================
 
-Die Kommunikation zwischen den Threads wurde durch eine PublishSubscribe Pattern gelöst.
+Die Kommunikation zwischen den Threads wurde durch eine Publish-Subscribe Pattern gelöst.
 Wie bei Publish-Subscribe des XMPP Protokolls können Teilnehmer (in diesem Fall Objekte der jeweiligen Klassen) Nachrichten zu bestimmten Topics abonnieren ("subscriben"). Außerdem steht eine "publish" Methode zur Verfügung, mit der Nachrichten auf bestimmten Topics veröffentlicht werden können.
 
-Hierzu wurde eine Klasse "Subscriber" implementiert die als Basisklasse für alle anderen Klassen dient, die Nachrichten empfangen.
-Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachrichten enthält, eine subscribe-Methode um Nachrichten zu Topics zu "Abonnieren" sowie eine has_messages- und get_messages-Methode um den Zustand der Queue abzufragen und Nachrichten zu entnehmen.
+Hierzu wurde eine Klasse "Subscriber" implementiert, die als Basisklasse für alle anderen Klassen dient, die Nachrichten empfangen.
+Jedes Subscriber-Objekt besitzt eine Queue, die alle noch unverarbeiteten Nachrichten enthält, eine subscribe() Methode um Nachrichten zu Topics zu "Abonnieren" sowie eine has_messages() und get_messages() Methode um den Zustand der Queue abzufragen und Nachrichten zu entnehmen.
 
 Im Folgenden Diagramm ist außerdem eine Klasse "AutoSub" zu sehen, die dazu dient die PubSub Klasse zu testen, und die gleichzeitig als einfaches Beispiel dienen soll, wie eine Klasse einige ihrer Methoden direkt als Topics abonnieren kann. Hierauf wird am Ende dieses Kapitels genauer eingegangen.
 
@@ -23,6 +23,7 @@ Im einfachsten Fall wird ein Subscriber Objekt ohne Parameter erstellt. Dann wir
 
 
 .. code-block:: python
+   :caption: Subscriber abonniert "some_topic"
 
     s = Subscriber()
     s.subscribe('some_topic')
@@ -43,6 +44,7 @@ Automatisches Abonnieren von Topics
 -----------------------------------
 
 .. code-block:: python
+   :caption: automatisches subscriben von Topics
    :linenos:
 
    class Subscriber:
@@ -61,6 +63,7 @@ Damit besteht die Möglichkeit, Methoden der Klassen direkt als Topics zu abonni
 Als Beispiel hierzu dient die folgende Klasse AutoSub, die sich von Subscriber ableitet.
 
 .. code-block:: python
+   :caption: AutoSub Klasse
 
     class AutoSub(Subscriber):
         def __init__(self):
@@ -86,6 +89,7 @@ Wird dann eine Nachricht in diesem Topic abgelegt, würde während des Schedulin
 In einer Python Shell sieht das ganze wie folgt aus:
 
 .. code-block:: python
+   :caption: Benutzen der AutoSub Klasse
 
     >>> s = AutoSub()
     >>> publish('some_topic', 'teststring')

@@ -144,7 +144,7 @@ xmpp.get_shares           --                liefert eine Liste aller Kontakte un
 Das gui Modul
 -------------
 
-Mit dem gui Modul wurde ein Interface implementiert, über das User eine Übersicht über die gefundenen und eigenen Torrents bekommen können. Dies dient allerdings eher als Beispiel. Hier wurde keine komplette Nutzerschnittstelle geschrieben, lediglich genug Funktionalität um schnell eine Übersicht bekommen zu können.
+Mit dem gui Modul wurde ein Interface implementiert, über das der User eine Übersicht über die gefundenen und eigenen Torrents bekommen kann. Dies dient allerdings eher als Beispiel. Hier wurde keine komplette Nutzerschnittstelle geschrieben, sondern lediglich genug Funktionalität um schnell eine Übersicht bekommen zu können.
 
 Diese Funktionen wurden gekapselt als Flask Blueprint und können somit für spätere Versionen leicht entfernt oder weiterentwickelt werden.
 Hier soll deshalb nur ein kurzer Überblick über das bisherige Vorgehen gegeben werden.
@@ -179,6 +179,4 @@ Diese Beispielroute für die Index Route "/" wird nur für die GET Methode defin
 
    app.register_blueprint(gui_blueprint)
 
-Registriert wird der Blueprint dann am app Objekt über die Funktion register_blueprint(), mit dem importierten Blueprint als Parameter.
-
-
+Registriert wird der Blueprint dann am app Objekt über die Funktion register_blueprint() mit dem importierten Blueprint als Parameter.

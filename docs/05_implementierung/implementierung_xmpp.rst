@@ -24,6 +24,7 @@ Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur glei
 Daraus ergibt sich folgende Struktur der Daten (hier als Beispiel in Pseudo-XML):
 
 .. code-block:: xml
+   :caption: Beispiel der XML-Struktur
 
    <Ressourcen>
       <1. Ressource>
@@ -65,6 +66,7 @@ Das "äußerste" Stanza ist das UserShareStanza. Diesem Container Stanza können
 Die Verknüpfung der jeweiligen Stanzas erfolgt dabei aus dem jeweils übergeordnetem Stanza.
 
 .. code-block:: python
+   :caption: UserShareStanza mit add_resource() Methode
 
    class UserSharesStanza(ElementBase):
        name = 'user_shares'
@@ -121,6 +123,7 @@ Start des Plugins
 
 
 .. code-block:: python
+   :caption: plugin_init() Methode
 
    def plugin_init(self):
       register_stanza_plugin(
@@ -150,6 +153,7 @@ Diese dient als Wrapper um ein Python Dictionary und bietet einige von der Daten
 Außerdem wurden mit threading.Lock Sperren gegen den Zugriff aus mehreren Threads zur gleichen Zeit implementiert.
 
 .. code-block:: python
+   :caption: Handling des Datenempfangs
 
     @staticmethod
     def on_shares_publish(msg):
@@ -219,6 +223,7 @@ Das beschriebene Plugin soll nun von einem XMPP Client genutzt werden. Hierfür 
 ClientXMPP bringt hierbei schon alle zum Verbinden benötigten Voraussetzungen mit. Initalisiert wird das Objekt im XmppClient Konstruktor mit der JID und dem benötigten Passwort.
 
 .. code-block:: python
+   :caption: registrieren der benötigten Plugins
 
         self.register_plugin('xep_0030')  # service discovery
         self.register_plugin('xep_0115')  # entity caps

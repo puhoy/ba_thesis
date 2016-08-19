@@ -40,6 +40,7 @@ Erstellen des BitTorrentClient Objekts
 --------------------------------------
 
 .. code-block:: python
+   :caption: initalisieren des BitTorrent Clients
 
     def __init__(self):
         Thread.__init__(self)
@@ -78,6 +79,7 @@ Die Aktivität eines Thread Objektes wird in der run() Methode der Klasse defini
 In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode handle_queue() aufrufen, danach mit der Methode handle_alert() die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
 
 .. code-block:: python
+   :caption: handle_queue() Methode
 
     def handle_queue(self):
         if self.has_messages():
