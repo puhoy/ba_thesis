@@ -8,21 +8,21 @@ Start Skript
 Nachdem nun die wesentlichen Komponenten beschrieben wurden fehlt noch ein Skript, das die Anwendung in der gewünschten Konfiguration startet.
 Hierfür wurde das Skript bitweend.py geschrieben.
 
-Die Basiskonfiguration der Anwendung wird in einer Json Datei abgelegt, die als "conf.json" im Verzeichnis bitween gesucht wird, oder falls dort nicht vorhanden, im Home Verzeichnis des Benutzers unter dem Namen ".bitween.json"
+Die Basiskonfiguration der Anwendung wird in einer Json Datei abgelegt, die als "conf.json" im Verzeichnis bitween gesucht wird, oder, falls dort nicht vorhanden, im Home Verzeichnis des Benutzers unter dem Namen ".bitween.json".
 
-Dann kann bitweend gestartet werden. Hier hat man zusätzlich die Möglichkeit mit dem Argument "--debug" das Loglevel auf Debug ausgaben zu setzen, und die API mittels "--port" und "--bind" an einen Port und IP Adresse zu binden. Dies ist sinnvoll, wenn das Programm auf einem entfernten Rechner läuft und von außerhalb bedient werden soll, da der Defaultwert für die IP Adresse "localhost", und die API damit nur für denselben Rechner erreichbar ist, auf dem die Anwendung läuft.
+Dann kann bitweend gestartet werden. Hier hat man zusätzlich die Möglichkeit mit dem Argument "--debug" das Loglevel auf Debugausgaben zu setzen und die API mittels "--port" und "--bind" an einen Port und IP Adresse zu binden. Dies ist sinnvoll, wenn das Programm auf einem entfernten Rechner läuft und von außerhalb bedient werden soll, da der Defaultwert für die IP Adresse "localhost" und die API damit nur für denselben Rechner erreichbar ist, auf dem die Anwendung läuft.
 
 
 Cmd-Client
 ----------
 
-Außerdem wurde ein Kommandozeilenclient entworfen, um die grundlegenden Funktionen der Anwendung zu bedienen: Pfade als Torrent freigeben, gefundene Freigaben auflisten und Freigaben anhand von Hashsummen Downloaden.
+Außerdem wurde ein Kommandozeilenclient entworfen, um die grundlegenden Funktionen der Anwendung zu bedienen. Diese umfassen Pfade als Torrent freigeben, gefundene Freigaben auflisten und Freigaben anhand von Hashsummen Downloaden.
 Genutzt wird hierfür die Python Libary Requests, um Befehle an die JSON-RPC API der Anwendung zu übermitteln.
 
 setup.py
 --------
 
-Um diese Anwendung mit den Python setuptools, bzw. dem Paketmanager pip installierbar zu machen, wurde außerdem eine Datei setup.py im Wurzelverzeichnis des Projekts angelegt.
+Um diese Anwendung mit den Python setuptools bzw. dem Paketmanager pip installierbar zu machen, wurde außerdem eine Datei setup.py im Wurzelverzeichnis des Projekts angelegt.
 
 Hier werden der Funktion setup() der Python setuptools einige Informationen über das Programm übergeben.
 
