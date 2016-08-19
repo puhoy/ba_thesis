@@ -5,7 +5,7 @@ Abschluss der Implementierung
 Start Skript
 ------------
 
-Nachdem nun die wesentlichen Komponenten beschrieben wurden, fehlt nun noch ein Skript, das die Anwendung in der gewünschten Konfiguration startet.
+Nachdem nun die wesentlichen Komponenten beschrieben wurden fehlt noch ein Skript, das die Anwendung in der gewünschten Konfiguration startet.
 Hierfür wurde das Skript bitweend.py geschrieben.
 
 Die Basiskonfiguration der Anwendung wird in einer Json Datei abgelegt, die als "conf.json" im Verzeichnis bitween gesucht wird, oder falls dort nicht vorhanden, im Home Verzeichnis des Benutzers unter dem Namen ".bitween.json"
