@@ -56,9 +56,9 @@ Hier werden der Funktion setup() der Python setuptools einige Informationen übe
     )
 
 Hier werden etwa die benötigten Python Pakete aus der Datei "requirements.txt" eingelesen, Variablen wie der Name des Programms, die Version und der Autor.
-Außerdem werden Entrypoints übergeben. "bitweend" kann daraufhin nach der Installation ausgeführt werden und verweist auf die Funktion "main" im bitweend Skript. Analog dazu wird ein Entrypoint für "bitweenc" angelegt.
+Außerdem werden Entrypoints übergeben. "bitweend" kann daraufhin nach der Installation ausgeführt werden und verweist auf die Funktion main() im bitweend Skript. Analog dazu wird ein Entrypoint für "bitweenc" angelegt.
 
-Die Installation kann dann erfolgen mit dem Aufruf von "pip install -e pfad/zum/projekt"
+Die Installation kann dann mit dem Aufruf von "pip install -e pfad/zum/projekt" erfolgen.
 
 Dokumentation
 -------------
@@ -76,7 +76,7 @@ Außerdem wurde eine Datei index.rst geschrieben, die als Einsprungpunkt in die 
 Integration in andere Dienste
 -----------------------------
 
-Dadurch, das dieses Projekt in Git Versioniert und auf GitHub, einem Git Hostingdienst für (hauptsächlich) OpenSource Programme entwickelt wurde, war es naheliegend, darauf basierende weiterführende Dienste zu benutzen.
+Dadurch, dass dieses Projekt in Git versioniert und auf GitHub, einem Git Hostingdienst, entwickelt wurde, war es naheliegend, darauf basierende weiterführende Dienste zu benutzen.
 So wurden drei externe Dienste in dieses Projekt integriert:
 
 ReadTheDocs (readthedocs.io :cite:`Welco38:online`)
