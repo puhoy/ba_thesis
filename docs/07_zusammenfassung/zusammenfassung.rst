@@ -22,6 +22,7 @@ Andere mögliche Erweiterungen wären:
 
 
 .. _zusammenfassung:
+
 Zusammenfassung
 ~~~~~~~~~~~~~~~
 

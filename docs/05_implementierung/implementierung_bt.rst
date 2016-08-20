@@ -50,7 +50,7 @@ Erstellen des BitTorrentClient Objekts
 
 Im ersten Schritt werden im Konstruktor die beiden Basisklassen, Thread und Subscriber, initalisiert.
 
-Subscriber wird hier mit "autosubscribe=True" erstellt. Dies bedeutet, dass alle Methoden, die mit "on_" beginnen, automatisch als Topic zum Empfangen von Nachrichten registriert werden. So ist es relativ einfach möglich, aus anderen Programmteilen beispielsweise einen Torrent hinzu zu fügen oder das Beenden des Threads an zu stoßen.
+Subscriber wird hier mit "autosubscribe=True" erstellt. Dies bedeutet, dass alle Methoden, die mit "on_" beginnen, automatisch als Topic zum Empfangen von Nachrichten registriert werden. So ist es relativ einfach möglich, aus anderen Programmteilen beispielsweise einen Torrent hinzuzufügen oder das Beenden des Threads anzustoßen.
 
 Danach wird überprüft, ob eine SQLite Datenbank in Homeverzeichnis des Nutzers existiert. Der Dateiname ist festgelegt auf ".bitween.db". Ist diese Datei nicht präsent, wird sie erzeugt. Dazu wird in der Methode setup_db() eine neue Tabelle "torrents" mit den Spalten "magnetlink", "torrent", "status" und "save_path" angelegt. Diese werden benötigt um die Torrents zu persistieren.
 
@@ -76,7 +76,7 @@ Die Aktivität eines Thread Objektes wird in der run() Methode der Klasse defini
    BitTorrent run() Loop (1) (Fortsetzung in Abb. :ref:`fig-bt_run_loop_2`)
 
 
-In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode handle_queue() aufrufen, danach mit der Methode handle_alert() die Meldungen des session Objektes verarbeiten und danach eine Sekunde warten.
+In diesem Fall wird, solange Variable "end" des BitTorrentClient Objektes False ist, eine Methode handle_queue() aufgerufen, danach mit der Methode handle_alert() die Meldungen des session Objektes verarbeitet und danach eine Sekunde gewartet.
 
 .. code-block:: python
    :caption: handle_queue() Methode
@@ -121,8 +121,8 @@ Wird on_exit() aufgerufen, wird die "end" Variable auf True gesetzt und das saub
 Als erstes werden alle Einträge aus der SQLite Datenbank entfernt, damit nur Torrents, die noch Teil der Session sind, gespeichert werden können.
 Dann wird für jeden Torrent das Erzeugen der "resume data" angetriggert.
 
-Danach läuft eine Schleife solange noch Torrent Handles vorhanden sind. Da für jeden Torrent ein "save_resume_data_alert" erwartet wird, kann im Handling dieses Alerts der Torrent in die SQLite Datenbank gespeichert und aus der Session entfernt werden.
-Wird stattdessen ein "save_resume_data_failed_alert" empfangen, wird der Torrent ohne zu speichern aus der Session entfernt. Das kommt vor, wenn ein Torrent neu hinzugefügt wurde und das Programm beendet wird bevor genug Daten geladen wurden um ein komplettes Torrent File zu erzeugen.
+Danach läuft eine Schleife, solange noch Torrent Handles vorhanden sind. Da für jeden Torrent ein "save_resume_data_alert" erwartet wird, kann im Handling dieses Alerts der Torrent in die SQLite Datenbank gespeichert und aus der Session entfernt werden.
+Wird stattdessen ein "save_resume_data_failed_alert" empfangen, wird der Torrent ohne zu speichern aus der Session entfernt. Das kommt vor, wenn ein Torrent neu hinzugefügt wurde und das Programm beendet wird, bevor genug Daten geladen wurden um ein komplettes Torrent File zu erzeugen.
 
 
-Um nun eine Übersicht der eigenen Torrents zu versenden und Daten über andere Torrents zu empfangen wird die XMPP Komponente benötigt, die im folgenden Kapitel beschrieben wird.
+Um nun eine Übersicht der eigenen Torrents zu versenden und Daten über andere Torrents zu empfangen, wird die XMPP Komponente benötigt, die im folgenden Kapitel beschrieben wird.

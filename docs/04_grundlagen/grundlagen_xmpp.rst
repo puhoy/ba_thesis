@@ -2,7 +2,7 @@
 XMPP
 ====
 
-Das Extensible Messaging and Presence Protocol ist im Grunde eine Technologie zum XML streamen (vgl. :cite:`XMPPTheDefinitiveGuide:streamingxml`) und kann so benutzt werden um alle möglichen Arten textbasierter Informationen zu versenden und zu empfangen.
+Das Extensible Messaging and Presence Protocol ist im Grunde eine Technologie zum XML streamen (vgl. :cite:`XMPPTheDefinitiveGuide:streamingxml`) und kann so benutzt werden, um alle möglichen Arten textbasierter Informationen zu versenden und zu empfangen.
 
 Ein Stream beginnt immer mit dem Öffnen eines Stream Tags mit "<stream>" und endet mit dem Schließen desselben mit "</stream>".
 Innerhalb dieses Streams können eine beliebige Menge an XML Elementen, die sogenannten "Stanzas", versendet werden. Die XMPP Core RFC definiert ein Stanza als "discrete semantic unit of structured information that is sent from one entity to another" :cite:`Exten90:online`, also als ein XML Tag in den wiederum Tags eingebettet sein können.
@@ -13,7 +13,7 @@ Für die Tiefe eins des Streams, also unmittelbar dem Stream Stanza untergeordne
 
 Jedes dieser Basisstanzas erfüllt unterschiedliche Funktionen.
 
-So ist mit dem Message Stanza ein "Push" Mechanismus verbunden, um Nachrichten direkt an andere Teilnehmer zu verschicken, Beispielsweise:
+So ist mit dem Message Stanza ein "Push" Mechanismus verbunden, um Nachrichten direkt an andere Teilnehmer zu verschicken, beispielsweise:
 
 .. code-block::xml
 

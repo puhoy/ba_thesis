@@ -19,7 +19,7 @@ Benötigte Stanzas
 
 Die benötigten Informationen umfassen mehrere gekapselte Elemente.
 
-Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur gleichen Zeit online ist. Diese wiederum haben sehr wahrscheinlich unterschiedliche IP Adressen und Ports, und bieten verschiedene Torrents an.
+Es wird davon ausgegangen, dass ein XMPP Account an mehreren Ressourcen zur gleichen Zeit online ist. Diese wiederum haben sehr wahrscheinlich unterschiedliche IP Adressen und Ports und bieten verschiedene Torrents an.
 
 Daraus ergibt sich folgende Struktur der Daten (hier als Beispiel in Pseudo-XML):
 
@@ -200,7 +200,7 @@ Hier muss darauf geachtet werden, dass nicht nur eine Liste der aktuellen Torren
 
 Dazu wird die Tatsache genutzt, dass nach dem Senden auch immer eine Liste der eigenen Torrents empfangen wird. Das hat zur Folge, dass in derselben Datenstruktur, in der auch die Torrent Daten anderer Nutzer gespeichert werden, die eigenen Daten vorliegen.
 
-Es muss also nurnoch der eigene Useraccount aus der Liste ausgelesen und die Daten der lokalen Ressource aktualisiert werden.
+Es muss also nur noch der eigene Useraccount aus der Liste ausgelesen und die Daten der lokalen Ressource aktualisiert werden.
 
 Danach wird die bereits erläuterte Struktur aus Stanzas entsprechend der Daten erstellt und gesendet.
 
