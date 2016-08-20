@@ -2,7 +2,7 @@
 Tests
 =====
 
-Aufgrund der Tatsache dass hier ein Prototyp entwickelt wurde, dessen Aufbau und Konzept sich unter Umständen noch häufig ändern, wurden ausgiebige Unittests nur für die Datenmodelle und die Inter-Process Communication implementiert. Diese stellen eher statische Elemente dar, die sich auch bei neuen Funktionen wenig ändern.
+Aufgrund der Tatsache, dass hier ein Prototyp entwickelt wurde, dessen Aufbau und Konzept sich unter Umständen noch häufig ändern, wurden ausgiebige Unittests nur für die Datenmodelle und die Inter-Process Communication implementiert. Diese stellen eher statische Elemente dar, die sich auch bei neuen Funktionen wenig ändern.
 
 Hierfür wurde der Dienst Travis-CI :cite:`puhoy80:online` in das Git Repository des Projektes auf GitHub (https://github.com/puhoy/bitween :cite:`puhoy98:online`) integriert. Dieser führt bei jedem neuen Commit des Codes mittels eines Webhooks automatische Unittests aus.
 

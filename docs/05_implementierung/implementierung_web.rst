@@ -131,7 +131,7 @@ Auf diese Art wurden folgende Funktionen eingefügt:
 Aufruf                    Parameter         Funktion
 ========================= ===============   ==========================================================================
 Api.versions              --                gibt die Verwendeten Versionsnummern zurück
-Api.exit                  --                leitet das saubere Beenden der Anwendung ein)
+Api.exit                  --                leitet das saubere Beenden der Anwendung ein
 bt.get_torrents           --                listet die eigenen Torrents auf
 bt.add_path               path              generiert einen neuen Torrent aus Datei oder Verzeichnis unter <path>
 bt.add_torrent_by_hash    hash, save_path   legt einen neuen Torrent anhand von <hash> an, speichert nach <save_path>

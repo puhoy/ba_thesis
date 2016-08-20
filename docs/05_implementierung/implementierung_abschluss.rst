@@ -24,7 +24,9 @@ setup.py
 
 Um diese Anwendung mit den Python setuptools bzw. dem Paketmanager pip installierbar zu machen, wurde außerdem eine Datei setup.py im Wurzelverzeichnis des Projekts angelegt.
 
-Hier werden der Funktion setup() der Python setuptools einige Informationen über das Programm übergeben.
+Wie in Code :ref:`setuppy` zu sehen werden der Funktion setup() der Python setuptools einige Informationen über das Programm übergeben.
+
+.. _setuppy:
 
 .. code-block:: python
    :caption: Ausschnitt aus setup.py
@@ -68,7 +70,7 @@ Für die gesamte Anwendung wurde Dokumentation in Form von Docstrings an allen F
 Um diese Dokumentation übersichtlich dar zu stellen, kann aus den Docstrings mit dem Dokumentationsgenerator Sphinx (www.sphinx-doc.org :cite:`Overv9:online`) eine Dokumentation in anderen Formaten wie HTML oder PDF erstellt werden.
 
 Die Konfiguration von Sphinx geschieht dabei über die Datei conf.py im Verzeichnis docs.
-Mit dem Skript build_docs.sh im Wurzelverzeichnis des Projekts kann dann das automatisierte erstellen der benötigten Dokumentationsdateien angestoßen werden. Diese sind untereinander logisch verkettet und können so in späteren Formaten wie HTML verlinkt werden.
+Mit dem Skript build_docs.sh im Wurzelverzeichnis des Projekts kann dann das automatisierte Erstellen der benötigten Dokumentationsdateien angestoßen werden. Diese sind untereinander logisch verkettet und können so in späteren Formaten wie HTML verlinkt werden.
 
 Außerdem wurde eine Datei index.rst geschrieben, die als Einsprungpunkt in die automatisch generierte Dateistruktur dient.
 
