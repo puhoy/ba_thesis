@@ -43,7 +43,7 @@ Eine der Übersichtlichkeit wegen vereinfachte Version der Struktur sieht wie fo
 
 **docs/**
 
-   Verzeichnis, das alle benötigten Dateien zum Generieren der Dokumentation enthält. Im einfachsten Fall die von Sphinx benötigte Konfigurationsdatei conf.py und eine reStructuredText-Datei index.rst, die als Einstiegspunkt für die Dokumentation dient.
+   Verzeichnis, das alle benötigten Dateien zum Generieren der Dokumentation enthält. Im einfachsten Fall die vom Dokumentationsgenerator Sphinx benötigte Konfigurationsdatei conf.py und eine reStructuredText-Datei index.rst, die als Einstiegspunkt für die Dokumentation dient.
 
 **tests/**
 

@@ -13,10 +13,10 @@ Dieses nutzt, wenn keine Protokollerweiterungen genutzt werden, einen "Tracker" 
 
 Sinngemäß übersetzt:
 
- "BitTorrent ist ein Protokoll zum Dateien verteilen. Es bestimmt Inhalt anhand einer URL und ist dazu entworfen, sich nahtlos ins Internet zu integrieren. Der Vorteil zu HTTP ist, dass wenn multiple Downloads derselben Datei zur gleichen Zeit stattfinden, die Downloader zueinander uploaden. Dadurch kann eine Dateiquelle sehr viele Downloader bei geringem Anstieg seiner Last haben."
+ "BitTorrent ist ein Protokoll zum Verteilen von Dateien. Es bestimmt Inhalt anhand einer URL und ist dazu entworfen, sich nahtlos ins Internet zu integrieren. Der Vorteil zu HTTP ist, dass wenn multiple Downloads derselben Datei zur gleichen Zeit stattfinden, die Downloader zueinander uploaden. Dadurch kann eine Dateiquelle sehr viele Downloader bei geringem Anstieg seiner Last haben."
 
 
-Der Vorteil von BitTorrent als Übertragungsprotokoll ist also, dass wenn mehr als ein Kontakt dieselbe Datei zum Download anbietet, auch von mehreren Kontakten gleichzeitig heruntergeladen werden kann. Hierzu würde normalerweise der Tracker die Peers vermitteln. In Dieser Implementierung soll dies jedoch über XMPP geschehen.
+Der Vorteil von BitTorrent als Übertragungsprotokoll ist also, dass wenn mehr als ein Kontakt dieselbe Datei zum Download anbietet, auch von mehreren Kontakten gleichzeitig heruntergeladen werden kann. Hierzu würde normalerweise der Tracker die Peers vermitteln. In dieser Implementierung soll dies jedoch über XMPP geschehen.
 
 Die Identifikation der Dateien findet laut der BitTorrent Protocol Specification (:cite:`www.b44:online`) über ein "info dict" im torrent-File statt. In dieser Implementierung soll jedoch eine andere Methode genutzt werden: Die in der BitTorrent Extension Protocol (BEP) 9 beschriebene Unterstützung für Magnet Links.
 

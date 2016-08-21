@@ -35,7 +35,6 @@ Wird daraufhin die Methode publish() eines Objekts der Subscriber Klasse oder di
 .. figure:: resources/pubsub_concept.png
    :alt: PubSub Konzept
    :align: center
-   :alt: Pubsub Konzept
 
 Die Grafik :ref:`concept_pubsub` soll dieses Konzept verdeutlichen. Hier sind subscriber_A und subscriber_B Abonnenten des "topic_A". Wird nun im ersten Schritt publish() mit den Argumenten 'topic_A', 12, 'test' aufgerufen. Dann wird im zweiten Schritt im Modul die die Zuordnung aus dem topics Dictionary gelesen, das diese während der Laufzeit speichert. Hier hat "topic_A" die Subscriber subscriber_A und subscriber_B. Das Topic und die Argumente werden daraufhin in die Queues der beiden Objekte gelegt.
 
