@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<script src="/assets/application-6528d15df67b9b60a59fb48e12992413.js"></script>
+<title>puhoy/bitween | Coveralls - Test Coverage History &amp; Statistics</title>
+<meta content='Test code coverage history for puhoy/bitween' name='description'>
+<meta content='jjkWjPM43FYXwRd2QigTVe8W27xMk-cXGJxUD6mQDCY' name='google-site-verification'>
+<meta content='uVH7jwgRaeBZzSydDg2B7A3k8Xaw4axxRcaGLMd3Rc' name='globalsign-domain-verification'>
+<meta charset='utf-8'>
+<meta content='IE=Edge,chrome=1' http-equiv='X-UA-Compatible'>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"b0f91d774d","applicationID":"3354603","transactionName":"c1gKQUVbWlRRFEtHUUBYFxpEXFlP","queueTime":0,"applicationTime":121,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(u(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(2),u=t(3),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var s=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit"],p="api-",l=p+"ixn-";a(s,function(t,e){f[e]=o(p+e,!0,"api")}),f.addPageAction=o(p+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var d=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){d[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],2:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],3:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?u(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),u=a.length,c=0;c<u;c++)a[c].apply(i,r);var s=f[m[n]];return s&&s.push([w,n,r,i]),i}function p(t,e){g[t]=l(t).concat(e)}function l(t){return g[t]||[]}function d(t){return s[t]=s[t]||o(n)}function v(t,e){c(t,function(t,n){e=e||"feature",m[n]=e,e in f||(f[e]=[])})}var g={},m={},w={on:p,emit:n,get:d,listeners:l,context:e,buffer:v};return w}function i(){return new r}var a="nr@context",u=t("gos"),c=t(2),f={},s={},p=e.exports=o();p.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!h++){var t=y.info=NREUM.info,e=s.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(m,function(e,n){t[e]||(t[e]=n)});var n="https"===g.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",u("mark",["onload",a()],null,"api");var r=s.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===s.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=t("handle"),c=t(2),f=window,s=f.document,p="addEventListener",l="attachEvent",d=f.XMLHttpRequest,v=d&&d.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:d,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(1);var g=""+location,m={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-974.min.js"},w=d&&v&&v[p]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:g,features:{},xhrWrappable:w};s[p]?(s[p]("DOMContentLoaded",i,!1),f[p]("load",r,!1)):(s[l]("onreadystatechange",o),f[l]("onload",r)),u("mark",["firstbyte",a()],null,"api");var h=0},{}]},{},["loader"]);</script>
+<meta content='Coveralls, coveralls gem, automated testing, integration testing, test coverage, TDD, CI, continuous integration testing, continuous integration, test code coverage, test coverage history, ruby gem, python extension, test driven development, github badge, code coverage, code coverage history, code coverage statistics' name='keywords'>
+<meta content='Coveralls.io - Test Coverage History and Statistics' property='og:title'>
+<meta content='The leading provider of test coverage analytics. Ensure that all your new code is fully covered, and see coverage trends emerge. Works with most CI services. Always free for open source.' property='og:description'>
+<meta content='Coveralls.io' property='og:site_name'>
+<meta content='/social.png' property='og:image'>
+<meta content='image/png' property='og:image:type'>
+<meta content='500' property='og:image:width'>
+<meta content='500' property='og:image:height'>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="ceQ5v5DN7QrCoKV2Jl55lBGvqFjkinbfUgwd4fyOl4I=" name="csrf-token" />
+<link href='/favicon.png' rel='shortcut icon'>
+<link href='/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.4/jquery.payment.min.js"></script>
+<script src="https://js.stripe.com/v2/"></script>
+<script src="//use.typekit.net/php4ecs.js"></script>
+<script type='text/javascript'>try{Typekit.load();}catch(e){}</script>
+<meta content="pk_live_D0ehNEidbTjN3ZqW00IrjpM3" name="stripe-key" />
+<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' rel='stylesheet'>
+<script src='https://d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js' type='text/javascript'></script>
+<script src="//js.pusher.com/3.1/pusher.min.js"></script>
+<script src='//cdn.optimizely.com/js/2456360022.js'></script>
+<script>
+//<![CDATA[
+var AUTH_TOKEN = 'ceQ5v5DN7QrCoKV2Jl55lBGvqFjkinbfUgwd4fyOl4I=';
+//]]>
+</script>
+<script>
+  window.Config = {
+    PusherKey: "4228d2afb0b831a6fec4"
+  }
+</script>
+
+<link href="/assets/application-4adc46109b281620ea6ad4bdbfd543ce.css" media="screen" rel="stylesheet" />
+</head>
+<body class='  noticeShowing'>
+<div class='container'>
+<div class='app-outer container_footer page-full'>
+<div class='header'>
+<div class='logo-fixed'>
+<img alt="Coveralls logob" data-svg-fallback="/assets/coveralls_logo-2305adb9f0aca4a4a381a20787b55d5f.png" src="/assets/coveralls_logob-178286fcc309126068d483ab4c21592d.svg" />
+</div>
+<a class="logo" href="/"><img alt="Coveralls logo" data-svg-fallback="/assets/coveralls_logo-2305adb9f0aca4a4a381a20787b55d5f.png" src="/assets/coveralls_logo-7d55267c6ea57ebfd326a84f3a6731d2.svg" />
+</a><nav class='siteNav'>
+<ul>
+<li>
+<a href="https://coveralls.io/"><i class="fa fa-home"></i>
+<span>Home</span>
+</a></li>
+<li>
+<a href="/features"><i class="fa fa-asterisk"></i>
+<span>Features</span>
+</a></li>
+<li class=''>
+<a href="/pricing"><i class="fa fa-star"></i>
+<span>Pricing</span>
+</a></li>
+<li>
+<a href="http://support.coveralls.io"><i class="fa fa-question-circle"></i>
+<span>Docs</span>
+</a></li>
+<li>
+<a data-no-turbolink="true" href="/sign-in"><i class="fa fa-sign-in"></i>
+<span>Sign In</span>
+</a></li>
+</ul>
+</nav>
+</div>
+
+<div class='appWrapper'>
+<div class='show-page'>
+<h1>
+<i class="fa fa-github"></i>
+<a class="user" href="/github/puhoy">puhoy</a>
+<b>/</b>
+<a class="repo" href="https://coveralls.io/github/puhoy/bitween">bitween</a>
+
+<div class='coverage-low coverageText' id='repoShowPercentage'>53%</div>
+</h1>
+<div class='show-trend repoOverview'><div class='coverage-low trend'>
+<em>
+DEFAULT BRANCH:
+<span>develop</span>
+</em>
+<div class='repo-sparkline' data-branch='master' data-graph-data='[[0,34.5243513882567,6660218],[1,34.5243513882567,6660232],[2,82.3529411764706,6660247],[3,82.3529411764706,6660440],[4,82.3529411764706,6826940],[5,82.3529411764706,6826975],[6,82.3529411764706,6827172],[7,82.3529411764706,6827217],[8,82.3529411764706,6827335],[9,82.3529411764706,6827353],[10,82.3529411764706,6827379],[11,69.3670886075949,6848125],[12,58.0246913580247,6862313],[13,45.4882571075402,6998770],[14,45.7142857142857,7041615],[15,45.7816377171216,7059119],[16,45.8715596330275,7251609],[17,45.8715596330275,7342813],[18,33.6538461538462,7352468],[19,33.6538461538462,7358325],[20,33.6538461538462,7377911],[21,33.6538461538462,7388515],[22,55.1528878822197,7390512],[23,54.9263873159683,7415129],[24,54.9086757990868,7459964],[25,55.0691244239631,7460356],[26,54.7976878612717,7524171],[27,54.7453703703704,7524417],[28,54.7453703703704,7524503],[29,54.2690058479532,7539334],[30,53.8277511961723,7539385],[31,53.8277511961723,7539518],[32,53.8277511961723,7540633],[33,53.8277511961723,7540717],[34,53.9473684210526,7540800],[35,54.0572792362768,7540891],[36,54.0572792362768,7540986],[37,53.9928486293206,7541057],[38,53.2621589561091,7541287],[39,53.1914893617021,7541475],[40,53.1286894923259,7541670],[41,53.1286894923259,7543589],[42,53.1286894923259,7543621]]'></div>
+<a class='infobox' href='/builds/' onmouseout="$('.infobox').hide();" style='display:none;'>
+<span>
+Build:
+<i class='fa fa-arrow-circle-right'></i>
+</span>
+</a>
+</div>
+</div>
+<div class='repo-details'>
+<table>
+<tr>
+<td>
+<div class='show-detail-item'>
+<span>Repo Added</span>
+<time datetime="2016-06-19T17:18:15Z" title="19 Jun 2016">19 Jun 2016</time>
+</div>
+</td>
+<td>
+<div class='show-detail-item'>
+<span>Total Files</span>
+31
+</div>
+</td>
+<td>
+<div class='show-detail-item'>
+<span># Builds</span>
+47
+<a class="btn btn-nano" href="/builds/7543621">Last
+<i class="fa fa-arrow-circle-right"></i>
+</a></div>
+</td>
+<td>
+<div class='show-detail-item'>
+<span>Badge</span>
+<div class='repoBadgeBtn'>
+<img alt="Badge" src="https://coveralls.io/repos/github/puhoy/bitween/badge.svg?branch=develop" />
+<a class="btn btn-micro j_popoverButton btn-nano" href="javascript://">Embed ▾</a>
+<div class='popover j_shieldLinks_wr'>
+<h3>
+README BADGES
+<div class='j_popoverClose'>x</div>
+</h3>
+<p>If you need to use a raster PNG badge, change the '.svg' to '.png' in the link</p>
+<div class='j_shieldLinks'>
+<div class='markdown'>
+<h4>Markdown</h4>
+<textarea onclick='this.focus();this.select()' readonly='readonly'>[![Coverage Status](https://coveralls.io/repos/github/puhoy/bitween/badge.svg?branch=develop)](https://coveralls.io/github/puhoy/bitween?branch=develop)</textarea>
+</div>
+<div class='textile'>
+<h4>Textile</h4>
+<textarea onclick='this.focus();this.select()' readonly='readonly'>!https://coveralls.io/repos/github/puhoy/bitween/badge.svg?branch=develop(Coverage Status)!:https://coveralls.io/github/puhoy/bitween?branch=develop</textarea>
+</div>
+<div class='rdoc'>
+<h4>RDoc</h4>
+<textarea onclick='this.focus();this.select()' readonly='readonly'>{&lt;img src=&quot;https://coveralls.io/repos/github/puhoy/bitween/badge.svg?branch=develop&quot; alt=&quot;Coverage Status&quot; /&gt;}[https://coveralls.io/github/puhoy/bitween?branch=develop]
+</textarea>
+</div>
+<div class='html'>
+<h4>HTML</h4>
+<textarea onclick='this.focus();this.select()' readonly='readonly'>&lt;a href='https://coveralls.io/github/puhoy/bitween?branch=develop'&gt;&lt;img src='https://coveralls.io/repos/github/puhoy/bitween/badge.svg?branch=develop' alt='Coverage Status' /&gt;&lt;/a&gt;
+</textarea>
+</div>
+<div class='rst'>
+<h4>Rst</h4>
+<textarea onclick='this.focus();this.select()' readonly='readonly'>.. image:: https://coveralls.io/repos/github/puhoy/bitween/badge.svg?branch=develop
+:target: https://coveralls.io/github/puhoy/bitween?branch=develop
+</textarea>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+<div class='show-item repo-build-details'>
+<h3>
+LAST BUILD ON BRANCH
+develop
+<div class='repo-build-branch pull-right pop-wr'>
+<a class="btn popover-btn j_popoverButton" href="javascript://"><i class="fa fa-code-fork"></i>
+branch: develop
+</a><div class='popover popoverBranch'>
+<h5>
+CHANGE BRANCH
+<div class='j_popoverClose'>x</div>
+</h5>
+<ul>
+<li class='pop-branch-action'>
+<a href="/github/puhoy/bitween"><i class="fa fa-check-circle"></i>
+show all
+</a></li>
+<li data-name='develop'>
+<a href="/github/puhoy/bitween?branch=develop"><i class="fa fa-check-circle-o"></i>
+develop
+</a></li>
+<li data-name='refactoringanddocumenting'>
+<a href="/github/puhoy/bitween?branch=refactoringanddocumenting"><i class="fa fa-circle-o"></i>
+refactoringanddocumenting
+</a></li>
+</ul>
+</div>
+</div>
+</h3>
+<div class='coverage-unknown' id='runInfo'>
+<label>Commited</label>
+22 Aug 20 -  1:37
+<span class="">coverage remained the same at 53.129%</span>
+</div>
+<div class='coverage-unknown table' id='runCommit'>
+<div class='tr'>
+<div class='td runCommit-build-number'>
+<label>Build #</label>
+<a class="btn btn-micro" href="/builds/7543621"># 89
+</a></div>
+<div class='td'>
+<label>Build Type</label>
+<p>push</p>
+<p>travis-ci</p>
+</div>
+<div class='td'>
+<label>Commited by</label>
+<a class="committer" href="https://github.com/puhoy"><img alt="1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" src="https://secure.gravatar.com/avatar/1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" />puhoy</a>
+</div>
+<div class='td'>
+<label>Commit Message</label>
+<pre><a href="https://github.com/puhoy/bitween/commit/1a997d39e76a65678a9ff3945bf38085987e70f4">docstrings</a></pre>
+</div>
+<div class='td'>
+<label>Run Details</label>
+<p>
+<strong>0.53</strong>
+hits per line
+</p>
+<p>
+<strong>450</strong>
+of
+<strong>847</strong>
+relevant lines covered
+</p>
+</div>
+</div>
+</div>
+
+</div>
+<div class='show-item show-last-build-detail'>
+<h5>Relevant lines Covered</h5>
+<div class='show-trend repoOverview'><div class='trend relevant-total'>
+<div class='relevant-trend-count'>
+<em class='count-relevant'>
+<span>847</span>
+RELEVANT LINES
+</em>
+<em class='count-covered'>
+<span>450</span>
+COVERED LINES
+</em>
+</div>
+<div class='repo-sparkline sparkline-relevent sparkline-no-circles' data-branch='develop' data-graph-data='[[0,1517,4394],[1,1517,4394],[2,14,17],[3,14,17],[4,14,17],[5,14,17],[6,14,17],[7,14,17],[8,14,17],[9,14,17],[10,14,17],[11,274,395],[12,235,405],[13,368,809],[14,368,805],[15,369,806],[16,400,872],[17,400,872],[18,105,312],[19,105,312],[20,105,312],[21,105,312],[22,487,883],[23,485,883],[24,481,876],[25,478,868],[26,474,865],[27,473,864],[28,473,864],[29,464,855],[30,450,836],[31,450,836],[32,450,836],[33,450,836],[34,451,836],[35,453,838],[36,453,838],[37,453,839],[38,449,843],[39,450,846],[40,450,847],[41,450,847],[42,450,847]]'></div>
+<a class='infobox' href='/builds/' onmouseout="$('.infobox').hide();" style='display:none;'>
+<span>
+Build:
+<i class='fa fa-arrow-circle-right'></i>
+</span>
+</a>
+</div>
+<div class='trend relevant-covered'>
+<em>
+<span>0.53</span>
+HITS PER LINE
+</em>
+<div class='repo-sparkline sparkline-relevent' data-branch='develop' data-graph-data='[[0,0.35,6660218],[1,0.35,6660232],[2,0.82,6660247],[3,0.82,6660440],[4,0.82,6826940],[5,0.82,6826975],[6,0.82,6827172],[7,0.82,6827217],[8,0.82,6827335],[9,0.82,6827353],[10,0.82,6827379],[11,0.69,6848125],[12,0.58,6862313],[13,0.45,6998770],[14,0.46,7041615],[15,0.46,7059119],[16,0.46,7251609],[17,0.46,7342813],[18,0.34,7352468],[19,0.34,7358325],[20,0.34,7377911],[21,0.34,7388515],[22,0.55,7390512],[23,0.55,7415129],[24,0.55,7459964],[25,0.55,7460356],[26,0.55,7524171],[27,0.55,7524417],[28,0.55,7524503],[29,0.54,7539334],[30,0.54,7539385],[31,0.54,7539518],[32,0.54,7540633],[33,0.54,7540717],[34,0.54,7540800],[35,0.54,7540891],[36,0.54,7540986],[37,0.54,7541057],[38,0.53,7541287],[39,0.53,7541475],[40,0.53,7541670],[41,0.53,7543589],[42,0.53,7543621]]'></div>
+</div>
+</div>
+</div>
+<div class='show-item show-last-build-detail'>
+<h5>
+Source Files on
+develop
+</h5>
+<div class='groupable'>
+<ul class='nav nav-tabs groupable-controls'>
+<li class='active'>
+<a class="sortableTh sortAll" data-sort-class="all" href="/github/puhoy/bitween" name="filesAll">All
+<strong>31</strong>
+</a></li>
+<li class=''>
+<a class="sortableTh sortChanged" data-sort-class="changed" href="/github/puhoy/bitween">Changed
+<strong>1</strong>
+</a></li>
+<li>
+<a class="sortableTh sortSourceChanged" data-sort-class="source-changed" href="/github/puhoy/bitween">Source Changed
+<strong>1</strong>
+</a></li>
+<li>
+<a class="sortableTh sortCovChanged" data-sort-class="coverage-changed" href="/github/puhoy/bitween">Coverage Changed
+<strong>1</strong>
+</a></li>
+</ul>
+<table class='datatable groupable-table' data-ajax-source-filter='filter=all' data-ajax-source='/builds/7543621/source_files.json'>
+<thead>
+<tr>
+<th>Coverage</th>
+<th><i class="fa fa-pencil"></i></th>
+<th>File</th>
+<th>Lines</th>
+<th>Relevant</th>
+<th>Covered</th>
+<th>Missed</th>
+<th>Hits/Line</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<div class='clear'></div>
+</div>
+
+</div>
+<div class='show-item'>
+<h3>Recent Builds</h3>
+<table>
+<thead>
+<tr>
+<th>Builds</th>
+<th>Branch</th>
+<th>Coverage</th>
+<th>Commit</th>
+<th>Committer</th>
+<th>Type</th>
+<th>Time</th>
+<th>Via</th>
+</tr>
+</thead>
+<tr>
+<td>
+<a class="btn btn-micro" href="/builds/7543621">#89
+</a></td>
+<td>
+<strong><a href="https://github.com/puhoy/bitween/tree/develop">develop</a></strong>
+</td>
+<td>
+<div class='changeBadge'><i class="fa fa-minus"></i><div class='changed coverage-low'>
+53.13</div></div>
+
+</td>
+<td class='break-column'><span><a href="/builds/7543621">docstrings</a></span></td>
+<td><a class="committer" href="https://github.com/puhoy"><img alt="1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" src="https://secure.gravatar.com/avatar/1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" />puhoy</a></td>
+<td>
+push
+</td>
+<td><time data-time-ago="2016-08-22T01:42:48Z" datetime="2016-08-22T01:42:48Z" title="22 Aug 2016">22 Aug 2016</time></td>
+<td>travis-ci</td>
+</tr>
+<tr>
+<td>
+<a class="btn btn-micro" href="/builds/7543589">#88
+</a></td>
+<td>
+<strong><a href="https://github.com/puhoy/bitween/tree/develop">develop</a></strong>
+</td>
+<td>
+<div class='changeBadge'><i class="fa fa-minus"></i><div class='changed coverage-low'>
+53.13</div></div>
+
+</td>
+<td class='break-column'><span><a href="/builds/7543589">docstrings</a></span></td>
+<td><a class="committer" href="https://github.com/puhoy"><img alt="1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" src="https://secure.gravatar.com/avatar/1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" />puhoy</a></td>
+<td>
+push
+</td>
+<td><time data-time-ago="2016-08-22T01:36:07Z" datetime="2016-08-22T01:36:07Z" title="22 Aug 2016">22 Aug 2016</time></td>
+<td>travis-ci</td>
+</tr>
+<tr>
+<td>
+<a class="btn btn-micro" href="/builds/7541670">#87
+</a></td>
+<td>
+<strong><a href="https://github.com/puhoy/bitween/tree/develop">develop</a></strong>
+</td>
+<td>
+<div class='changeBadge'><i class="fa fa-arrow-down"></i><div class='changed coverage-low'>
+53.13</div></div>
+
+</td>
+<td class='break-column'><span><a href="/builds/7541670">workaround for fixing empty resource</a></span></td>
+<td><a class="committer" href="https://github.com/puhoy"><img alt="1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" src="https://secure.gravatar.com/avatar/1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" />puhoy</a></td>
+<td>
+push
+</td>
+<td><time data-time-ago="2016-08-21T20:12:44Z" datetime="2016-08-21T20:12:44Z" title="21 Aug 2016">21 Aug 2016</time></td>
+<td>travis-ci</td>
+</tr>
+<tr>
+<td>
+<a class="btn btn-micro" href="/builds/7541475">#86
+</a></td>
+<td>
+<strong><a href="https://github.com/puhoy/bitween/tree/develop">develop</a></strong>
+</td>
+<td>
+<div class='changeBadge'><i class="fa fa-arrow-down"></i><div class='changed coverage-low'>
+53.19</div></div>
+
+</td>
+<td class='break-column'><span><a href="/builds/7541475">workaround for fixing empty resource</a></span></td>
+<td><a class="committer" href="https://github.com/puhoy"><img alt="1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" src="https://secure.gravatar.com/avatar/1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" />puhoy</a></td>
+<td>
+push
+</td>
+<td><time data-time-ago="2016-08-21T19:47:29Z" datetime="2016-08-21T19:47:29Z" title="21 Aug 2016">21 Aug 2016</time></td>
+<td>travis-ci</td>
+</tr>
+<tr>
+<td>
+<a class="btn btn-micro" href="/builds/7541287">#85
+</a></td>
+<td>
+<strong><a href="https://github.com/puhoy/bitween/tree/develop">develop</a></strong>
+</td>
+<td>
+<div class='changeBadge'><i class="fa fa-arrow-down"></i><div class='changed coverage-low'>
+53.26</div></div>
+
+</td>
+<td class='break-column'><span><a href="/builds/7541287">logging, conf fixes</a></span></td>
+<td><a class="committer" href="https://github.com/puhoy"><img alt="1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" src="https://secure.gravatar.com/avatar/1b31d86957b02a1a09bef59259bba992?size=18&amp;default=identicon" />puhoy</a></td>
+<td>
+push
+</td>
+<td><time data-time-ago="2016-08-21T19:04:38Z" datetime="2016-08-21T19:04:38Z" title="21 Aug 2016">21 Aug 2016</time></td>
+<td>travis-ci</td>
+</tr>
+</table>
+<div class='repo-show-all-builds'>
+<a class="btn" href="/repos/112878/builds">See All Builds (47)
+</a></div>
+</div>
+
+
+</div>
+
+<div class='clear'></div>
+</div>
+<div class='sidebar'>
+<div class='sidebar-item'>
+<ul>
+<li>
+<a href="https://github.com/puhoy/bitween/tree/develop" target="_blank"><i class="fa fa-external-link-square"></i>
+Repo on GitHub
+</a></li>
+</ul>
+</div>
+
+</div>
+
+</div>
+</div>
+<footer class='' id='footer'>
+<div class='wrapper'>
+<a href="http://support.coveralls.io">Troubleshooting</a>
+&middot;
+<a href="https://github.com/lemurheavy/coveralls-public/issues">Open an Issue</a>
+&middot;
+<a href="mailto:sales@coveralls.io" rel="nofollow">Sales</a>
+&middot;
+<a href="https://coveralls.zendesk.com/hc/en-us/requests/new" rel="nofollow">FEEDBACK</a>
+&middot;
+<a href="https://enterprise.coveralls.io">ENTERPRISE</a>
+&middot;
+<a href="/careers">CAREERS</a>
+<br>
+<span>
+<a href="http://blog.coveralls.io/" target="_blank">BLOG</a>
+&middot;
+<a href="https://twitter.com/CoverallsApp" target="_blank">TWITTER</a>
+&middot;
+<a href="/legal">Legal &amp; Privacy</a>
+&middot;
+<a href="/supported-continuous-integration">Supported CI Services</a>
+&middot;
+<a href="/continuous-integration">What&#39;s a CI service?</a>
+&middot;
+<a href="/code-coverage">Automated Testing</a>
+</span>
+<p>
+&copy; 2016 <a href="http://lemurheavy.com" rel="nofollow">Lemur Heavy Industries</a>
+</p>
+</div>
+</footer>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-36781555-1', 'auto');
+  ga('send', 'pageview');
+  
+  ga('require', 'ecommerce');
+</script>
+
+</body>
+</html>

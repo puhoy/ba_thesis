@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to bitween’s documentation! &mdash; bitween  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="bitween  documentation" href="#"/>
+        <link rel="next" title="bitween package" href="bitween.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://bitween.readthedocs.io/en/develop/" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'index'
+</script>
+
+<script type="text/javascript" src="_static/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> bitween
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="bitween.html">bitween package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">bitween</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>Welcome to bitween&#8217;s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/puhoy/bitween/blob/master/docs/index.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-bitween-s-documentation">
+<h1>Welcome to bitween&#8217;s documentation!<a class="headerlink" href="#welcome-to-bitween-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Bitween is a more or less experimental XMPP/BitTorrent Client i develop as part of my bachelor thesis.</p>
+<p>Right now its pretty basic and far from done.</p>
+<div class="section" id="things-you-will-need">
+<h2>things you will need<a class="headerlink" href="#things-you-will-need" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="on-ubuntu">
+<h3>on ubuntu<a class="headerlink" href="#on-ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>tested on python2.7, could work on python3</p>
+<p>clone to where ever you like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>git clone git@github.com:puhoy/bitween.git
+</pre></div>
+</div>
+<p>install dependencies (virtualenv):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>cd bitween
+sudo apt-get install python-libtorrent python-dev
+virtualenv --system-site-packages -p /usr/bin/python2.7 env
+source env/bin/activate
+pip install -r requirements.txt
+</pre></div>
+</div>
+<p>or install dependencies to system:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>sudo apt-get install python-libtorrent python-dev
+sudo pip install -r requirements.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuring">
+<h2>configuring<a class="headerlink" href="#configuring" title="Permalink to this headline">¶</a></h2>
+<p>copy the conf.json.dist to conf.json and fill in your xmpp credentials.
+use as many accounts as you like. the save_path is the default save path to download to.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>{
+  &quot;xmpp_account&quot;: {
+      &quot;jid&quot;: &quot;user@domain&quot;,
+      &quot;password&quot;: &quot;&quot;
+  }
+
+  &quot;save_path&quot;: &quot;share&quot;,
+  &quot;enable_ipv4&quot;: true,
+  &quot;enable_ipv6&quot;: false,
+  &quot;enable_upnp&quot;: true,
+  &quot;enable_natpmp&quot;: true
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="starting-the-daemon">
+<h1>starting the daemon<a class="headerlink" href="#starting-the-daemon" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python bitweend.py
+</pre></div>
+</div>
+<p>this will start the daemon. you will have a web interface for the JSONRPC API on localhost:5000/api/browse</p>
+<p>optional:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>-b &#39;0.0.0.0&#39;    # bind to something other than 127.0.0.1. might be useful if you want to use it on a server.
+-p 5000         # bind the API interface to another port
+</pre></div>
+</div>
+<p>adding files to share:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python bitweenc.py --add_file /path/to/file
+</pre></div>
+</div>
+<p>get file hashes to download:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python bitweenc.py --list
+</pre></div>
+</div>
+<p>this will list all the files you have got via xmpp, so if you have not added an account before start, nothing will be listed here.</p>
+<p>download files by hash:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python bitweenc.py --add_hash some_sha1_hash
+</pre></div>
+</div>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bitween.html">bitween package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bitween.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitween.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitween.html#module-bitween.bitweenc">bitween.bitweenc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitween.html#bitween-bitweend-module">bitween.bitweend module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bitween.html#module-bitween">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bitween.html" class="btn btn-neutral float-right" title="bitween package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Jan Hartmann.
+      
+        <span class="commit">
+          Revision <code>77f3b0b7</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/develop/">develop</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//readthedocs.org/projects/bitween/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/bitween/?fromdocs=bitween">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/bitween/?fromdocs=bitween">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
