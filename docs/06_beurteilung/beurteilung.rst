@@ -8,7 +8,7 @@ Beurteilung der Ergebnisse
 Während der Implementierung traten eine ganze Reihe an Problemen größerer und kleinerer Natur auf, die so nicht erwartet wurden.
 
 
-Vor- und Nachteile der Serverlosen Dateiübertragung
+Vor- und Nachteile der serverlosen Dateiübertragung
 ===================================================
 
 Durch die serverlose Dateiübertragung per BitTorrent umgeht man zwar potentiell langsame Server, verliert aber auch einen "Mittelsmann" für die Übertragung. Befinden sich beispielsweise beide Teilnehmer hinter einem DSL Router, müssen beide Techniken zum Port öffnen unterstützen (oder manuell Ports öffnen) um eine Kommunikation in beide Richtungen zu ermöglichen.
@@ -23,7 +23,7 @@ Ebenfalls entfällt mit einem Server eine Instanz, bei der IP Adressen erfragt w
 libtorrent
 ==========
 
-Die libtorrent Libary, die sich selbst als "feature complete" :cite:`www.l3:online` bezeichnet, ist vor allem zu Beginn sehr unübersichtlich. Die Dokumentation bezieht sich auf die c++ Schnittstelle und verweist auch bezüglich der Python Bindings auf diese Dokumentation, da alle Elemente dieselben Bezeichnungen haben und ähnlich funktionieren. Trotzdem wurde während der Implementierung zumindest eine Übersicht der zu erwarteten Python Datentypen vermisst.
+Die libtorrent Libary, die sich selbst als "feature complete" :cite:`www.l3:online` bezeichnet, ist vor allem zu Beginn sehr unübersichtlich. Die Dokumentation bezieht sich auf die C++ Schnittstelle und verweist auch bezüglich der Python Bindings auf diese Dokumentation, da alle Elemente dieselben Bezeichnungen haben und ähnlich funktionieren. Trotzdem wurde während der Implementierung zumindest eine Übersicht der zu erwarteten Python Datentypen vermisst.
 
 Dazu kommt eine asynchrone Arbeitsweise, bei der viele Funktionen nur Alerts auslösen, die dann das Ergebnis enthalten und die das Debugging und Tests erheblich verkomplizieren.
 

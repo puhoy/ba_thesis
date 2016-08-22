@@ -115,7 +115,7 @@ Hier soll ein Plugin implementiert werden, das auf dem bereits in Kapitel :ref:`
 
 Aufgrund der Funktionalität vom PEP müssen Informationen nur gesendet werden, wenn sich etwas an den zu verteilenden Daten ändert. Der XMPP Server wird selbst dafür sorgen, das Clients, die zur Laufzeit erst online gehen, die aktuellen Daten bekommen und im Falle von Aktualisierungen alle betreffenden Clients ein Update erhalten.
 
-Dabei muss beachtet werden, das eine Limitierung vom PEP umgangen werden muss: es werden keine multiplen Ressourcen pro Account unterstützt. Da allerdings bei der Anmeldung eine Liste der bisherigen veröffentlichten Daten vom Server gesendet wird, auch an den eigenen Account, kann diese Liste einfach um die neue Ressource erweitert werden.
+Dabei muss beachtet werden, dass eine Limitierung vom PEP umgangen werden muss: es werden keine multiplen Ressourcen pro Account unterstützt. Da allerdings bei der Anmeldung eine Liste der bisherigen veröffentlichten Daten vom Server gesendet wird, auch an den eigenen Account, kann diese Liste einfach um die neue Ressource erweitert werden.
 
 
 Start des Plugins

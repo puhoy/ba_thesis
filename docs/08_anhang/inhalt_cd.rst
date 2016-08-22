@@ -1,6 +1,13 @@
 Inhaltsverzeichnis der CD
 =========================
 
+- website_snapshots: Kopien der genutzten Webseiten
+- thesis: Quellcode, PDF-Version und HTML-Version der Thesis
+
+- bitween: Quellcode und generierte API des Programms
+- pubsub_overview.png: Übersicht der genutzten Topics und deren Abonnenten
+
+
 .. todo::
 
     - Quellcode der Thesis
@@ -12,4 +19,4 @@ Inhaltsverzeichnis der CD
 
     - Übersicht der Topics und Abonnenten
 
-    - Snapshots der Webseiten
+    -

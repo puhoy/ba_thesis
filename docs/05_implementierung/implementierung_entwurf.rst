@@ -25,7 +25,7 @@ Das Programm gliedert sich in verschiedene Kernkomponenten (Abbildung :num:`modu
  - der BitTorrent Client (BitTorrentClient)
 
     Der BitTorrent Client lädt beim Start gespeicherte Torrents der letzten Session. Er stellt im Falle von hinzugefügten Torrents eine Verbindung zu allen IP-Adressen (und damit zu allen anderen BitTorrent Clients) her, die bisher per XMPP empfangen wurden.
-    Als Libary wird libtorrent verwendet, eine in c++ geschriebene Bibliothek mit optionaler Python Anbindung.
+    Als Libary wird libtorrent verwendet, eine in C++ geschriebene Bibliothek mit optionaler Python Anbindung.
 
 
  - eine Nutzerschnittstelle zur Bedienung (Web)

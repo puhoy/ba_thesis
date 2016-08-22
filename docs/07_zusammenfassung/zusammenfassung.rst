@@ -34,4 +34,4 @@ Durch die serverlose Datenübertragung fehlt hier eine Instanz, die als Bindegli
 Ein Server hingegen könnte als Brücke zwischen IPv4 und IPv6 dienen und über holepunching Methoden Ports öffnen.
 
 Der entfallende Server ist somit Vor- und Nachteil zugleich: einerseits entfällt hier zentrale Infrastruktur, was das Netzwerk im Ganzen ausfallsicherer und schneller machen kann, andererseits entfällt auch ein "Ansprechpartner" der Verbindungen vermittelt oder als Proxyserver dienen kann.
-Demzufolge stellt die Datenübertragung per BitTorrent in gut konfigurierter Umgebung eine Verbesserung gegenüber der Übertragung über Server dar, für den Endanwender allerdings müsste das Programm noch sehr viel mehr Funktion zur Fehlererkennung mitbringen um mögliche Verbindungsfehler aufzufangen.
+Demzufolge stellt die Datenübertragung per BitTorrent in gut konfigurierter Umgebung eine Verbesserung gegenüber der Übertragung über Server dar, für den Endanwender allerdings müsste das Programm noch sehr viel mehr Funktionalität zur Fehlererkennung mitbringen um mögliche Verbindungsfehler aufzufangen.
